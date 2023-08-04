@@ -1,3 +1,5 @@
+import GlamourForm from "./components/glamourform";
+
 export default function Home() {
   return (
     <main className="">
@@ -18,6 +20,7 @@ export default function Home() {
           and I will make the Glamour Plate! Items that are dyeable will allow
           you to have the option to submit another number for the dye.
         </p>
+        <GlamourForm />
       </div>
     </main>
   );
