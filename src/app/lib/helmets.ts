@@ -779,4 +779,28 @@ const helmets: helmetObj[] = [
     name: "Rainbow Chrysanthemum Corsage",
     dyeable: false,
   },
+  {
+    name: "Usagi Kabuto",
+    dyeable: false,
+  },
+  {
+    name: "Oschon Roselle Capeline",
+    dyeable: false,
+  },
+  {
+    name: "Gold Roselle Capeline",
+    dyeable: false,
+  },
+  {
+    name: "Pearl Roselle Capeline",
+    dyeable: true,
+  },
+  {
+    name: "Straw Capeline",
+    dyeable: true,
+  },
+  {
+    name: "Dream Hat",
+    dyeable: true,
+  },
 ];
