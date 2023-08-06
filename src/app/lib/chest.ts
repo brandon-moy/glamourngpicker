@@ -237,4 +237,100 @@ export const chest: gearPiece[] = [
     name: "Craftsman's Apron",
     dyeable: true,
   },
+  {
+    name: "Dalmascan Draped Top",
+    dyeable: true,
+  },
+  {
+    name: "Souther Seas Shirt",
+    dyeable: true,
+  },
+  {
+    name: "Casual Jacket",
+    dyeable: true,
+  },
+  {
+    name: "Skyworker's Singlet",
+    dyeable: true,
+  },
+  {
+    name: "Calfskin Rider's Jacket",
+    dyeable: true,
+  },
+  {
+    name: "Frontier Jacket",
+    dyeable: true,
+  },
+  {
+    name: "Frontier Dress",
+    dyeable: true,
+  },
+  {
+    name: "Peacelover's Shirt",
+    dyeable: true,
+  },
+  {
+    name: "Cape of Happiness",
+    dyeable: true,
+  },
+  {
+    name: "Varsity Jacket",
+    dyeable: true,
+  },
+  {
+    name: "Buttoned Varsity Jacket",
+    dyeable: true,
+  },
+  {
+    name: "Noir Longcoat",
+    dyeable: true,
+  },
+  {
+    name: "Lawless Enforcer's Jacket",
+    dyeable: true,
+  },
+  {
+    name: "Salon Server's Vest",
+    dyeable: true,
+  },
+  {
+    name: "Salon Server's Dress Vest",
+    dyeable: true,
+  },
+  {
+    name: "Plain Pajama Shirt",
+    dyeable: true,
+  },
+  {
+    name: "Cactuar Pajama Shirt",
+    dyeable: true,
+  },
+  {
+    name: "Chocobo Pajama Shirt",
+    dyeable: true,
+  },
+  {
+    name: "Shishu Bujin Hitatare",
+    dyeable: true,
+  },
+  {
+    name: "Shishu Gozen Kochiki",
+    dyeable: true,
+  },
+  {
+    name: "Ti Leaf Lei/Coronal Summer Halter",
+    dyeable: true,
+  },
+  {
+    name: "South Seas Talisman",
+    dyeable: false,
+  },
+  {
+    name: "Courl Talisman",
+    dyeable: true,
+  },
+  {
+    name: "Dream Tunic",
+    dyeable: true,
+  },
 ];
