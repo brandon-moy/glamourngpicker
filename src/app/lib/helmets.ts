@@ -1,9 +1,6 @@
-type helmetObj = {
-  name: string;
-  dyeable: boolean;
-};
+import { gearPiece } from "./types";
 
-const helmets: helmetObj[] = [
+export const helmets: gearPiece[] = [
   {
     name: "Company Hat",
     dyeable: true,
