@@ -1,26 +1,60 @@
 "use client";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { useState } from "react";
 import { helmets } from "@/app/lib/helmets";
 import { chests } from "@/app/lib/chests";
 import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
 import { boots } from "@/app/lib/boots";
-import { gearPiece } from "@/app/lib/types";
+
+type gearPiece = {
+  name: string;
+  dyeable: boolean;
+  dye: string;
+};
 
 export default function GlamourForm() {
-  const [helmet, setHelmet] = useState<gearPiece>({ name: "", dyeable: false });
-  const [chest, setChest] = useState<gearPiece>({ name: "", dyeable: false });
-  const [glove, setGloves] = useState<gearPiece>({ name: "", dyeable: false });
-  const [leg, setLegs] = useState<gearPiece>({ name: "", dyeable: false });
-  const [boot, setBoots] = useState<gearPiece>({ name: "", dyeable: false });
+  const [helmet, setHelmet] = useState<gearPiece>({
+    name: "",
+    dyeable: false,
+    dye: "",
+  });
+  const [chest, setChest] = useState<gearPiece>({
+    name: "",
+    dyeable: false,
+    dye: "",
+  });
+  const [glove, setGloves] = useState<gearPiece>({
+    name: "",
+    dyeable: false,
+    dye: "",
+  });
+  const [leg, setLegs] = useState<gearPiece>({
+    name: "",
+    dyeable: false,
+    dye: "",
+  });
+  const [boot, setBoots] = useState<gearPiece>({
+    name: "",
+    dyeable: false,
+    dye: "",
+  });
   const [invalid, setInvalid] = useState<string>("");
 
   const handleHelmet = (value: string) => {
     if (value.length && (+value < 1 || +value > helmets.length)) {
       setInvalid("Please enter a valid number for helmet");
+      setHelmet({ name: "", dyeable: false, dye: "" });
       return;
     } else {
       setInvalid("");
+      const index = Math.floor(Math.random() * +value);
+      const name = helmets[index].name;
+      const dyeable = helmets[index].dyeable;
+      setHelmet({
+        ...helmet,
+        name,
+        dyeable,
+      });
     }
   };
 
