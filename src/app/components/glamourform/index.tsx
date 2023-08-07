@@ -26,7 +26,7 @@ export default function GlamourForm() {
     handleBootDyeColor,
     invalid,
   } = useFormContext();
-  console.log(chest);
+  console.log(leg);
 
   return (
     <form className="flex flex-wrap mx-auto">
@@ -102,30 +102,108 @@ export default function GlamourForm() {
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
-        Gloves: (1-33)
+        Gloves:
         <input
+          onChange={(e) => handleGloveChange(e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="gloves"
           min="1"
+          max="33"
+          placeholder="1-33"
+        ></input>
+      </label>
+      <label className="w-full font-bold">
+        Dye:{" "}
+        <input
+          className="w-1/3 mx-2 font-normal"
+          type="number"
+          name="dye-category"
+          disabled={!glove.dyeable}
+          placeholder="1-9"
+          min="1"
+          max="9"
+          onChange={(e) => handleGloveDyeGroup(e.target.value)}
+        ></input>
+        <input
+          type="number"
+          className="w-1/3 mx-2 font-normal"
+          name="dye-color"
+          min="1"
+          max={allDyes[glove.dyeGroup].length}
+          disabled={!glove.dyeable}
+          placeholder={`1-${allDyes[glove.dyeGroup].length}`}
+          onChange={(e) => handleGloveDyeColor(e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
-        Legs: (1-61)
+        Legs:
         <input
+          onChange={(e) => handleLegChange(e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="legs"
           min="1"
+          max="61"
+          placeholder="1-61"
+        ></input>
+      </label>
+      <label className="w-full font-bold">
+        Dye:{" "}
+        <input
+          className="w-1/3 mx-2 font-normal"
+          type="number"
+          name="dye-category"
+          disabled={!leg.dyeable}
+          placeholder="1-9"
+          min="1"
+          max="9"
+          onChange={(e) => handleLegDyeGroup(e.target.value)}
+        ></input>
+        <input
+          type="number"
+          className="w-1/3 mx-2 font-normal"
+          name="dye-color"
+          min="1"
+          max={allDyes[leg.dyeGroup].length}
+          disabled={!leg.dyeable}
+          placeholder={`1-${allDyes[leg.dyeGroup].length}`}
+          onChange={(e) => handleLegDyeColor(e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
-        Boots: (1-58)
+        Boots:
         <input
+          onChange={(e) => handleBootChange(e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="boots"
           min="1"
+          max="58"
+          placeholder="1-58"
+        ></input>
+      </label>
+      <label className="w-full font-bold">
+        Dye:{" "}
+        <input
+          className="w-1/3 mx-2 font-normal"
+          type="number"
+          name="dye-category"
+          disabled={!boot.dyeable}
+          placeholder="1-9"
+          min="1"
+          max="9"
+          onChange={(e) => handleBootDyeGroup(e.target.value)}
+        ></input>
+        <input
+          type="number"
+          className="w-1/3 mx-2 font-normal"
+          name="dye-color"
+          min="1"
+          max={allDyes[boot.dyeGroup].length}
+          disabled={!boot.dyeable}
+          placeholder={`1-${allDyes[boot.dyeGroup].length}`}
+          onChange={(e) => handleBootDyeColor(e.target.value)}
         ></input>
       </label>
     </form>
