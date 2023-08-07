@@ -12,8 +12,21 @@ export default function GlamourForm() {
     handleHelmetChange,
     handleHelmetDyeGroup,
     handleHelmetDyeColor,
+    handleChestChange,
+    handleChestDyeGroup,
+    handleChestDyeColor,
+    handleGloveChange,
+    handleGloveDyeGroup,
+    handleGloveDyeColor,
+    handleLegChange,
+    handleLegDyeGroup,
+    handleLegDyeColor,
+    handleBootChange,
+    handleBootDyeGroup,
+    handleBootDyeColor,
     invalid,
   } = useFormContext();
+  console.log(chest);
 
   return (
     <form className="flex flex-wrap mx-auto">
@@ -54,13 +67,38 @@ export default function GlamourForm() {
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
-        Chest: (1-83)
+        Chest:
         <input
+          onChange={(e) => handleChestChange(e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="chest"
           min="1"
           max="83"
+          placeholder="1-83"
+        ></input>
+      </label>
+      <label className="w-full font-bold">
+        Dye:{" "}
+        <input
+          className="w-1/3 mx-2 font-normal"
+          type="number"
+          name="dye-category"
+          disabled={!chest.dyeable}
+          placeholder="1-9"
+          min="1"
+          max="9"
+          onChange={(e) => handleChestDyeGroup(e.target.value)}
+        ></input>
+        <input
+          type="number"
+          className="w-1/3 mx-2 font-normal"
+          name="dye-color"
+          min="1"
+          max={allDyes[chest.dyeGroup].length}
+          disabled={!chest.dyeable}
+          placeholder={`1-${allDyes[chest.dyeGroup].length}`}
+          onChange={(e) => handleChestDyeColor(e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">

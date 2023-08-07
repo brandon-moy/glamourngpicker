@@ -153,7 +153,6 @@ export function AuthProvider({ children }: Props) {
     } else {
       setInvalid("");
       const dyeGroup = Math.floor(Math.random() * +value);
-      console.log(dyeGroup);
       setHelmet({
         ...helmet,
         dyeGroup,
@@ -199,7 +198,6 @@ export function AuthProvider({ children }: Props) {
     } else {
       setInvalid("");
       const dyeGroup = Math.floor(Math.random() * +value);
-      console.log(dyeGroup);
       setChest({
         ...chest,
         dyeGroup,
@@ -210,7 +208,7 @@ export function AuthProvider({ children }: Props) {
   const handleChestDyeColor = (value: string) => {
     if (
       value.length &&
-      (+value < 1 || +value > allDyes[helmet.dyeGroup].length)
+      (+value < 1 || +value > allDyes[chest.dyeGroup].length)
     ) {
       setInvalid("Please enter a valid number for dye color");
     } else {
@@ -245,7 +243,6 @@ export function AuthProvider({ children }: Props) {
     } else {
       setInvalid("");
       const dyeGroup = Math.floor(Math.random() * +value);
-      console.log(dyeGroup);
       setGlove({
         ...glove,
         dyeGroup,
@@ -256,7 +253,7 @@ export function AuthProvider({ children }: Props) {
   const handleGloveDyeColor = (value: string) => {
     if (
       value.length &&
-      (+value < 1 || +value > allDyes[helmet.dyeGroup].length)
+      (+value < 1 || +value > allDyes[glove.dyeGroup].length)
     ) {
       setInvalid("Please enter a valid number for dye color");
     } else {
@@ -291,7 +288,6 @@ export function AuthProvider({ children }: Props) {
     } else {
       setInvalid("");
       const dyeGroup = Math.floor(Math.random() * +value);
-      console.log(dyeGroup);
       setLeg({
         ...leg,
         dyeGroup,
@@ -300,10 +296,7 @@ export function AuthProvider({ children }: Props) {
   };
 
   const handleLegDyeColor = (value: string) => {
-    if (
-      value.length &&
-      (+value < 1 || +value > allDyes[helmet.dyeGroup].length)
-    ) {
+    if (value.length && (+value < 1 || +value > allDyes[leg.dyeGroup].length)) {
       setInvalid("Please enter a valid number for dye color");
     } else {
       setInvalid("");
@@ -337,7 +330,6 @@ export function AuthProvider({ children }: Props) {
     } else {
       setInvalid("");
       const dyeGroup = Math.floor(Math.random() * +value);
-      console.log(dyeGroup);
       setBoot({
         ...boot,
         dyeGroup,
@@ -348,7 +340,7 @@ export function AuthProvider({ children }: Props) {
   const handleBootDyeColor = (value: string) => {
     if (
       value.length &&
-      (+value < 1 || +value > allDyes[helmet.dyeGroup].length)
+      (+value < 1 || +value > allDyes[boot.dyeGroup].length)
     ) {
       setInvalid("Please enter a valid number for dye color");
     } else {
