@@ -29,7 +29,12 @@ export default function GlamourForm() {
 
   return (
     <form className="flex flex-wrap mx-auto">
-      <div className="font-bold text-red-500">{invalid}</div>
+      <div className="relative w-full h-12 text-center ">
+        <p className="w-full text-2xl font-bold">GlamouRNG Picker</p>
+        <p className="absolute bottom-0 text-sm font-bold text-red-500 ">
+          {invalid}
+        </p>
+      </div>
       <label className="flex flex-col py-2 font-bold basis-full">
         Helmet:
         <input
