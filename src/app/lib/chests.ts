@@ -1,6 +1,6 @@
 import { gearPiece } from "./types";
 
-export const chest: gearPiece[] = [
+export const chests: gearPiece[] = [
   {
     name: "Company Tabard",
     dyeable: true,
