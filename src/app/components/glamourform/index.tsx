@@ -31,7 +31,7 @@ export default function GlamourForm() {
     <form className="flex flex-wrap mx-auto">
       <div className="relative w-full h-12 text-center ">
         <p className="w-full text-2xl font-bold">GlamouRNG Picker</p>
-        <p className="absolute bottom-0 w-full text-sm font-bold text-red-500 ">
+        <p className="absolute bottom-[-1.25rem] lg:bottom-[-1.5rem] w-full text-sm font-bold text-red-500 ">
           {invalid}
         </p>
       </div>

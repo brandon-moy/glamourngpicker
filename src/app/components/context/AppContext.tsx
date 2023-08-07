@@ -132,7 +132,7 @@ export function FormProvider({ children }: Props) {
 
   const handleHelmetChange = (value: string) => {
     if (value.length && (+value < 1 || +value > helmets.length)) {
-      setInvalid(`Please enter a valid number for helmet`);
+      setInvalid(`Please enter a valid number for helmet piece`);
       return;
     } else {
       setInvalid("");
@@ -177,7 +177,7 @@ export function FormProvider({ children }: Props) {
 
   const handleChestChange = (value: string) => {
     if (value.length && (+value < 1 || +value > chests.length)) {
-      setInvalid("Please enter a valid number for chest");
+      setInvalid("Please enter a valid number for chest piece");
       return;
     } else {
       setInvalid("");
@@ -222,7 +222,7 @@ export function FormProvider({ children }: Props) {
 
   const handleGloveChange = (value: string) => {
     if (value.length && (+value < 1 || +value > gloves.length)) {
-      setInvalid(`Please enter a valid number for glove`);
+      setInvalid(`Please enter a valid number for glove piece`);
       return;
     } else {
       setInvalid("");
@@ -267,7 +267,7 @@ export function FormProvider({ children }: Props) {
 
   const handleLegChange = (value: string) => {
     if (value.length && (+value < 1 || +value > legs.length)) {
-      setInvalid(`Please enter a valid number for leg`);
+      setInvalid(`Please enter a valid number for leg piece`);
       return;
     } else {
       setInvalid("");
@@ -309,7 +309,7 @@ export function FormProvider({ children }: Props) {
 
   const handleBootChange = (value: string) => {
     if (value.length && (+value < 1 || +value > boots.length)) {
-      setInvalid(`Please enter a valid number for boot`);
+      setInvalid(`Please enter a valid number for boot piece`);
       return;
     } else {
       setInvalid("");
