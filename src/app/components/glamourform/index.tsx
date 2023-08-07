@@ -1,109 +1,19 @@
 "use client";
-import React, { useState } from "react";
-import { helmets } from "@/app/lib/helmets";
-import { chests } from "@/app/lib/chests";
-import { gloves } from "@/app/lib/gloves";
-import { legs } from "@/app/lib/legs";
-import { boots } from "@/app/lib/boots";
 import { allDyes } from "@/app/lib/dyes";
 import { useFormContext } from "../context/AppContext";
 
-type gearPiece = {
-  name: string;
-  dyeable: boolean;
-  dyeGroup: number;
-  dye: string;
-};
-
 export default function GlamourForm() {
-  // const { helmet, chest, glove, leg, boot, invalid } = useFormContext();
   const {
     helmet,
+    chest,
+    glove,
+    leg,
+    boot,
     handleHelmetChange,
     handleHelmetDyeGroup,
     handleHelmetDyeColor,
+    invalid,
   } = useFormContext();
-  // const [helmet, setHelmet] = useState<gearPiece>({
-  //   name: "",
-  //   dyeable: false,
-  //   dyeGroup: 0,
-  //   dye: "",
-  // });
-  const [chest, setChest] = useState<gearPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [glove, setGloves] = useState<gearPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [leg, setLegs] = useState<gearPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [boot, setBoots] = useState<gearPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [invalid, setInvalid] = useState<string>("");
-
-  // const handleHelmetChange = (value: string) => {
-  //   if (value.length && (+value < 1 || +value > helmets.length)) {
-  //     setInvalid("Please enter a valid number for helmet");
-  //     setHelmet({ name: "", dyeable: false, dyeGroup: 0, dye: "" });
-  //     return;
-  //   } else {
-  //     setInvalid("");
-  //     const index = Math.floor(Math.random() * +value);
-  //     const { name, dyeable } = helmets[index];
-  //     setHelmet({
-  //       ...helmet,
-  //       name,
-  //       dyeable,
-  //     });
-  //     console.log(helmet);
-  //   }
-  // };
-
-  // const handleHelmetDyeGroup = (value: string) => {
-  //   if (value.length && (+value < 1 || +value > allDyes.length)) {
-  //     setInvalid("Please enter a valid number for dye group");
-  //   } else {
-  //     setInvalid("");
-  //     const dyeGroup = Math.floor(Math.random() * +value);
-  //     console.log(dyeGroup);
-  //     setHelmet({
-  //       ...helmet,
-  //       dyeGroup,
-  //     });
-  //     console.log(helmet);
-  //   }
-  // };
-
-  // const handleHelmetDyeColor = (value: string) => {
-  //   if (
-  //     value.length &&
-  //     (+value < 1 || +value > allDyes[helmet.dyeGroup].length)
-  //   ) {
-  //     setInvalid("Please enter a valid number for dye color");
-  //   } else {
-  //     setInvalid("");
-  //     const dye = allDyes[helmet.dyeGroup][Math.floor(Math.random() * +value)];
-  //     setHelmet({
-  //       ...helmet,
-  //       dye,
-  //     });
-  //     console.log(helmet);
-  //   }
-  // };
 
   return (
     <form className="flex flex-wrap mx-auto">
