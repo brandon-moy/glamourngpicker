@@ -2,7 +2,7 @@ type dye = string;
 
 type dyeSets = dye[];
 
-const allDyes: dyeSets[] = [
+export const allDyes: dyeSets[] = [
   [
     "Snow White Dye",
     "Ash Grey Dye",
