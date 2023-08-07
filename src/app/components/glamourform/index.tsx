@@ -26,7 +26,6 @@ export default function GlamourForm() {
     handleBootDyeColor,
     invalid,
   } = useFormContext();
-  console.log(leg);
 
   return (
     <form className="flex flex-wrap mx-auto">

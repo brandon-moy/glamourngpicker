@@ -1,3 +1,4 @@
+import Modal from "./components/modal";
 import GlamourForm from "./components/glamourform";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
         style={{ backgroundImage: "url(/bg.png)" }}
       ></div>
       <div className="w-5/6 p-4 mx-auto mt-8 bg-gray-100 bg-opacity-75 rounded lg:w-1/5">
-        {/* <Modal display={displayed} closeModal={() => setDisplayed(false)} /> */}
+        <Modal />
         <GlamourForm />
       </div>
     </main>

@@ -6,7 +6,6 @@ import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
 import { boots } from "@/app/lib/boots";
 import { allDyes } from "@/app/lib/dyes";
-import { gearPiece } from "@/app/lib/types";
 
 type fullPiece = {
   name: string;
@@ -98,7 +97,7 @@ type Props = {
   children: ReactNode;
 };
 
-export function AuthProvider({ children }: Props) {
+export function FormProvider({ children }: Props) {
   const [helmet, setHelmet] = useState<fullPiece>({
     name: "",
     dyeable: false,

@@ -1,9 +1,12 @@
-interface modalProps {
-  display: boolean;
-  closeModal: () => void;
-}
+"use client";
+import React, { useState } from "react";
 
-export default function Modal({ display, closeModal }: modalProps) {
+export default function Modal() {
+  const [display, setDisplayed] = useState<boolean>(true);
+
+  function closeModal() {
+    setDisplayed(false);
+  }
   if (!display) return <></>;
   return (
     <div className="absolute inset-0 bg-gray-900 bg-opacity-25">
