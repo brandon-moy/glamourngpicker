@@ -6,6 +6,8 @@ import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
 import { boots } from "@/app/lib/boots";
 import { allDyes } from "@/app/lib/dyes";
+import { useFormContext } from "../context/AppContext";
+
 type gearPiece = {
   name: string;
   dyeable: boolean;
@@ -14,12 +16,19 @@ type gearPiece = {
 };
 
 export default function GlamourForm() {
-  const [helmet, setHelmet] = useState<gearPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
+  // const { helmet, chest, glove, leg, boot, invalid } = useFormContext();
+  const {
+    helmet,
+    handleHelmetChange,
+    handleHelmetDyeGroup,
+    handleHelmetDyeColor,
+  } = useFormContext();
+  // const [helmet, setHelmet] = useState<gearPiece>({
+  //   name: "",
+  //   dyeable: false,
+  //   dyeGroup: 0,
+  //   dye: "",
+  // });
   const [chest, setChest] = useState<gearPiece>({
     name: "",
     dyeable: false,
@@ -46,55 +55,55 @@ export default function GlamourForm() {
   });
   const [invalid, setInvalid] = useState<string>("");
 
-  const handleHelmet = (value: string) => {
-    if (value.length && (+value < 1 || +value > helmets.length)) {
-      setInvalid("Please enter a valid number for helmet");
-      setHelmet({ name: "", dyeable: false, dyeGroup: 0, dye: "" });
-      return;
-    } else {
-      setInvalid("");
-      const index = Math.floor(Math.random() * +value);
-      const { name, dyeable } = helmets[index];
-      setHelmet({
-        ...helmet,
-        name,
-        dyeable,
-      });
-      console.log(helmet);
-    }
-  };
+  // const handleHelmetChange = (value: string) => {
+  //   if (value.length && (+value < 1 || +value > helmets.length)) {
+  //     setInvalid("Please enter a valid number for helmet");
+  //     setHelmet({ name: "", dyeable: false, dyeGroup: 0, dye: "" });
+  //     return;
+  //   } else {
+  //     setInvalid("");
+  //     const index = Math.floor(Math.random() * +value);
+  //     const { name, dyeable } = helmets[index];
+  //     setHelmet({
+  //       ...helmet,
+  //       name,
+  //       dyeable,
+  //     });
+  //     console.log(helmet);
+  //   }
+  // };
 
-  const handleHelmetDyeChange = (value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes.length)) {
-      setInvalid("Please enter a valid number for dye group");
-    } else {
-      setInvalid("");
-      const dyeGroup = Math.floor(Math.random() * +value);
-      console.log(dyeGroup);
-      setHelmet({
-        ...helmet,
-        dyeGroup,
-      });
-      console.log(helmet);
-    }
-  };
+  // const handleHelmetDyeGroup = (value: string) => {
+  //   if (value.length && (+value < 1 || +value > allDyes.length)) {
+  //     setInvalid("Please enter a valid number for dye group");
+  //   } else {
+  //     setInvalid("");
+  //     const dyeGroup = Math.floor(Math.random() * +value);
+  //     console.log(dyeGroup);
+  //     setHelmet({
+  //       ...helmet,
+  //       dyeGroup,
+  //     });
+  //     console.log(helmet);
+  //   }
+  // };
 
-  const handleHelmetDyeColor = (value: string) => {
-    if (
-      value.length &&
-      (+value < 1 || +value > allDyes[helmet.dyeGroup].length)
-    ) {
-      setInvalid("Please enter a valid number for dye color");
-    } else {
-      setInvalid("");
-      const dye = allDyes[helmet.dyeGroup][Math.floor(Math.random() * +value)];
-      setHelmet({
-        ...helmet,
-        dye,
-      });
-      console.log(helmet);
-    }
-  };
+  // const handleHelmetDyeColor = (value: string) => {
+  //   if (
+  //     value.length &&
+  //     (+value < 1 || +value > allDyes[helmet.dyeGroup].length)
+  //   ) {
+  //     setInvalid("Please enter a valid number for dye color");
+  //   } else {
+  //     setInvalid("");
+  //     const dye = allDyes[helmet.dyeGroup][Math.floor(Math.random() * +value)];
+  //     setHelmet({
+  //       ...helmet,
+  //       dye,
+  //     });
+  //     console.log(helmet);
+  //   }
+  // };
 
   return (
     <form className="flex flex-wrap mx-auto">
@@ -102,7 +111,7 @@ export default function GlamourForm() {
       <label className="flex flex-col py-2 font-bold basis-full">
         Helmet:
         <input
-          onChange={(e) => handleHelmet(e.target.value)}
+          onChange={(e) => handleHelmetChange(e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="helmet"
@@ -121,7 +130,7 @@ export default function GlamourForm() {
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleHelmetDyeChange(e.target.value)}
+          onChange={(e) => handleHelmetDyeGroup(e.target.value)}
         ></input>
         <input
           type="number"
