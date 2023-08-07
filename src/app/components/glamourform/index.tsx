@@ -13,7 +13,7 @@ export default function GlamourForm() {
           placeholder="Beemoy"
         ></input>
       </label>
-      <label className="flex flex-col font-bold basis-full lg:basis-1/2">
+      <label className="flex flex-col py-2 font-bold basis-full">
         Helmet:
         <input
           className="w-full pl-2 font-normal lg:w-5/6"
@@ -22,7 +22,7 @@ export default function GlamourForm() {
           min="1"
         ></input>
       </label>
-      <label className="flex flex-col font-bold basis-full lg:basis-1/2">
+      <label className="flex flex-col py-2 font-bold basis-full">
         Chest:
         <input
           className="w-full pl-2 font-normal lg:w-5/6"
@@ -31,7 +31,7 @@ export default function GlamourForm() {
           min="1"
         ></input>
       </label>
-      <label className="flex flex-col font-bold basis-full lg:basis-1/2">
+      <label className="flex flex-col py-2 font-bold basis-full">
         Gloves:
         <input
           className="w-full pl-2 font-normal lg:w-5/6"
@@ -40,7 +40,7 @@ export default function GlamourForm() {
           min="1"
         ></input>
       </label>
-      <label className="flex flex-col font-bold basis-full lg:basis-1/2">
+      <label className="flex flex-col py-2 font-bold basis-full">
         Legs:
         <input
           className="w-full pl-2 font-normal lg:w-5/6"
@@ -49,7 +49,7 @@ export default function GlamourForm() {
           min="1"
         ></input>
       </label>
-      <label className="flex flex-col font-bold basis-full lg:basis-1/2">
+      <label className="flex flex-col py-2 font-bold basis-full">
         Boots:
         <input
           className="w-full pl-2 font-normal lg:w-5/6"
