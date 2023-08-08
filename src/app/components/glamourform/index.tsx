@@ -32,7 +32,7 @@ export default function GlamourForm() {
       <div className="flex w-full mt-4 justify-evenly">
         <button
           disabled={!emptyInputs}
-          className="px-2 py-1 text-white bg-gray-600 rounded font-poppins"
+          className="px-2 py-1 text-white rounded bg-secondary font-poppins"
         >
           Submit!
         </button>

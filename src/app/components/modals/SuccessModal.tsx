@@ -39,7 +39,7 @@ export default function SuccessModal() {
   if (!displaySuccess) return <></>;
   return (
     <div className="absolute inset-0 z-50 bg-gray-900 bg-opacity-25">
-      <div className="w-5/6 p-8 mx-auto mt-8 bg-gray-100 rounded lg:mt-24 lg:w-1/2">
+      <div className="w-5/6 p-8 mx-auto mt-8 rounded bg-background lg:mt-24 lg:w-1/2">
         <p className="p-2 text-xl font-bold text-center lg:p-4 font-poppins lg:text-4xl">
           Enjoy your brand new Glamour choice!
         </p>
