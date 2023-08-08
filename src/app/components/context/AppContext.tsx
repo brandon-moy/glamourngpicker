@@ -245,7 +245,6 @@ export function FormProvider({ children }: Props) {
         ...completedGlam,
         [slotName]: pieceObj,
       });
-      console.log(completedGlam);
     }
   };
 
@@ -267,7 +266,6 @@ export function FormProvider({ children }: Props) {
         ...completedGlam,
         [slotName]: pieceObj,
       });
-      console.log(completedGlam);
     }
   };
 
@@ -298,7 +296,6 @@ export function FormProvider({ children }: Props) {
         ...completedGlam,
         [slotName]: pieceObj,
       });
-      console.log(completedGlam);
     }
   };
 
