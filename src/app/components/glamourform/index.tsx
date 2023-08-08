@@ -11,9 +11,9 @@ export default function GlamourForm() {
     leg,
     boot,
     completedGlam,
-    handleHelmetChange,
-    handleHelmetDyeGroup,
-    handleHelmetDyeColor,
+    handleGearChange,
+    handleGearDyeGroup,
+    handleGearDyeColor,
     handleChestChange,
     handleChestDyeGroup,
     handleChestDyeColor,
@@ -44,7 +44,7 @@ export default function GlamourForm() {
       <label className="flex flex-col py-2 font-bold basis-full">
         Helmet:
         <input
-          onChange={(e) => handleHelmetChange("helmet", e.target.value)}
+          onChange={(e) => handleGearChange("helmet", 199, e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="helmet"
@@ -63,7 +63,7 @@ export default function GlamourForm() {
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleHelmetDyeGroup("helmet", e.target.value)}
+          onChange={(e) => handleGearDyeGroup("helmet", e.target.value)}
         ></input>
         <input
           type="number"
@@ -73,13 +73,13 @@ export default function GlamourForm() {
           max={allDyes[completedGlam.helmet.dyeGroup].length}
           disabled={!completedGlam.helmet.dyeable}
           placeholder={`1-${allDyes[completedGlam.helmet.dyeGroup].length}`}
-          onChange={(e) => handleHelmetDyeColor("helmet", e.target.value)}
+          onChange={(e) => handleGearDyeColor("helmet", e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
         Chest:
         <input
-          onChange={(e) => handleChestChange(e.target.value)}
+          onChange={(e) => handleGearChange("chest", 83, e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="chest"
@@ -98,7 +98,7 @@ export default function GlamourForm() {
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleChestDyeGroup(e.target.value)}
+          onChange={(e) => handleGearDyeGroup("chest", e.target.value)}
         ></input>
         <input
           type="number"
@@ -108,7 +108,7 @@ export default function GlamourForm() {
           max={allDyes[chest.dyeGroup].length}
           disabled={!chest.dyeable}
           placeholder={`1-${allDyes[chest.dyeGroup].length}`}
-          onChange={(e) => handleChestDyeColor(e.target.value)}
+          onChange={(e) => handleGearDyeColor("chest", e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">

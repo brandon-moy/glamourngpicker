@@ -31,9 +31,9 @@ type FormContextType = {
   boot: fullPiece;
   completedGlam: completedGlam;
   invalid: string;
-  handleHelmetChange: (arg0: string, arg1: string) => void;
-  handleHelmetDyeGroup: (arg0: string, arg1: string) => void;
-  handleHelmetDyeColor: (arg0: string, arg1: string) => void;
+  handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
+  handleGearDyeGroup: (arg0: string, arg1: string) => void;
+  handleGearDyeColor: (arg0: string, arg1: string) => void;
   handleChestChange: (arg0: string) => void;
   handleChestDyeGroup: (arg0: string) => void;
   handleChestDyeColor: (arg0: string) => void;
@@ -112,9 +112,9 @@ const formContextDefaultValues: FormContextType = {
       dye: "",
     },
   },
-  handleHelmetChange: () => {},
-  handleHelmetDyeGroup: () => {},
-  handleHelmetDyeColor: () => {},
+  handleGearChange: () => {},
+  handleGearDyeGroup: () => {},
+  handleGearDyeColor: () => {},
   handleChestChange: () => {},
   handleChestDyeGroup: () => {},
   handleChestDyeColor: () => {},
@@ -204,27 +204,36 @@ export function FormProvider({ children }: Props) {
   });
   const [invalid, setInvalid] = useState<string>("");
 
-  const handleHelmetChange = (slotName: string, value: string) => {
-    let piece: gearPiece[] = [];
-    switch (slotName) {
-      case "helmet":
-        piece = helmets;
-      case "chest":
-        piece = chests;
-      case "glove":
-        piece = gloves;
-      case "leg":
-        piece = legs;
-      case "boot":
-        piece = boots;
-    }
-    if (value.length && (+value < 1 || +value > piece.length)) {
+  const handleGearChange = (
+    slotName: string,
+    maxPieces: number,
+    value: string
+  ) => {
+    if (value.length && (+value < 1 || +value > maxPieces)) {
       setInvalid(`Please enter a valid number for ${slotName} piece`);
       return;
     } else {
       setInvalid("");
       const index = Math.floor(Math.random() * +value);
-      const { name, dyeable } = piece[index];
+      let name: string = "";
+      let dyeable: boolean = false;
+      switch (slotName) {
+        case "helmet":
+          name = helmets[index].name;
+          dyeable = helmets[index].dyeable;
+        case "chest":
+          name = chests[index].name;
+          dyeable = chests[index].dyeable;
+        case "glove":
+          name = gloves[index].name;
+          dyeable = gloves[index].dyeable;
+        case "leg":
+          name = legs[index].name;
+          dyeable = legs[index].dyeable;
+        case "boot":
+          name = boots[index].name;
+          dyeable = boots[index].dyeable;
+      }
       const { dyeGroup, dye } = completedGlam[slotName as keyof completedGlam];
       const pieceObj = {
         name,
@@ -232,20 +241,15 @@ export function FormProvider({ children }: Props) {
         dyeGroup,
         dye,
       };
-      // setHelmet({
-      //   ...helmet,
-      //   name,
-      //   dyeable,
-      // });
       setCompletedGlam({
         ...completedGlam,
         [slotName]: pieceObj,
       });
-      console.log(completedGlam, helmet);
+      console.log(completedGlam);
     }
   };
 
-  const handleHelmetDyeGroup = (slotName: string, value: string) => {
+  const handleGearDyeGroup = (slotName: string, value: string) => {
     if (value.length && (+value < 1 || +value > allDyes.length)) {
       setInvalid("Please enter a valid number for dye group");
     } else {
@@ -259,18 +263,15 @@ export function FormProvider({ children }: Props) {
         dyeGroup,
         dye,
       };
-      setHelmet({
-        ...helmet,
-        dyeGroup,
-      });
       setCompletedGlam({
         ...completedGlam,
         [slotName]: pieceObj,
       });
+      console.log(completedGlam);
     }
   };
 
-  const handleHelmetDyeColor = (slotName: string, value: string) => {
+  const handleGearDyeColor = (slotName: string, value: string) => {
     if (
       value.length &&
       (+value < 1 ||
@@ -293,14 +294,11 @@ export function FormProvider({ children }: Props) {
         dyeGroup,
         dye,
       };
-      setHelmet({
-        ...helmet,
-        dye,
-      });
       setCompletedGlam({
         ...completedGlam,
         [slotName]: pieceObj,
       });
+      console.log(completedGlam);
     }
   };
 
@@ -500,9 +498,9 @@ export function FormProvider({ children }: Props) {
     boot,
     invalid,
     completedGlam,
-    handleHelmetChange,
-    handleHelmetDyeGroup,
-    handleHelmetDyeColor,
+    handleGearChange,
+    handleGearDyeGroup,
+    handleGearDyeColor,
     handleChestChange,
     handleChestDyeGroup,
     handleChestDyeColor,
