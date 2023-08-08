@@ -17,8 +17,8 @@ export default function FormInputs() {
     return inputData.map((piece) => {
       return (
         <div key={piece.pieceName} className="w-full">
-          <label className="flex flex-col py-2 font-bold basis-full">
-            {capitalizeWord(piece.pieceName)}
+          <label className="flex flex-col py-2 font-bold font-josefinsans basis-full">
+            {capitalizeWord(piece.pieceName) + ":"}
             <input
               onChange={(e) =>
                 handleGearChange(
@@ -35,7 +35,7 @@ export default function FormInputs() {
               placeholder={`1-${piece.maxOptions}`}
             ></input>
           </label>
-          <label className="w-full font-bold">
+          <label className="w-full font-bold font-josefinsans">
             Dye:{" "}
             <input
               className="w-1/3 mx-2 font-normal"
