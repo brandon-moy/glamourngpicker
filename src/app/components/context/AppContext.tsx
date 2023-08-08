@@ -6,7 +6,6 @@ import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
 import { boots } from "@/app/lib/boots";
 import { allDyes } from "@/app/lib/dyes";
-import { gearPiece } from "@/app/lib/types";
 
 type fullPiece = {
   name: string;
@@ -126,27 +125,29 @@ export function FormProvider({ children }: Props) {
     } else {
       setInvalid("");
       const index = Math.floor(Math.random() * +value);
-      console.log(index);
-      console.log(helmets[index]);
       let name: string = "";
       let dyeable: boolean = false;
       switch (slotName) {
         case "helmet":
           name = helmets[index].name;
-          console.log(name, typeof name);
           dyeable = helmets[index].dyeable;
+          break;
         case "chest":
           name = chests[index].name;
           dyeable = chests[index].dyeable;
+          break;
         case "glove":
           name = gloves[index].name;
           dyeable = gloves[index].dyeable;
+          break;
         case "leg":
           name = legs[index].name;
           dyeable = legs[index].dyeable;
+          break;
         case "boot":
           name = boots[index].name;
           dyeable = boots[index].dyeable;
+          break;
       }
       const { dyeGroup, dye } = completedGlam[slotName as keyof completedGlam];
       const pieceObj = {

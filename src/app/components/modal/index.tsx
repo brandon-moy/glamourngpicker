@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 export default function Modal() {
-  const [display, setDisplayed] = useState<boolean>(true);
+  const [display, setDisplayed] = useState<boolean>(false);
 
   function closeModal() {
     setDisplayed(false);
