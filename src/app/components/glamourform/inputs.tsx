@@ -11,6 +11,7 @@ export default function FormInputs() {
     handleGearChange,
     handleGearDyeColor,
     handleGearDyeGroup,
+    invalid,
   } = useAppContext();
 
   function renderInputs() {
@@ -27,7 +28,9 @@ export default function FormInputs() {
                   e.target.value
                 )
               }
-              className="w-full pl-2 font-normal"
+              className={`w-full pl-2 font-normal border-solid outline-none focus:ring-0 border rounded border-2 ${
+                invalid ? "focus:border-red-500" : "focus:border-secondary"
+              }`}
               type="number"
               name={piece.pieceName}
               min="1"
@@ -38,7 +41,9 @@ export default function FormInputs() {
           <label className="w-full font-bold font-josefinsans">
             Dye:{" "}
             <input
-              className="w-1/3 mx-2 font-normal"
+              className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
+                invalid ? "focus:border-red-500" : "focus:border-secondary"
+              }`}
               type="number"
               name="dye-category"
               disabled={
@@ -53,7 +58,9 @@ export default function FormInputs() {
             ></input>
             <input
               type="number"
-              className="w-1/3 mx-2 font-normal"
+              className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
+                invalid ? "focus:border-red-500" : "focus:border-secondary"
+              }`}
               name="dye-color"
               min="1"
               max={
