@@ -10,6 +10,11 @@ export type fullPiece = {
   dye: string;
 };
 
+export type formInputData = {
+  pieceName: string;
+  maxOptions: number;
+};
+
 export type fullGlamSet = {
   helmet: fullPiece;
   chest: fullPiece;

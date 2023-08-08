@@ -2,6 +2,7 @@
 import { allDyes } from "@/app/lib/dyes";
 import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
+import FormInputs from "./inputs";
 
 export default function GlamourForm() {
   const {
@@ -216,6 +217,7 @@ export default function GlamourForm() {
           Submit!
         </button>
       </div>
+      <FormInputs />
     </form>
   );
 }
