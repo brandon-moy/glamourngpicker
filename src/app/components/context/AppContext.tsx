@@ -6,31 +6,7 @@ import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
 import { boots } from "@/app/lib/boots";
 import { allDyes } from "@/app/lib/dyes";
-
-type fullPiece = {
-  name: string;
-  dyeable: boolean;
-  dyeGroup: number;
-  dye: string;
-};
-
-type completedGlam = {
-  helmet: fullPiece;
-  chest: fullPiece;
-  glove: fullPiece;
-  leg: fullPiece;
-  boot: fullPiece;
-};
-
-type AppContextType = {
-  completedGlam: completedGlam;
-  invalid: string;
-  displayWelcome: boolean;
-  handleDisplayWelcome: () => void;
-  handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
-  handleGearDyeGroup: (arg0: string, arg1: string) => void;
-  handleGearDyeColor: (arg0: string, arg1: string) => void;
-};
+import { fullGlamSet, AppContextType } from "@/app/lib/types";
 
 const AppContextDefaultValues: AppContextType = {
   invalid: "",
@@ -67,6 +43,9 @@ const AppContextDefaultValues: AppContextType = {
     },
   },
   displayWelcome: true,
+  displaySuccess: false,
+  openSuccessWindow: () => {},
+  closeSuccessWindow: () => {},
   handleDisplayWelcome: () => {},
   handleGearChange: () => {},
   handleGearDyeGroup: () => {},
@@ -84,7 +63,7 @@ type Props = {
 };
 
 export function FormProvider({ children }: Props) {
-  const [completedGlam, setCompletedGlam] = useState<completedGlam>({
+  const [completedGlam, setCompletedGlam] = useState<fullGlamSet>({
     helmet: {
       name: "",
       dyeable: false,
@@ -118,9 +97,18 @@ export function FormProvider({ children }: Props) {
   });
   const [invalid, setInvalid] = useState<string>("");
   const [displayWelcome, setDisplayWelcome] = useState<boolean>(true);
+  const [displaySuccess, setDisplaySuccess] = useState<boolean>(false);
 
   const handleDisplayWelcome = () => {
     setDisplayWelcome(false);
+  };
+
+  const openSuccessWindow = () => {
+    setDisplaySuccess(true);
+  };
+
+  const closeSuccessWindow = () => {
+    setDisplaySuccess(false);
   };
 
   const handleGearChange = (
@@ -158,7 +146,7 @@ export function FormProvider({ children }: Props) {
           dyeable = boots[index].dyeable;
           break;
       }
-      const { dyeGroup, dye } = completedGlam[slotName as keyof completedGlam];
+      const { dyeGroup, dye } = completedGlam[slotName as keyof fullGlamSet];
       const pieceObj = {
         name,
         dyeable,
@@ -183,7 +171,7 @@ export function FormProvider({ children }: Props) {
       setInvalid("");
       const dyeGroup = Math.floor(Math.random() * +value);
       const { name, dyeable, dye } =
-        completedGlam[slotName as keyof completedGlam];
+        completedGlam[slotName as keyof fullGlamSet];
       const pieceObj = {
         name,
         dyeable,
@@ -202,18 +190,17 @@ export function FormProvider({ children }: Props) {
       value.length &&
       (+value < 1 ||
         +value >
-          allDyes[completedGlam[slotName as keyof completedGlam].dyeGroup]
-            .length)
+          allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup].length)
     ) {
       setInvalid("Please enter a valid number for dye color");
     } else {
       setInvalid("");
       const dye =
-        allDyes[completedGlam[slotName as keyof completedGlam].dyeGroup][
+        allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup][
           Math.floor(Math.random() * +value)
         ];
       const { name, dyeable, dyeGroup } =
-        completedGlam[slotName as keyof completedGlam];
+        completedGlam[slotName as keyof fullGlamSet];
       const pieceObj = {
         name,
         dyeable,
@@ -230,6 +217,9 @@ export function FormProvider({ children }: Props) {
   const value = {
     invalid,
     displayWelcome,
+    displaySuccess,
+    openSuccessWindow,
+    closeSuccessWindow,
     handleDisplayWelcome,
     completedGlam,
     handleGearChange,
