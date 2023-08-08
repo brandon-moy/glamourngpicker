@@ -11,7 +11,6 @@ export default function SuccessModal() {
   function renderGlam(glamSet: fullGlamSet) {
     return Object.entries(glamSet).map(([item, value]) => {
       const { name, dyeable, dye } = value;
-      console.log(dye);
       const itemName = capitalizeWord(item);
       return (
         <div key={item} className="p-2 font-durusans basis-full lg:basis-1/3">

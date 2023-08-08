@@ -29,7 +29,7 @@ export default function GlamourForm() {
         </p>
       </div>
       <FormInputs />
-      <div className="flex w-full my-4 justify-evenly">
+      <div className="flex w-full mt-4 justify-evenly">
         <button
           disabled={!emptyInputs}
           className="px-2 py-1 text-white bg-gray-600 rounded font-poppins"
