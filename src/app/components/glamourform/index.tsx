@@ -1,6 +1,7 @@
 "use client";
 import { allDyes } from "@/app/lib/dyes";
 import { useFormContext } from "../context/AppContext";
+import { FormEvent } from "react";
 
 export default function GlamourForm() {
   const {
@@ -9,6 +10,7 @@ export default function GlamourForm() {
     glove,
     leg,
     boot,
+    completedGlam,
     handleHelmetChange,
     handleHelmetDyeGroup,
     handleHelmetDyeColor,
@@ -27,8 +29,12 @@ export default function GlamourForm() {
     invalid,
   } = useFormContext();
 
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+  }
+
   return (
-    <form className="flex flex-wrap mx-auto">
+    <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">
       <div className="relative w-full h-12 text-center ">
         <p className="w-full text-2xl font-bold">GlamouRNG Picker</p>
         <p className="absolute bottom-[-1.25rem] lg:bottom-[-1.5rem] w-full text-sm font-bold text-red-500 ">
@@ -38,7 +44,7 @@ export default function GlamourForm() {
       <label className="flex flex-col py-2 font-bold basis-full">
         Helmet:
         <input
-          onChange={(e) => handleHelmetChange(e.target.value)}
+          onChange={(e) => handleHelmetChange("helmet", e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="helmet"
@@ -53,21 +59,21 @@ export default function GlamourForm() {
           className="w-1/3 mx-2 font-normal"
           type="number"
           name="dye-category"
-          disabled={!helmet.dyeable}
+          disabled={!completedGlam.helmet.dyeable}
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleHelmetDyeGroup(e.target.value)}
+          onChange={(e) => handleHelmetDyeGroup("helmet", e.target.value)}
         ></input>
         <input
           type="number"
           className="w-1/3 mx-2 font-normal"
           name="dye-color"
           min="1"
-          max={allDyes[helmet.dyeGroup].length}
-          disabled={!helmet.dyeable}
-          placeholder={`1-${allDyes[helmet.dyeGroup].length}`}
-          onChange={(e) => handleHelmetDyeColor(e.target.value)}
+          max={allDyes[completedGlam.helmet.dyeGroup].length}
+          disabled={!completedGlam.helmet.dyeable}
+          placeholder={`1-${allDyes[completedGlam.helmet.dyeGroup].length}`}
+          onChange={(e) => handleHelmetDyeColor("helmet", e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
@@ -210,6 +216,11 @@ export default function GlamourForm() {
           onChange={(e) => handleBootDyeColor(e.target.value)}
         ></input>
       </label>
+      <div className="flex w-full my-4 justify-evenly">
+        <button className="px-2 py-1 text-white bg-gray-600 rounded">
+          Submit!
+        </button>
+      </div>
     </form>
   );
 }
