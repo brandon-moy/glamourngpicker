@@ -5,7 +5,7 @@ import { useAppContext } from "../context/AppContext";
 export default function WelcomeModal() {
   const { displayWelcome, handleDisplayWelcome } = useAppContext();
 
-  if (displayWelcome) return <></>;
+  if (!displayWelcome) return <></>;
   return (
     <div className="absolute inset-0 bg-gray-900 bg-opacity-25">
       <div className="w-5/6 p-8 mx-auto mt-24 bg-gray-100 rounded lg:w-1/2">
