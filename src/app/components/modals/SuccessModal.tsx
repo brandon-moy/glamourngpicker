@@ -18,8 +18,8 @@ export default function SuccessModal() {
           className="p-1 lg:p-2 font-durusans basis-full lg:basis-1/3"
         >
           <p className="font-bold lg:text-2xl font-josefinsans">{itemName}</p>
-          <p className="lg:text-xl">{name}</p>
-          <p className="lg:text-md">
+          <p className="text-lg lg:text-xl">{name}</p>
+          <p className="text-sm italic lg:text-md">
             {!dyeable
               ? "Sorry, this piece isn't dyeable"
               : !dye.length
