@@ -5,27 +5,10 @@ import { FormEvent } from "react";
 
 export default function GlamourForm() {
   const {
-    helmet,
-    chest,
-    glove,
-    leg,
-    boot,
     completedGlam,
     handleGearChange,
     handleGearDyeGroup,
     handleGearDyeColor,
-    handleChestChange,
-    handleChestDyeGroup,
-    handleChestDyeColor,
-    handleGloveChange,
-    handleGloveDyeGroup,
-    handleGloveDyeColor,
-    handleLegChange,
-    handleLegDyeGroup,
-    handleLegDyeColor,
-    handleBootChange,
-    handleBootDyeGroup,
-    handleBootDyeColor,
     invalid,
   } = useFormContext();
 
@@ -94,7 +77,7 @@ export default function GlamourForm() {
           className="w-1/3 mx-2 font-normal"
           type="number"
           name="dye-category"
-          disabled={!chest.dyeable}
+          disabled={!completedGlam.chest.dyeable}
           placeholder="1-9"
           min="1"
           max="9"
@@ -105,16 +88,16 @@ export default function GlamourForm() {
           className="w-1/3 mx-2 font-normal"
           name="dye-color"
           min="1"
-          max={allDyes[chest.dyeGroup].length}
-          disabled={!chest.dyeable}
-          placeholder={`1-${allDyes[chest.dyeGroup].length}`}
+          max={allDyes[completedGlam.chest.dyeGroup].length}
+          disabled={!completedGlam.chest.dyeable}
+          placeholder={`1-${allDyes[completedGlam.chest.dyeGroup].length}`}
           onChange={(e) => handleGearDyeColor("chest", e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
         Gloves:
         <input
-          onChange={(e) => handleGloveChange(e.target.value)}
+          onChange={(e) => handleGearChange("glove", 33, e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="gloves"
@@ -129,27 +112,27 @@ export default function GlamourForm() {
           className="w-1/3 mx-2 font-normal"
           type="number"
           name="dye-category"
-          disabled={!glove.dyeable}
+          disabled={!completedGlam.glove.dyeable}
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleGloveDyeGroup(e.target.value)}
+          onChange={(e) => handleGearDyeGroup("glove", e.target.value)}
         ></input>
         <input
           type="number"
           className="w-1/3 mx-2 font-normal"
           name="dye-color"
           min="1"
-          max={allDyes[glove.dyeGroup].length}
-          disabled={!glove.dyeable}
-          placeholder={`1-${allDyes[glove.dyeGroup].length}`}
-          onChange={(e) => handleGloveDyeColor(e.target.value)}
+          max={allDyes[completedGlam.glove.dyeGroup].length}
+          disabled={!completedGlam.glove.dyeable}
+          placeholder={`1-${allDyes[completedGlam.glove.dyeGroup].length}`}
+          onChange={(e) => handleGearDyeColor("glove", e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
         Legs:
         <input
-          onChange={(e) => handleLegChange(e.target.value)}
+          onChange={(e) => handleGearChange("leg", 61, e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="legs"
@@ -164,27 +147,27 @@ export default function GlamourForm() {
           className="w-1/3 mx-2 font-normal"
           type="number"
           name="dye-category"
-          disabled={!leg.dyeable}
+          disabled={!completedGlam.leg.dyeable}
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleLegDyeGroup(e.target.value)}
+          onChange={(e) => handleGearDyeGroup("leg", e.target.value)}
         ></input>
         <input
           type="number"
           className="w-1/3 mx-2 font-normal"
           name="dye-color"
           min="1"
-          max={allDyes[leg.dyeGroup].length}
-          disabled={!leg.dyeable}
-          placeholder={`1-${allDyes[leg.dyeGroup].length}`}
-          onChange={(e) => handleLegDyeColor(e.target.value)}
+          max={allDyes[completedGlam.leg.dyeGroup].length}
+          disabled={!completedGlam.leg.dyeable}
+          placeholder={`1-${allDyes[completedGlam.leg.dyeGroup].length}`}
+          onChange={(e) => handleGearDyeColor("leg", e.target.value)}
         ></input>
       </label>
       <label className="flex flex-col py-2 font-bold basis-full">
         Boots:
         <input
-          onChange={(e) => handleBootChange(e.target.value)}
+          onChange={(e) => handleGearChange("boot", 58, e.target.value)}
           className="w-full pl-2 font-normal"
           type="number"
           name="boots"
@@ -199,21 +182,21 @@ export default function GlamourForm() {
           className="w-1/3 mx-2 font-normal"
           type="number"
           name="dye-category"
-          disabled={!boot.dyeable}
+          disabled={!completedGlam.boot.dyeable}
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleBootDyeGroup(e.target.value)}
+          onChange={(e) => handleGearDyeGroup("boot", e.target.value)}
         ></input>
         <input
           type="number"
           className="w-1/3 mx-2 font-normal"
           name="dye-color"
           min="1"
-          max={allDyes[boot.dyeGroup].length}
-          disabled={!boot.dyeable}
-          placeholder={`1-${allDyes[boot.dyeGroup].length}`}
-          onChange={(e) => handleBootDyeColor(e.target.value)}
+          max={allDyes[completedGlam.boot.dyeGroup].length}
+          disabled={!completedGlam.boot.dyeable}
+          placeholder={`1-${allDyes[completedGlam.boot.dyeGroup].length}`}
+          onChange={(e) => handleGearDyeColor("boot", e.target.value)}
         ></input>
       </label>
       <div className="flex w-full my-4 justify-evenly">

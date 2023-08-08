@@ -24,61 +24,14 @@ type completedGlam = {
 };
 
 type FormContextType = {
-  helmet: fullPiece;
-  chest: fullPiece;
-  glove: fullPiece;
-  leg: fullPiece;
-  boot: fullPiece;
   completedGlam: completedGlam;
   invalid: string;
   handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
   handleGearDyeGroup: (arg0: string, arg1: string) => void;
   handleGearDyeColor: (arg0: string, arg1: string) => void;
-  handleChestChange: (arg0: string) => void;
-  handleChestDyeGroup: (arg0: string) => void;
-  handleChestDyeColor: (arg0: string) => void;
-  handleGloveChange: (arg0: string) => void;
-  handleGloveDyeGroup: (arg0: string) => void;
-  handleGloveDyeColor: (arg0: string) => void;
-  handleLegChange: (arg0: string) => void;
-  handleLegDyeGroup: (arg0: string) => void;
-  handleLegDyeColor: (arg0: string) => void;
-  handleBootChange: (arg0: string) => void;
-  handleBootDyeGroup: (arg0: string) => void;
-  handleBootDyeColor: (arg0: string) => void;
 };
 
 const formContextDefaultValues: FormContextType = {
-  helmet: {
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  },
-  chest: {
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  },
-  glove: {
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  },
-  leg: {
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  },
-  boot: {
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  },
   invalid: "",
   completedGlam: {
     helmet: {
@@ -115,18 +68,6 @@ const formContextDefaultValues: FormContextType = {
   handleGearChange: () => {},
   handleGearDyeGroup: () => {},
   handleGearDyeColor: () => {},
-  handleChestChange: () => {},
-  handleChestDyeGroup: () => {},
-  handleChestDyeColor: () => {},
-  handleGloveChange: () => {},
-  handleGloveDyeGroup: () => {},
-  handleGloveDyeColor: () => {},
-  handleLegChange: () => {},
-  handleLegDyeGroup: () => {},
-  handleLegDyeColor: () => {},
-  handleBootChange: () => {},
-  handleBootDyeGroup: () => {},
-  handleBootDyeColor: () => {},
 };
 
 const FormContext = createContext<FormContextType>(formContextDefaultValues);
@@ -172,36 +113,6 @@ export function FormProvider({ children }: Props) {
       dye: "",
     },
   });
-  const [helmet, setHelmet] = useState<fullPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [chest, setChest] = useState<fullPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [glove, setGlove] = useState<fullPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [leg, setLeg] = useState<fullPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
-  const [boot, setBoot] = useState<fullPiece>({
-    name: "",
-    dyeable: false,
-    dyeGroup: 0,
-    dye: "",
-  });
   const [invalid, setInvalid] = useState<string>("");
 
   const handleGearChange = (
@@ -215,11 +126,14 @@ export function FormProvider({ children }: Props) {
     } else {
       setInvalid("");
       const index = Math.floor(Math.random() * +value);
+      console.log(index);
+      console.log(helmets[index]);
       let name: string = "";
       let dyeable: boolean = false;
       switch (slotName) {
         case "helmet":
           name = helmets[index].name;
+          console.log(name, typeof name);
           dyeable = helmets[index].dyeable;
         case "chest":
           name = chests[index].name;
@@ -241,6 +155,10 @@ export function FormProvider({ children }: Props) {
         dyeGroup,
         dye,
       };
+      if (!dyeable) {
+        pieceObj.dyeGroup = 0;
+        pieceObj.dye = "";
+      }
       setCompletedGlam({
         ...completedGlam,
         [slotName]: pieceObj,
@@ -299,217 +217,12 @@ export function FormProvider({ children }: Props) {
     }
   };
 
-  const handleChestChange = (value: string) => {
-    if (value.length && (+value < 1 || +value > chests.length)) {
-      setInvalid("Please enter a valid number for chest piece");
-      return;
-    } else {
-      setInvalid("");
-      const index = Math.floor(Math.random() * +value);
-      const { name, dyeable } = chests[index];
-      setChest({
-        ...chest,
-        name,
-        dyeable,
-      });
-      const pieceName = "chest";
-      setCompletedGlam({
-        ...completedGlam,
-        [pieceName]: {
-          name,
-          dyeable,
-          dyeGroup: 0,
-          dye: "",
-        },
-      });
-      console.log(completedGlam, chest);
-    }
-  };
-
-  const handleChestDyeGroup = (value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes.length)) {
-      setInvalid("Please enter a valid number for dye group");
-    } else {
-      setInvalid("");
-      const dyeGroup = Math.floor(Math.random() * +value);
-      setChest({
-        ...chest,
-        dyeGroup,
-      });
-    }
-  };
-
-  const handleChestDyeColor = (value: string) => {
-    if (
-      value.length &&
-      (+value < 1 || +value > allDyes[chest.dyeGroup].length)
-    ) {
-      setInvalid("Please enter a valid number for dye color");
-    } else {
-      setInvalid("");
-      const dye = allDyes[chest.dyeGroup][Math.floor(Math.random() * +value)];
-      setChest({
-        ...chest,
-        dye,
-      });
-    }
-  };
-
-  const handleGloveChange = (value: string) => {
-    if (value.length && (+value < 1 || +value > gloves.length)) {
-      setInvalid(`Please enter a valid number for glove piece`);
-      return;
-    } else {
-      setInvalid("");
-      const index = Math.floor(Math.random() * +value);
-      const { name, dyeable } = gloves[index];
-      setGlove({
-        ...glove,
-        name,
-        dyeable,
-      });
-    }
-  };
-
-  const handleGloveDyeGroup = (value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes.length)) {
-      setInvalid("Please enter a valid number for dye group");
-    } else {
-      setInvalid("");
-      const dyeGroup = Math.floor(Math.random() * +value);
-      setGlove({
-        ...glove,
-        dyeGroup,
-      });
-    }
-  };
-
-  const handleGloveDyeColor = (value: string) => {
-    if (
-      value.length &&
-      (+value < 1 || +value > allDyes[glove.dyeGroup].length)
-    ) {
-      setInvalid("Please enter a valid number for dye color");
-    } else {
-      setInvalid("");
-      const dye = allDyes[glove.dyeGroup][Math.floor(Math.random() * +value)];
-      setGlove({
-        ...glove,
-        dye,
-      });
-    }
-  };
-
-  const handleLegChange = (value: string) => {
-    if (value.length && (+value < 1 || +value > legs.length)) {
-      setInvalid(`Please enter a valid number for leg piece`);
-      return;
-    } else {
-      setInvalid("");
-      const index = Math.floor(Math.random() * +value);
-      const { name, dyeable } = legs[index];
-      setLeg({
-        ...leg,
-        name,
-        dyeable,
-      });
-    }
-  };
-
-  const handleLegDyeGroup = (value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes.length)) {
-      setInvalid("Please enter a valid number for dye group");
-    } else {
-      setInvalid("");
-      const dyeGroup = Math.floor(Math.random() * +value);
-      setLeg({
-        ...leg,
-        dyeGroup,
-      });
-    }
-  };
-
-  const handleLegDyeColor = (value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes[leg.dyeGroup].length)) {
-      setInvalid("Please enter a valid number for dye color");
-    } else {
-      setInvalid("");
-      const dye = allDyes[leg.dyeGroup][Math.floor(Math.random() * +value)];
-      setLeg({
-        ...leg,
-        dye,
-      });
-    }
-  };
-
-  const handleBootChange = (value: string) => {
-    if (value.length && (+value < 1 || +value > boots.length)) {
-      setInvalid(`Please enter a valid number for boot piece`);
-      return;
-    } else {
-      setInvalid("");
-      const index = Math.floor(Math.random() * +value);
-      const { name, dyeable } = boots[index];
-      setBoot({
-        ...boot,
-        name,
-        dyeable,
-      });
-    }
-  };
-
-  const handleBootDyeGroup = (value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes.length)) {
-      setInvalid("Please enter a valid number for dye group");
-    } else {
-      setInvalid("");
-      const dyeGroup = Math.floor(Math.random() * +value);
-      setBoot({
-        ...boot,
-        dyeGroup,
-      });
-    }
-  };
-
-  const handleBootDyeColor = (value: string) => {
-    if (
-      value.length &&
-      (+value < 1 || +value > allDyes[boot.dyeGroup].length)
-    ) {
-      setInvalid("Please enter a valid number for dye color");
-    } else {
-      setInvalid("");
-      const dye = allDyes[boot.dyeGroup][Math.floor(Math.random() * +value)];
-      setBoot({
-        ...boot,
-        dye,
-      });
-    }
-  };
-
   const value = {
-    helmet,
-    chest,
-    glove,
-    leg,
-    boot,
     invalid,
     completedGlam,
     handleGearChange,
     handleGearDyeGroup,
     handleGearDyeColor,
-    handleChestChange,
-    handleChestDyeGroup,
-    handleChestDyeColor,
-    handleGloveChange,
-    handleGloveDyeGroup,
-    handleGloveDyeColor,
-    handleLegChange,
-    handleLegDyeGroup,
-    handleLegDyeColor,
-    handleBootChange,
-    handleBootDyeGroup,
-    handleBootDyeColor,
   };
 
   return (
