@@ -1,13 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { useAppContext } from "../context/AppContext";
 
-export default function Modal() {
-  const [display, setDisplayed] = useState<boolean>(false);
+export default function WelcomeModal() {
+  const { displayWelcome, handleDisplayWelcome } = useAppContext();
 
-  function closeModal() {
-    setDisplayed(false);
-  }
-  if (!display) return <></>;
+  if (!displayWelcome) return <></>;
   return (
     <div className="absolute inset-0 bg-gray-900 bg-opacity-25">
       <div className="w-5/6 p-8 mx-auto mt-24 bg-gray-100 rounded lg:w-1/2">
@@ -28,7 +26,7 @@ export default function Modal() {
           add two more numbers for the dye! This way, you can ensure an
           abomination to everyone&apos;s eyes!
         </p>
-        <button className="font-bold" onClick={closeModal}>
+        <button className="font-bold" onClick={handleDisplayWelcome}>
           Get started!
         </button>
       </div>

@@ -22,15 +22,17 @@ type completedGlam = {
   boot: fullPiece;
 };
 
-type FormContextType = {
+type AppContextType = {
   completedGlam: completedGlam;
   invalid: string;
+  displayWelcome: boolean;
+  handleDisplayWelcome: () => void;
   handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
   handleGearDyeGroup: (arg0: string, arg1: string) => void;
   handleGearDyeColor: (arg0: string, arg1: string) => void;
 };
 
-const formContextDefaultValues: FormContextType = {
+const AppContextDefaultValues: AppContextType = {
   invalid: "",
   completedGlam: {
     helmet: {
@@ -64,15 +66,17 @@ const formContextDefaultValues: FormContextType = {
       dye: "",
     },
   },
+  displayWelcome: true,
+  handleDisplayWelcome: () => {},
   handleGearChange: () => {},
   handleGearDyeGroup: () => {},
   handleGearDyeColor: () => {},
 };
 
-const FormContext = createContext<FormContextType>(formContextDefaultValues);
+const AppContext = createContext<AppContextType>(AppContextDefaultValues);
 
-export function useFormContext() {
-  return useContext(FormContext);
+export function useAppContext() {
+  return useContext(AppContext);
 }
 
 type Props = {
@@ -113,6 +117,11 @@ export function FormProvider({ children }: Props) {
     },
   });
   const [invalid, setInvalid] = useState<string>("");
+  const [displayWelcome, setDisplayWelcome] = useState<boolean>(true);
+
+  const handleDisplayWelcome = () => {
+    setDisplayWelcome(false);
+  };
 
   const handleGearChange = (
     slotName: string,
@@ -220,6 +229,8 @@ export function FormProvider({ children }: Props) {
 
   const value = {
     invalid,
+    displayWelcome,
+    handleDisplayWelcome,
     completedGlam,
     handleGearChange,
     handleGearDyeGroup,
@@ -228,7 +239,7 @@ export function FormProvider({ children }: Props) {
 
   return (
     <>
-      <FormContext.Provider value={value}>{children}</FormContext.Provider>
+      <AppContext.Provider value={value}>{children}</AppContext.Provider>
     </>
   );
 }

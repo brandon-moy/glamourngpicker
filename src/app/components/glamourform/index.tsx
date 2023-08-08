@@ -1,6 +1,6 @@
 "use client";
 import { allDyes } from "@/app/lib/dyes";
-import { useFormContext } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
 
 export default function GlamourForm() {
@@ -10,7 +10,7 @@ export default function GlamourForm() {
     handleGearDyeGroup,
     handleGearDyeColor,
     invalid,
-  } = useFormContext();
+  } = useAppContext();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
