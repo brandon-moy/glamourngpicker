@@ -13,12 +13,19 @@ export default function SuccessModal() {
 
     return Object.entries(glamSet).map(([item, value]) => {
       const { name, dyeable, dye } = value;
+      console.log(dye);
       const itemName = capitalizeWord(item);
       return (
         <div key={item}>
           <p className="font-bold">{itemName}</p>
           <p>{name}</p>
-          {dyeable ? <p>{dye}</p> : <p>Sorry, this piece isn&apos;t dyeable</p>}
+          {!dyeable ? (
+            <p>Sorry, this piece isn&apos;t dyeable</p>
+          ) : !dye.length ? (
+            <p>No dye option was selected</p>
+          ) : (
+            <p>{dye}</p>
+          )}
         </div>
       );
     });
