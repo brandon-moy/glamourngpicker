@@ -9,8 +9,6 @@ export default function SuccessModal() {
     useAppContext();
 
   function renderGlam(glamSet: fullGlamSet) {
-    console.log(Object.entries(glamSet));
-
     return Object.entries(glamSet).map(([item, value]) => {
       const { name, dyeable, dye } = value;
       console.log(dye);
