@@ -10,12 +10,21 @@ export default function GlamourForm() {
     handleGearDyeGroup,
     handleGearDyeColor,
     invalid,
+    openSuccessWindow,
   } = useAppContext();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    (e.target as HTMLFormElement).reset();
+    openSuccessWindow();
   }
 
+  const disabled =
+    completedGlam.helmet.name === "" ||
+    completedGlam.chest.name === "" ||
+    completedGlam.glove.name === "" ||
+    completedGlam.leg.name === "" ||
+    completedGlam.boot.name === "";
   return (
     <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">
       <div className="relative w-full h-12 text-center ">
@@ -200,7 +209,10 @@ export default function GlamourForm() {
         ></input>
       </label>
       <div className="flex w-full my-4 justify-evenly">
-        <button className="px-2 py-1 text-white bg-gray-600 rounded">
+        <button
+          disabled={disabled}
+          className="px-2 py-1 text-white bg-gray-600 rounded"
+        >
           Submit!
         </button>
       </div>

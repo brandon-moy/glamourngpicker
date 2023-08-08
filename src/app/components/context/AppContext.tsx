@@ -44,6 +44,7 @@ const AppContextDefaultValues: AppContextType = {
   },
   displayWelcome: true,
   displaySuccess: false,
+  resetGlam: () => {},
   openSuccessWindow: () => {},
   closeSuccessWindow: () => {},
   handleDisplayWelcome: () => {},
@@ -98,6 +99,10 @@ export function FormProvider({ children }: Props) {
   const [invalid, setInvalid] = useState<string>("");
   const [displayWelcome, setDisplayWelcome] = useState<boolean>(true);
   const [displaySuccess, setDisplaySuccess] = useState<boolean>(false);
+
+  const resetGlam = () => {
+    setCompletedGlam(AppContextDefaultValues.completedGlam);
+  };
 
   const handleDisplayWelcome = () => {
     setDisplayWelcome(false);
@@ -218,6 +223,7 @@ export function FormProvider({ children }: Props) {
     invalid,
     displayWelcome,
     displaySuccess,
+    resetGlam,
     openSuccessWindow,
     closeSuccessWindow,
     handleDisplayWelcome,

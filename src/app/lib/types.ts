@@ -23,6 +23,7 @@ export type AppContextType = {
   invalid: string;
   displayWelcome: boolean;
   displaySuccess: boolean;
+  resetGlam: () => void;
   openSuccessWindow: () => void;
   closeSuccessWindow: () => void;
   handleDisplayWelcome: () => void;

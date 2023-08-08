@@ -2,19 +2,44 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
 import { fullGlamSet } from "@/app/lib/types";
+import capitalizeWord from "@/app/lib/capitalizeWord";
 
 export default function SuccessModal() {
-  const { completedGlam, displaySuccess, closeSuccessWindow } = useAppContext();
+  const { completedGlam, displaySuccess, closeSuccessWindow, resetGlam } =
+    useAppContext();
 
-  function renderGlam(glamSet: fullGlamSet) {}
+  function renderGlam(glamSet: fullGlamSet) {
+    console.log(Object.entries(glamSet));
+
+    return Object.entries(glamSet).map(([item, value]) => {
+      const { name, dyeable, dye } = value;
+      const itemName = capitalizeWord(item);
+      return (
+        <div key={item}>
+          <p className="font-bold">{itemName}</p>
+          <p>{name}</p>
+          {dyeable ? <p>{dye}</p> : <p>Sorry, this piece isn&apos;t dyeable</p>}
+        </div>
+      );
+    });
+  }
+
+  const restartGlamouRNG = () => {
+    resetGlam();
+    closeSuccessWindow();
+  };
+
+  if (!displaySuccess) return <></>;
   return (
-    <div className="absolute inset-0 bg-gray-900 bg-opacity-25">
-      <div className="w-5/6 p-8 mx-auto mt-24 bg-gray-100 rounded lg:w-1/2">
-        <p className="p-4 text-2xl text-center lg:text-4xl">
+    <div className="absolute inset-0 z-50 bg-gray-900 bg-opacity-25">
+      <div className="w-5/6 p-8 mx-auto mt-8 bg-gray-100 rounded lg:mt-24 lg:w-1/2">
+        <p className="p-4 text-2xl font-bold text-center lg:text-4xl">
           Enjoy your brand new Glamour choice!
         </p>
         {renderGlam(completedGlam)}
-        <button className="font-bold">Restart?</button>
+        <button className="font-bold" onClick={restartGlamouRNG}>
+          Restart?
+        </button>
       </div>
     </div>
   );
