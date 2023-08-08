@@ -14,15 +14,15 @@ export default function SuccessModal() {
       console.log(dye);
       const itemName = capitalizeWord(item);
       return (
-        <div key={item}>
-          <p className="font-bold">{itemName}</p>
-          <p>{name}</p>
+        <div key={item} className="p-2 font-durusans basis-full lg:basis-1/3">
+          <p className="text-2xl font-bold font-josefinsans">{itemName}</p>
+          <p className="text-xl">{name}</p>
           {!dyeable ? (
-            <p>Sorry, this piece isn&apos;t dyeable</p>
+            <p className="text-md">Sorry, this piece isn&apos;t dyeable</p>
           ) : !dye.length ? (
-            <p>No dye option was selected</p>
+            <p className="text-md">No dye option was selected</p>
           ) : (
-            <p>{dye}</p>
+            <p className="text-md">{dye}</p>
           )}
         </div>
       );
@@ -38,13 +38,18 @@ export default function SuccessModal() {
   return (
     <div className="absolute inset-0 z-50 bg-gray-900 bg-opacity-25">
       <div className="w-5/6 p-8 mx-auto mt-8 bg-gray-100 rounded lg:mt-24 lg:w-1/2">
-        <p className="p-4 text-2xl font-bold text-center lg:text-4xl">
+        <p className="p-4 text-2xl font-bold text-center font-poppins lg:text-4xl">
           Enjoy your brand new Glamour choice!
         </p>
-        {renderGlam(completedGlam)}
-        <button className="font-bold" onClick={restartGlamouRNG}>
-          Restart?
-        </button>
+        <div className="flex flex-wrap">{renderGlam(completedGlam)}</div>
+        <div className="flex justify-center w-full pt-4">
+          <button
+            className="text-2xl underline font-poppins"
+            onClick={restartGlamouRNG}
+          >
+            Restart?
+          </button>
+        </div>
       </div>
     </div>
   );

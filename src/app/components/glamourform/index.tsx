@@ -21,8 +21,10 @@ export default function GlamourForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">
       <div className="relative w-full h-12 text-center ">
-        <p className="w-full text-2xl font-bold">GlamouRNG Picker</p>
-        <p className="absolute bottom-[-1.25rem] lg:bottom-[-1.5rem] w-full text-sm font-bold text-red-500 ">
+        <p className="w-full text-2xl font-bold font-poppins">
+          GlamouRNG Picker
+        </p>
+        <p className="absolute bottom-[-1.25rem] font-durusans lg:bottom-[-1.5rem] w-full text-sm font-bold text-red-500 ">
           {invalid}
         </p>
       </div>
@@ -30,7 +32,7 @@ export default function GlamourForm() {
       <div className="flex w-full my-4 justify-evenly">
         <button
           disabled={!emptyInputs}
-          className="px-2 py-1 text-white bg-gray-600 rounded"
+          className="px-2 py-1 text-white bg-gray-600 rounded font-poppins"
         >
           Submit!
         </button>
