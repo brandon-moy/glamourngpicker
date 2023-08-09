@@ -20,13 +20,17 @@ export default function WelcomeModal() {
           How this works:
         </p>
         <p className="pb-4 text-md lg:text-lg font-josefinsans">
-          Currently available are all items on the Marketboard for any job at
-          level 1. You just need to go through the inputs and add in a number
-          within the range. To make it extra spicy from your number, it will
-          pick a random number from there to ensure different results each time.
-          If the gear piece is able to be dyed, then there will be an option to
-          add two more numbers for the dye! This way, you can ensure an
-          abomination to everyone&apos;s eyes!
+          The items currently implemented are available on the Marketboard for
+          any job at level 1. Go through the inputs and enter a number within
+          the range. To make it extra spicy, your number will then be used to
+          generate another random number to ensure different results each time.
+          If the gear piece is able to be dyed, then there will be the option to
+          randomize the dye group and color but it is not required. This way,
+          you can ensure an{" "}
+          <span className="line-through">
+            abomination to everyone&apos;s eyes
+          </span>{" "}
+          amazing glam to show off to your friends!
         </p>
         <div className="flex justify-center w-full">
           <button

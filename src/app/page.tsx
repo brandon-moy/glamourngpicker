@@ -1,6 +1,9 @@
 import WelcomeModal from "./components/modals/WelcomeModal";
 import GlamourForm from "./components/glamourform";
 import SuccessModal from "./components/modals/SuccessModal";
+import { helmets } from "./lib/helmets";
+import { gearPiece } from "./lib/types";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -13,6 +16,21 @@ export default function Home() {
         <WelcomeModal />
         <SuccessModal />
         <GlamourForm />
+      </div>
+      <div className="flex flex-wrap">
+        {helmets.map((helmet: gearPiece) => {
+          const formattedName = helmet.name.replace(/\s+/g, "_");
+          return (
+            <div key={helmet.name}>
+              <Image
+                width="60"
+                height="60"
+                alt={helmet.name}
+                src={`/helmets/60px-${formattedName}_Icon.png`}
+              />
+            </div>
+          );
+        })}
       </div>
     </main>
   );

@@ -21,7 +21,6 @@ export const helmets: gearPiece[] = [
     name: "Spring Straw Hat",
     dyeable: true,
   },
-
   {
     name: "Cloche",
     dyeable: true,
@@ -42,7 +41,6 @@ export const helmets: gearPiece[] = [
     name: "Oval Spectacles",
     dyeable: true,
   },
-
   {
     name: "Shaded Spectacles",
     dyeable: true,
@@ -57,7 +55,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Thick-rimmed GLasses",
+    name: "Thick-rimmed Glasses",
     dyeable: true,
   },
   {
@@ -154,7 +152,7 @@ export const helmets: gearPiece[] = [
   },
   {
     name: "Cashmere Hood",
-    dyeable: false,
+    dyeable: true,
   },
   {
     name: "Wool Knit Cap",
@@ -209,7 +207,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Skyworker's Helm",
+    name: "Skyworker's Helmet",
     dyeable: true,
   },
   {
@@ -265,7 +263,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Shishu BUjin Eboshi",
+    name: "Shishu Bujin Eboshi",
     dyeable: true,
   },
   {
