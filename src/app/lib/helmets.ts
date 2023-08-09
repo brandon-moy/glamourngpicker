@@ -79,7 +79,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Emperor's New Hat",
+    name: "The Emperor's New Hat",
     dyeable: false,
   },
   {

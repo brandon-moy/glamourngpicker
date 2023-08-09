@@ -17,41 +17,6 @@ export default function Home() {
         <SuccessModal />
         <GlamourForm />
       </div>
-      <div className="flex flex-wrap">
-        {feet.map((item: gearPiece) => {
-          const formattedName = item.name.replace(/\s+/g, "_");
-          if (formattedName.includes("/")) {
-            const items = formattedName.split("/");
-            return (
-              <div key={item.name}>
-                <Image
-                  width="60"
-                  height="60"
-                  alt={items[0]}
-                  src={`/feet/60px-${items[0]}_Icon.png`}
-                />
-                <Image
-                  width="60"
-                  height="60"
-                  alt={items[1]}
-                  src={`/feet/60px-${items[1]}_Icon.png`}
-                />
-              </div>
-            );
-          } else {
-            return (
-              <div key={item.name}>
-                <Image
-                  width="60"
-                  height="60"
-                  alt={item.name}
-                  src={`/feet/60px-${formattedName}_Icon.png`}
-                />
-              </div>
-            );
-          }
-        })}
-      </div>
     </main>
   );
 }
