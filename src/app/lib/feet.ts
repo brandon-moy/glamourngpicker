@@ -130,7 +130,7 @@ export const feet: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Whisperfine WOolen Boots",
+    name: "Whisperfine Woolen Boots",
     dyeable: true,
   },
   {
@@ -158,7 +158,7 @@ export const feet: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Damalscan Leather Shoes",
+    name: "Dalmascan Leather Shoes",
     dyeable: true,
   },
   {

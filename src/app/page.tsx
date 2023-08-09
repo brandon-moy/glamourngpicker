@@ -1,7 +1,7 @@
 import WelcomeModal from "./components/modals/WelcomeModal";
 import GlamourForm from "./components/glamourform";
 import SuccessModal from "./components/modals/SuccessModal";
-import { legs } from "./lib/legs";
+import { feet } from "./lib/feet";
 import { gearPiece } from "./lib/types";
 import Image from "next/image";
 
@@ -18,7 +18,7 @@ export default function Home() {
         <GlamourForm />
       </div>
       <div className="flex flex-wrap">
-        {legs.map((item: gearPiece) => {
+        {feet.map((item: gearPiece) => {
           const formattedName = item.name.replace(/\s+/g, "_");
           if (formattedName.includes("/")) {
             const items = formattedName.split("/");
@@ -28,13 +28,13 @@ export default function Home() {
                   width="60"
                   height="60"
                   alt={items[0]}
-                  src={`/legs/60px-${items[0]}_Icon.png`}
+                  src={`/feet/60px-${items[0]}_Icon.png`}
                 />
                 <Image
                   width="60"
                   height="60"
                   alt={items[1]}
-                  src={`/legs/60px-${items[1]}_Icon.png`}
+                  src={`/feet/60px-${items[1]}_Icon.png`}
                 />
               </div>
             );
@@ -45,7 +45,7 @@ export default function Home() {
                   width="60"
                   height="60"
                   alt={item.name}
-                  src={`/legs/60px-${formattedName}_Icon.png`}
+                  src={`/feet/60px-${formattedName}_Icon.png`}
                 />
               </div>
             );
