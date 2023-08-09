@@ -2,8 +2,9 @@
 import { useAppContext } from "../context/AppContext";
 import { inputData } from "@/app/lib/formInputs";
 import { allDyes } from "@/app/lib/dyes";
-import { fullGlamSet } from "@/app/lib/types";
+import { fullGlamSet, invalidPiece } from "@/app/lib/types";
 import capitalizeWord from "@/app/lib/capitalizeWord";
+import { invalid } from "@/app/lib/types";
 
 export default function FormInputs() {
   const {
@@ -14,12 +15,25 @@ export default function FormInputs() {
     invalid,
   } = useAppContext();
 
+  function displayError(invalidPiece: invalidPiece, pieceName: string) {
+    if (!invalidPiece.piece && !invalidPiece.dye) return <></>;
+    return (
+      <span className="pl-2 text-sm text-red-500">
+        Invalid values for {pieceName} or dye
+      </span>
+    );
+  }
+
   function renderInputs() {
     return inputData.map((piece) => {
       return (
         <div key={piece.pieceName} className="w-full">
-          <label className="flex flex-col py-2 font-bold font-josefinsans basis-full">
+          <label className="flex flex-wrap py-2 font-bold font-josefinsans basis-full">
             {capitalizeWord(piece.pieceName) + ":"}
+            {displayError(
+              invalid[piece.pieceName as keyof invalid],
+              piece.pieceName
+            )}
             <input
               onChange={(e) =>
                 handleGearChange(
@@ -29,7 +43,9 @@ export default function FormInputs() {
                 )
               }
               className={`w-full pl-2 font-normal border-solid outline-none focus:ring-0 border rounded border-2 ${
-                invalid ? "focus:border-red-500" : "focus:border-secondary"
+                invalid[piece.pieceName as keyof invalid].piece
+                  ? "border-red-500 text-red-500"
+                  : "focus:border-secondary"
               }`}
               type="number"
               name={piece.pieceName}
@@ -42,7 +58,9 @@ export default function FormInputs() {
             Dye:{" "}
             <input
               className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
-                invalid ? "focus:border-red-500" : "focus:border-secondary"
+                invalid[piece.pieceName as keyof invalid].dye
+                  ? "border-red-500 text-red-500"
+                  : "focus:border-secondary"
               }`}
               type="number"
               name="dye-category"
@@ -59,7 +77,9 @@ export default function FormInputs() {
             <input
               type="number"
               className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
-                invalid ? "focus:border-red-500" : "focus:border-secondary"
+                invalid[piece.pieceName as keyof invalid].dye
+                  ? "border-red-500 text-red-500"
+                  : "focus:border-secondary"
               }`}
               name="dye-color"
               min="1"

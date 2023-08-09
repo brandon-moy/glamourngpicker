@@ -1,9 +1,6 @@
 import WelcomeModal from "./components/modals/WelcomeModal";
 import GlamourForm from "./components/glamourform";
 import SuccessModal from "./components/modals/SuccessModal";
-import { feet } from "./lib/feet";
-import { gearPiece } from "./lib/types";
-import Image from "next/image";
 
 export default function Home() {
   return (

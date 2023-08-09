@@ -6,10 +6,16 @@ import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
 import { feet } from "@/app/lib/feet";
 import { allDyes } from "@/app/lib/dyes";
-import { fullGlamSet, AppContextType } from "@/app/lib/types";
+import { fullGlamSet, AppContextType, invalid } from "@/app/lib/types";
 
 const AppContextDefaultValues: AppContextType = {
-  invalid: "",
+  invalid: {
+    helmet: { piece: false, dye: false },
+    chest: { piece: false, dye: false },
+    glove: { piece: false, dye: false },
+    leg: { piece: false, dye: false },
+    foot: { piece: false, dye: false },
+  },
   completedGlam: {
     helmet: {
       name: "",
@@ -96,7 +102,28 @@ export function FormProvider({ children }: Props) {
       dye: "",
     },
   });
-  const [invalid, setInvalid] = useState<string>("");
+  const [invalid, setInvalid] = useState<invalid>({
+    helmet: {
+      piece: false,
+      dye: false,
+    },
+    chest: {
+      piece: false,
+      dye: false,
+    },
+    glove: {
+      piece: false,
+      dye: false,
+    },
+    leg: {
+      piece: false,
+      dye: false,
+    },
+    foot: {
+      piece: false,
+      dye: false,
+    },
+  });
   const [displayWelcome, setDisplayWelcome] = useState<boolean>(true);
   const [displaySuccess, setDisplaySuccess] = useState<boolean>(false);
 
@@ -122,10 +149,14 @@ export function FormProvider({ children }: Props) {
     value: string
   ) => {
     if (value.length && (+value < 1 || +value > maxPieces)) {
-      setInvalid(`Please enter a valid number for ${slotName} piece`);
+      const piece = invalid[slotName as keyof invalid];
+      piece.piece = true;
+      setInvalid({ ...invalid, [slotName]: piece });
       return;
     } else {
-      setInvalid("");
+      const piece = invalid[slotName as keyof invalid];
+      piece.piece = false;
+      setInvalid({ ...invalid, [slotName]: piece });
       const index = Math.floor(Math.random() * +value);
       let name: string = "";
       let dyeable: boolean = false;
@@ -171,9 +202,13 @@ export function FormProvider({ children }: Props) {
 
   const handleGearDyeGroup = (slotName: string, value: string) => {
     if (value.length && (+value < 1 || +value > allDyes.length)) {
-      setInvalid("Please enter a valid number for dye group");
+      const piece = invalid[slotName as keyof invalid];
+      piece.dye = true;
+      setInvalid({ ...invalid, [slotName]: piece });
+      return;
     } else {
-      setInvalid("");
+      const piece = invalid[slotName as keyof invalid];
+      piece.dye = false;
       const dyeGroup = Math.floor(Math.random() * +value);
       const { name, dyeable, dye } =
         completedGlam[slotName as keyof fullGlamSet];
@@ -197,9 +232,13 @@ export function FormProvider({ children }: Props) {
         +value >
           allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup].length)
     ) {
-      setInvalid("Please enter a valid number for dye color");
+      const piece = invalid[slotName as keyof invalid];
+      piece.dye = true;
+      setInvalid({ ...invalid, [slotName]: piece });
+      return;
     } else {
-      setInvalid("");
+      const piece = invalid[slotName as keyof invalid];
+      piece.dye = false;
       const dye =
         allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup][
           Math.floor(Math.random() * +value)

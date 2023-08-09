@@ -25,7 +25,7 @@ export type fullGlamSet = {
 
 export type AppContextType = {
   completedGlam: fullGlamSet;
-  invalid: string;
+  invalid: invalid;
   displayWelcome: boolean;
   displaySuccess: boolean;
   resetGlam: () => void;
@@ -35,4 +35,17 @@ export type AppContextType = {
   handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
   handleGearDyeGroup: (arg0: string, arg1: string) => void;
   handleGearDyeColor: (arg0: string, arg1: string) => void;
+};
+
+export type invalidPiece = {
+  piece: boolean;
+  dye: boolean;
+};
+
+export type invalid = {
+  helmet: invalidPiece;
+  chest: invalidPiece;
+  glove: invalidPiece;
+  leg: invalidPiece;
+  foot: invalidPiece;
 };

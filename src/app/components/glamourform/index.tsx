@@ -20,12 +20,9 @@ export default function GlamourForm() {
     completedGlam.foot.name !== "";
   return (
     <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">
-      <div className="relative w-full h-12 text-center ">
+      <div className="w-full h-12 text-center ">
         <p className="w-full text-2xl font-bold font-poppins">
           GlamouRNG Picker
-        </p>
-        <p className="absolute bottom-[-1.25rem] font-durusans lg:bottom-[-1.5rem] w-full text-sm font-bold text-red-500 ">
-          {invalid}
         </p>
       </div>
       <FormInputs />
