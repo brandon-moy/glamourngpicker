@@ -2,7 +2,7 @@ import { gearPiece } from "./types";
 
 export const legs: gearPiece[] = [
   {
-    name: "Bet Man's Slacks",
+    name: "Best Man's Slacks",
     dyeable: true,
   },
   {
@@ -238,7 +238,7 @@ export const legs: gearPiece[] = [
     dyeable: false,
   },
   {
-    name: "Courl Beach Maro/Coeurl Beach Pareo",
+    name: "Coeurl Beach Maro/Coeurl Beach Pareo",
     dyeable: true,
   },
   {
