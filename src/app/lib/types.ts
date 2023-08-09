@@ -20,7 +20,7 @@ export type fullGlamSet = {
   chest: fullPiece;
   glove: fullPiece;
   leg: fullPiece;
-  boot: fullPiece;
+  foot: fullPiece;
 };
 
 export type AppContextType = {

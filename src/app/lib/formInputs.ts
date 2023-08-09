@@ -18,7 +18,7 @@ export const inputData: formInputData[] = [
     maxOptions: 61,
   },
   {
-    pieceName: "boot",
+    pieceName: "foot",
     maxOptions: 58,
   },
 ];

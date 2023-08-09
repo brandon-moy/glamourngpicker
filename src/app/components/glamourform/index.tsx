@@ -17,7 +17,7 @@ export default function GlamourForm() {
     completedGlam.chest.name !== "" &&
     completedGlam.glove.name !== "" &&
     completedGlam.leg.name !== "" &&
-    completedGlam.boot.name !== "";
+    completedGlam.foot.name !== "";
   return (
     <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">
       <div className="relative w-full h-12 text-center ">

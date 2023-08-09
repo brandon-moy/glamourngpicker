@@ -4,7 +4,7 @@ import { helmets } from "@/app/lib/helmets";
 import { chests } from "@/app/lib/chests";
 import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
-import { boots } from "@/app/lib/boots";
+import { feet } from "@/app/lib/feet";
 import { allDyes } from "@/app/lib/dyes";
 import { fullGlamSet, AppContextType } from "@/app/lib/types";
 
@@ -35,7 +35,7 @@ const AppContextDefaultValues: AppContextType = {
       dyeGroup: 0,
       dye: "",
     },
-    boot: {
+    foot: {
       name: "",
       dyeable: false,
       dyeGroup: 0,
@@ -89,7 +89,7 @@ export function FormProvider({ children }: Props) {
       dyeGroup: 0,
       dye: "",
     },
-    boot: {
+    foot: {
       name: "",
       dyeable: false,
       dyeGroup: 0,
@@ -146,9 +146,9 @@ export function FormProvider({ children }: Props) {
           name = legs[index].name;
           dyeable = legs[index].dyeable;
           break;
-        case "boot":
-          name = boots[index].name;
-          dyeable = boots[index].dyeable;
+        case "foot":
+          name = feet[index].name;
+          dyeable = feet[index].dyeable;
           break;
       }
       const { dyeGroup, dye } = completedGlam[slotName as keyof fullGlamSet];
