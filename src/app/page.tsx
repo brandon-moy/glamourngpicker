@@ -1,7 +1,7 @@
 import WelcomeModal from "./components/modals/WelcomeModal";
 import GlamourForm from "./components/glamourform";
 import SuccessModal from "./components/modals/SuccessModal";
-import { helmets } from "./lib/helmets";
+import { chests } from "./lib/chests";
 import { gearPiece } from "./lib/types";
 import Image from "next/image";
 
@@ -18,18 +18,38 @@ export default function Home() {
         <GlamourForm />
       </div>
       <div className="flex flex-wrap">
-        {helmets.map((helmet: gearPiece) => {
-          const formattedName = helmet.name.replace(/\s+/g, "_");
-          return (
-            <div key={helmet.name}>
-              <Image
-                width="60"
-                height="60"
-                alt={helmet.name}
-                src={`/helmets/60px-${formattedName}_Icon.png`}
-              />
-            </div>
-          );
+        {chests.map((item: gearPiece) => {
+          const formattedName = item.name.replace(/\s+/g, "_");
+          if (formattedName.includes("/")) {
+            const items = formattedName.split("/");
+            return (
+              <div key={item.name}>
+                <Image
+                  width="60"
+                  height="60"
+                  alt={items[0]}
+                  src={`/chests/60px-${items[0]}_Icon.png`}
+                />
+                <Image
+                  width="60"
+                  height="60"
+                  alt={items[1]}
+                  src={`/chests/60px-${items[1]}_Icon.png`}
+                />
+              </div>
+            );
+          } else {
+            return (
+              <div key={item.name}>
+                <Image
+                  width="60"
+                  height="60"
+                  alt={item.name}
+                  src={`/chests/60px-${formattedName}_Icon.png`}
+                />
+              </div>
+            );
+          }
         })}
       </div>
     </main>

@@ -118,7 +118,7 @@ export const chests: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Moonfire Vest/Halter",
+    name: "Moonfire Vest/Moonfire Halter",
     dyeable: true,
   },
   {
@@ -242,7 +242,7 @@ export const chests: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Souther Seas Shirt",
+    name: "Southern Seas Shirt",
     dyeable: true,
   },
   {
@@ -322,12 +322,12 @@ export const chests: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "South Seas Talisman",
-    dyeable: false,
+    name: "Coeurl Talisman/Coeurl Beach Halter",
+    dyeable: true,
   },
   {
-    name: "Courl Talisman",
-    dyeable: true,
+    name: "South Seas Talisman",
+    dyeable: false,
   },
   {
     name: "Dream Tunic",
