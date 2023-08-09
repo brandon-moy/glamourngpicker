@@ -59,9 +59,9 @@ export default function SuccessModal() {
               <p className="text-lg lg:text-xl">{name}</p>
               <p className="text-sm italic lg:text-md">
                 {!dyeable
-                  ? "Sorry, this piece isn't dyeable"
+                  ? "Not dyeable"
                   : !dye.length
-                  ? "No dye option was selected"
+                  ? "No dye was selected"
                   : dye}
               </p>
             </div>
