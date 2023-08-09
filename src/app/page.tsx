@@ -1,7 +1,7 @@
 import WelcomeModal from "./components/modals/WelcomeModal";
 import GlamourForm from "./components/glamourform";
 import SuccessModal from "./components/modals/SuccessModal";
-import { chests } from "./lib/chests";
+import { gloves } from "./lib/gloves";
 import { gearPiece } from "./lib/types";
 import Image from "next/image";
 
@@ -18,7 +18,7 @@ export default function Home() {
         <GlamourForm />
       </div>
       <div className="flex flex-wrap">
-        {chests.map((item: gearPiece) => {
+        {gloves.map((item: gearPiece) => {
           const formattedName = item.name.replace(/\s+/g, "_");
           if (formattedName.includes("/")) {
             const items = formattedName.split("/");
@@ -28,13 +28,13 @@ export default function Home() {
                   width="60"
                   height="60"
                   alt={items[0]}
-                  src={`/chests/60px-${items[0]}_Icon.png`}
+                  src={`/gloves/60px-${items[0]}_Icon.png`}
                 />
                 <Image
                   width="60"
                   height="60"
                   alt={items[1]}
-                  src={`/chests/60px-${items[1]}_Icon.png`}
+                  src={`/gloves/60px-${items[1]}_Icon.png`}
                 />
               </div>
             );
@@ -45,7 +45,7 @@ export default function Home() {
                   width="60"
                   height="60"
                   alt={item.name}
-                  src={`/chests/60px-${formattedName}_Icon.png`}
+                  src={`/gloves/60px-${formattedName}_Icon.png`}
                 />
               </div>
             );
