@@ -162,7 +162,7 @@ export const boots: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Souther Seas Shoes",
+    name: "Southern Seas Shoes",
     dyeable: true,
   },
   {
