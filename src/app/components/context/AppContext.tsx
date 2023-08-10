@@ -157,32 +157,30 @@ export function FormProvider({ children }: Props) {
       piece.piece = true;
       setInvalid({ ...invalid, [slotName]: piece });
       return;
-    } else {
-      const piece = invalid[slotName as keyof invalid];
-      piece.piece = false;
-      setInvalid({ ...invalid, [slotName]: piece });
-      const index = Math.floor(Math.random() * +value);
-      const formattedName = slotName + "s";
-      const name: string =
-        itemsData[formattedName as keyof allItems][index].name;
-      const dyeable: boolean =
-        itemsData[formattedName as keyof allItems][index].dyeable;
-      const { dyeGroup, dye } = completedGlam[slotName as keyof fullGlamSet];
-      const pieceObj = {
-        name,
-        dyeable,
-        dyeGroup,
-        dye,
-      };
-      if (!dyeable) {
-        pieceObj.dyeGroup = 0;
-        pieceObj.dye = "";
-      }
-      setCompletedGlam({
-        ...completedGlam,
-        [slotName]: pieceObj,
-      });
     }
+    const piece = invalid[slotName as keyof invalid];
+    piece.piece = false;
+    setInvalid({ ...invalid, [slotName]: piece });
+    const index = Math.floor(Math.random() * +value);
+    const formattedName = slotName + "s";
+    const name: string = itemsData[formattedName as keyof allItems][index].name;
+    const dyeable: boolean =
+      itemsData[formattedName as keyof allItems][index].dyeable;
+    const { dyeGroup, dye } = completedGlam[slotName as keyof fullGlamSet];
+    const pieceObj = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+    if (!dyeable) {
+      pieceObj.dyeGroup = 0;
+      pieceObj.dye = "";
+    }
+    setCompletedGlam({
+      ...completedGlam,
+      [slotName]: pieceObj,
+    });
   };
 
   const handleGearDyeGroup = (slotName: string, value: string) => {
@@ -191,23 +189,21 @@ export function FormProvider({ children }: Props) {
       piece.dye = true;
       setInvalid({ ...invalid, [slotName]: piece });
       return;
-    } else {
-      const piece = invalid[slotName as keyof invalid];
-      piece.dye = false;
-      const dyeGroup = Math.floor(Math.random() * +value);
-      const { name, dyeable, dye } =
-        completedGlam[slotName as keyof fullGlamSet];
-      const pieceObj = {
-        name,
-        dyeable,
-        dyeGroup,
-        dye,
-      };
-      setCompletedGlam({
-        ...completedGlam,
-        [slotName]: pieceObj,
-      });
     }
+    const piece = invalid[slotName as keyof invalid];
+    piece.dye = false;
+    const dyeGroup = Math.floor(Math.random() * +value);
+    const { name, dyeable, dye } = completedGlam[slotName as keyof fullGlamSet];
+    const pieceObj = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+    setCompletedGlam({
+      ...completedGlam,
+      [slotName]: pieceObj,
+    });
   };
 
   const handleGearDyeColor = (slotName: string, value: string) => {
@@ -221,26 +217,25 @@ export function FormProvider({ children }: Props) {
       piece.dye = true;
       setInvalid({ ...invalid, [slotName]: piece });
       return;
-    } else {
-      const piece = invalid[slotName as keyof invalid];
-      piece.dye = false;
-      const dye =
-        allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup][
-          Math.floor(Math.random() * +value)
-        ];
-      const { name, dyeable, dyeGroup } =
-        completedGlam[slotName as keyof fullGlamSet];
-      const pieceObj = {
-        name,
-        dyeable,
-        dyeGroup,
-        dye,
-      };
-      setCompletedGlam({
-        ...completedGlam,
-        [slotName]: pieceObj,
-      });
     }
+    const piece = invalid[slotName as keyof invalid];
+    piece.dye = false;
+    const dye =
+      allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup][
+        Math.floor(Math.random() * +value)
+      ];
+    const { name, dyeable, dyeGroup } =
+      completedGlam[slotName as keyof fullGlamSet];
+    const pieceObj = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+    setCompletedGlam({
+      ...completedGlam,
+      [slotName]: pieceObj,
+    });
   };
 
   const randomizePiece = (
@@ -267,7 +262,6 @@ export function FormProvider({ children }: Props) {
       randomizedPiece.dyeGroup = dyeGroup;
       randomizedPiece.dye = dye;
     }
-
     return randomizedPiece;
   };
 
@@ -306,12 +300,12 @@ export function FormProvider({ children }: Props) {
     };
     inputData.map((piece) => {
       const randomNumber = Math.random();
-      const randoPiece = randomizePiece(
+      const randomPiece = randomizePiece(
         piece.pieceName,
         piece.maxOptions,
         randomNumber
       );
-      randomGlamSet[piece.pieceName as keyof fullGlamSet] = randoPiece;
+      randomGlamSet[piece.pieceName as keyof fullGlamSet] = randomPiece;
     });
     setCompletedGlam(randomGlamSet);
     openSuccessWindow();
