@@ -9,13 +9,14 @@ module.exports = {
     extend: {
       backgroundImage: {
         gradient:
-          "linear-gradient(to right,rgb(242, 162, 162),rgb(232, 217, 190),rgb(243, 243, 174),rgb(141, 203, 141),rgb(178, 223, 248),rgb(237, 161, 237),rgb(242, 162, 162))",
+          "linear-gradient(to right,rgb(242, 182, 182),rgb(242, 227, 200),rgb(253, 253, 184),rgb(151, 213, 151),rgb(188, 233, 258),rgb(247, 181, 237),rgb(242, 162, 162))",
       },
       backgroundSize: {
         "200%": { backgroundSize: "200%" },
       },
       colors: {
-        background: "#EBEEF4",
+        background: "#D4D5D7",
+        darker: "#637086",
         secondary: "#455B87",
         accent: "#5BC2E1",
         extra: "#8DCB8D",

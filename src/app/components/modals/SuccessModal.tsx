@@ -93,7 +93,7 @@ export default function SuccessModal() {
     <div className="absolute inset-0 z-50 bg-gray-900 bg-opacity-25">
       {loading && <LoadingSpinner />}
       <div className="w-5/6 p-6 mx-auto mt-8 rounded bg-background lg:mt-24 lg:w-3/5">
-        <p className="p-2 text-xl font-bold text-center lg:p-4 font-poppins lg:text-4xl">
+        <p className="p-2 mb-4 text-xl font-bold text-center text-white lg:mb-8 bg-darker lg:p-4 font-poppins lg:text-4xl">
           Enjoy your brand new{" "}
           <span className="magic-text animate-[rtl_5s_linear_infinite] bg-[size:200%] text-transparent bg-clip-text bg-gradient">
             Glamour
