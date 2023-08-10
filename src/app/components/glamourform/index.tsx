@@ -26,6 +26,7 @@ export default function GlamourForm() {
           <p className="w-full text-2xl font-bold font-poppins">
             GlamouRNG Picker
           </p>
+          <div className="h-[5px] bg-gradient"></div>
         </div>
         <FormInputs />
         <div className="flex w-full mt-4 justify-evenly">

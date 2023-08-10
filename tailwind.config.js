@@ -8,9 +8,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        gradient:
+          "linear-gradient(to right,rgb(242, 162, 162),rgb(232, 217, 190),rgb(243, 243, 174),rgb(141, 203, 141),rgb(178, 223, 248),rgb(237, 161, 237),rgb(242, 162, 162))",
+      },
+      backgroundSize: {
+        "200%": { backgroundSize: "200%" },
       },
       colors: {
         background: "#EBEEF4",
@@ -22,6 +24,12 @@ module.exports = {
         durusans: ["Duru Sans", "sans-serif"],
         dancingscript: ["Dancing Script", "sans-serif"],
         josefinsans: ["Josefin Sans", "sans-serif"],
+      },
+      keyframes: {
+        rtl: {
+          "0%": { backgroundPosition: "0%" },
+          "100%": { backgroundPosition: "-200%" },
+        },
       },
     },
   },

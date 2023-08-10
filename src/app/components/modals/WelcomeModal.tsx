@@ -10,7 +10,10 @@ export default function WelcomeModal() {
     <div className="absolute inset-0 z-50 bg-gray-900 bg-opacity-25">
       <div className="w-5/6 p-4 mx-auto mt-6 rounded lg:p-8 bg-background lg:mt-24 lg:w-1/2">
         <p className="p-4 text-2xl font-bold text-center lg:py-6 font-poppins lg:text-4xl">
-          Welcome to GlamouRNG Picker
+          Welcome to{" "}
+          <span className="magic-text bg-center bg-gradient bg-[size:200%] animate-[rtl_5s_linear_infinite]">
+            GlamouRNG Picker
+          </span>
         </p>
         <p className="text-md lg:text-lg font-josefinsans">
           Have you ever wanted a new glam but couldn&apos;t decide what you
