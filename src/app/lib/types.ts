@@ -34,16 +34,19 @@ export type fullGlamSet = {
 export type AppContextType = {
   completedGlam: fullGlamSet;
   invalid: invalid;
-  displayWelcome: boolean;
-  displaySuccess: boolean;
   resetGlam: () => void;
-  openSuccessWindow: () => void;
-  closeSuccessWindow: () => void;
-  handleDisplayWelcome: () => void;
   handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
   handleGearDyeGroup: (arg0: string, arg1: string) => void;
   handleGearDyeColor: (arg0: string, arg1: string) => void;
   randomizeGlamour: () => void;
+};
+
+export type ModalContextType = {
+  displayWelcome: boolean;
+  displaySuccess: boolean;
+  openSuccessWindow: () => void;
+  closeSuccessWindow: () => void;
+  handleDisplayWelcome: () => void;
 };
 
 export type invalidPiece = {

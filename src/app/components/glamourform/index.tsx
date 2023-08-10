@@ -2,16 +2,22 @@
 import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
 import FormInputs from "./inputs";
+import { useModalContext } from "../context/ModalContext";
 
 export default function GlamourForm() {
-  const { completedGlam, openSuccessWindow, randomizeGlamour } =
-    useAppContext();
+  const { completedGlam, randomizeGlamour } = useAppContext();
 
+  const { openSuccessWindow } = useModalContext();
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     (e.target as HTMLFormElement).reset();
     openSuccessWindow();
   }
+
+  const randomize = () => {
+    randomizeGlamour();
+    openSuccessWindow();
+  };
 
   const emptyInputs =
     completedGlam.helmet.name !== "" &&
@@ -33,7 +39,7 @@ export default function GlamourForm() {
           <button
             type="button"
             className="px-2 py-1 text-white rounded cursor-pointer bg-extra font-poppins active:translate-y-0.5 active:brightness-75"
-            onClick={() => randomizeGlamour()}
+            onClick={randomize}
           >
             Randomize
           </button>

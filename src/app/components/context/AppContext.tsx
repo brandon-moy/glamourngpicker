@@ -51,12 +51,7 @@ const AppContextDefaultValues: AppContextType = {
       dye: "",
     },
   },
-  displayWelcome: true,
-  displaySuccess: false,
   resetGlam: () => {},
-  openSuccessWindow: () => {},
-  closeSuccessWindow: () => {},
-  handleDisplayWelcome: () => {},
   handleGearChange: () => {},
   handleGearDyeGroup: () => {},
   handleGearDyeColor: () => {},
@@ -73,7 +68,7 @@ type Props = {
   children: ReactNode;
 };
 
-export function FormProvider({ children }: Props) {
+export function AppProvider({ children }: Props) {
   const [completedGlam, setCompletedGlam] = useState<fullGlamSet>({
     helmet: {
       name: "",
@@ -128,23 +123,9 @@ export function FormProvider({ children }: Props) {
       dye: false,
     },
   });
-  const [displayWelcome, setDisplayWelcome] = useState<boolean>(true);
-  const [displaySuccess, setDisplaySuccess] = useState<boolean>(false);
 
   const resetGlam = () => {
     setCompletedGlam(AppContextDefaultValues.completedGlam);
-  };
-
-  const handleDisplayWelcome = () => {
-    setDisplayWelcome(false);
-  };
-
-  const openSuccessWindow = () => {
-    setDisplaySuccess(true);
-  };
-
-  const closeSuccessWindow = () => {
-    setDisplaySuccess(false);
   };
 
   const handleGearChange = (
@@ -308,17 +289,11 @@ export function FormProvider({ children }: Props) {
       randomGlamSet[piece.pieceName as keyof fullGlamSet] = randomPiece;
     });
     setCompletedGlam(randomGlamSet);
-    openSuccessWindow();
   };
 
   const value = {
     invalid,
-    displayWelcome,
-    displaySuccess,
     resetGlam,
-    openSuccessWindow,
-    closeSuccessWindow,
-    handleDisplayWelcome,
     completedGlam,
     handleGearChange,
     handleGearDyeGroup,
