@@ -1,15 +1,16 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import { useModalContext } from "../context/ModalContext";
 import { fullGlamSet } from "@/app/lib/types";
 import capitalizeWord from "@/app/lib/capitalizeWord";
 import Image from "next/image";
+import LoadingSpinner from "./Loading";
 
 export default function SuccessModal() {
   const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
-
   const { displaySuccess, closeSuccessWindow } = useModalContext();
+  const [loading, setLoading] = useState<boolean>(false);
 
   function renderItemIcon(itemType: string, name: string) {
     const formattedName = name.replace(/\s+/g, "_");
@@ -81,9 +82,16 @@ export default function SuccessModal() {
     closeSuccessWindow();
   };
 
+  const rerollGlamour = () => {
+    setLoading(true);
+    randomizeGlamour();
+    setTimeout(() => setLoading(false), 500);
+  };
+
   if (!displaySuccess) return <></>;
   return (
     <div className="absolute inset-0 z-50 bg-gray-900 bg-opacity-25">
+      {loading && <LoadingSpinner />}
       <div className="w-5/6 p-6 mx-auto mt-8 rounded bg-background lg:mt-24 lg:w-3/5">
         <p className="p-2 text-xl font-bold text-center lg:p-4 font-poppins lg:text-4xl">
           Enjoy your brand new{" "}
@@ -96,7 +104,7 @@ export default function SuccessModal() {
         <div className="flex w-full pt-4 justify-evenly">
           <button
             className={`px-2 py-1 rounded lg:text-2xl text-white bg-extra font-poppins active:translate-y-0.5 active:brightness-75`}
-            onClick={() => randomizeGlamour()}
+            onClick={rerollGlamour}
           >
             Reroll!
           </button>
