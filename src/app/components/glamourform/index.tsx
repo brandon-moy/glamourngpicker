@@ -39,7 +39,7 @@ export default function GlamourForm() {
           </button>
           <button
             type="button"
-            className="px-2 py-1 text-white rounded cursor-pointer bg-secondary font-poppins active:translate-y-0.5 active:brightness-75"
+            className="px-2 py-1 text-white rounded cursor-pointer bg-accent font-poppins active:translate-y-0.5 active:brightness-75"
             onClick={() => randomizeGlamour()}
           >
             Randomize
