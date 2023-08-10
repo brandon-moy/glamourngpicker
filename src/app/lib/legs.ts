@@ -245,4 +245,60 @@ export const legs: gearPiece[] = [
     name: "Coeurl Beach Briefs/Coeurl Beach Tanga",
     dyeable: true,
   },
+  {
+    name: "Replica Sky Pirate's Gaskins of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Gaskins of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Trousers of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Halfslops of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Trousers of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Bottoms of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Bottoms of Casting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Breeches of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Breeches of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Breeches of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Breeches of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Breeches of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Breeches of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Breeches of Casting",
+    dyeable: true,
+  },
 ];

@@ -798,4 +798,60 @@ export const helmets: gearPiece[] = [
     name: "Dream Hat",
     dyeable: true,
   },
+  {
+    name: "Replica Sky Pirate's Helm of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Helm of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Mask of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Beret of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Mask of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Cap of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Cap of Casting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Casting",
+    dyeable: true,
+  },
 ];
