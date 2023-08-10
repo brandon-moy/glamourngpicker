@@ -20,6 +20,7 @@ export default function SuccessModal() {
             height="60"
             alt={items[0]}
             src={`/${itemType}/60px-${items[0]}_Icon.png`}
+            className="min-w-[60px] aspect-square"
           />
           <Image
             width="60"
@@ -37,6 +38,7 @@ export default function SuccessModal() {
             height="60"
             alt={name}
             src={`/${itemType}/60px-${formattedName}_Icon.png`}
+            className="min-w-[60px] aspect-square"
           />
         </div>
       );
