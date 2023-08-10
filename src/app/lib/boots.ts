@@ -1,6 +1,6 @@
 import { gearPiece } from "./types";
 
-export const feet: gearPiece[] = [
+export const boots: gearPiece[] = [
   {
     name: "Leather Duckbills",
     dyeable: true,

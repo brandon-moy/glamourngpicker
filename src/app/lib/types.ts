@@ -10,6 +10,14 @@ export type fullPiece = {
   dye: string;
 };
 
+export type allItems = {
+  helmets: gearPiece[];
+  chests: gearPiece[];
+  gloves: gearPiece[];
+  legs: gearPiece[];
+  boots: gearPiece[];
+};
+
 export type formInputData = {
   pieceName: string;
   maxOptions: number;
@@ -20,7 +28,7 @@ export type fullGlamSet = {
   chest: fullPiece;
   glove: fullPiece;
   leg: fullPiece;
-  foot: fullPiece;
+  boot: fullPiece;
 };
 
 export type AppContextType = {
@@ -48,5 +56,5 @@ export type invalid = {
   chest: invalidPiece;
   glove: invalidPiece;
   leg: invalidPiece;
-  foot: invalidPiece;
+  boot: invalidPiece;
 };

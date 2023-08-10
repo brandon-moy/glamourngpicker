@@ -1,16 +1,13 @@
 "use client";
 import { createContext, useContext, ReactNode, useState } from "react";
-import { helmets } from "@/app/lib/helmets";
-import { chests } from "@/app/lib/chests";
-import { gloves } from "@/app/lib/gloves";
-import { legs } from "@/app/lib/legs";
-import { feet } from "@/app/lib/feet";
 import { allDyes } from "@/app/lib/dyes";
+import { itemsData } from "@/app/lib/items";
 import {
   fullGlamSet,
   AppContextType,
   invalid,
   fullPiece,
+  allItems,
 } from "@/app/lib/types";
 import { inputData } from "@/app/lib/formInputs";
 
@@ -20,7 +17,7 @@ const AppContextDefaultValues: AppContextType = {
     chest: { piece: false, dye: false },
     glove: { piece: false, dye: false },
     leg: { piece: false, dye: false },
-    foot: { piece: false, dye: false },
+    boot: { piece: false, dye: false },
   },
   completedGlam: {
     helmet: {
@@ -47,7 +44,7 @@ const AppContextDefaultValues: AppContextType = {
       dyeGroup: 0,
       dye: "",
     },
-    foot: {
+    boot: {
       name: "",
       dyeable: false,
       dyeGroup: 0,
@@ -102,7 +99,7 @@ export function FormProvider({ children }: Props) {
       dyeGroup: 0,
       dye: "",
     },
-    foot: {
+    boot: {
       name: "",
       dyeable: false,
       dyeGroup: 0,
@@ -126,7 +123,7 @@ export function FormProvider({ children }: Props) {
       piece: false,
       dye: false,
     },
-    foot: {
+    boot: {
       piece: false,
       dye: false,
     },
@@ -165,30 +162,11 @@ export function FormProvider({ children }: Props) {
       piece.piece = false;
       setInvalid({ ...invalid, [slotName]: piece });
       const index = Math.floor(Math.random() * +value);
-      let name: string = "";
-      let dyeable: boolean = false;
-      switch (slotName) {
-        case "helmet":
-          name = helmets[index].name;
-          dyeable = helmets[index].dyeable;
-          break;
-        case "chest":
-          name = chests[index].name;
-          dyeable = chests[index].dyeable;
-          break;
-        case "glove":
-          name = gloves[index].name;
-          dyeable = gloves[index].dyeable;
-          break;
-        case "leg":
-          name = legs[index].name;
-          dyeable = legs[index].dyeable;
-          break;
-        case "foot":
-          name = feet[index].name;
-          dyeable = feet[index].dyeable;
-          break;
-      }
+      const formattedName = slotName + "s";
+      const name: string =
+        itemsData[formattedName as keyof allItems][index].name;
+      const dyeable: boolean =
+        itemsData[formattedName as keyof allItems][index].dyeable;
       const { dyeGroup, dye } = completedGlam[slotName as keyof fullGlamSet];
       const pieceObj = {
         name,
@@ -276,78 +254,20 @@ export function FormProvider({ children }: Props) {
       dyeGroup: 0,
       dye: "",
     };
-    switch (piece) {
-      case "helmet":
-        const helmetIndex = Math.floor(randomNumber * maxOptions);
-        randomizedPiece.name = helmets[helmetIndex].name;
-        randomizedPiece.dyeable = helmets[helmetIndex].dyeable;
-        if (randomizedPiece.dyeable) {
-          const dyeGroup = Math.floor(randomNumber * allDyes.length);
-          const dye =
-            allDyes[dyeGroup][
-              Math.floor(randomNumber * allDyes[dyeGroup].length)
-            ];
-          randomizedPiece.dyeGroup = dyeGroup;
-          randomizedPiece.dye = dye;
-        }
-        break;
-      case "chest":
-        const chestIndex = Math.floor(randomNumber * maxOptions);
-        randomizedPiece.name = chests[chestIndex].name;
-        randomizedPiece.dyeable = chests[chestIndex].dyeable;
-        if (randomizedPiece.dyeable) {
-          const dyeGroup = Math.floor(randomNumber * allDyes.length);
-          const dye =
-            allDyes[dyeGroup][
-              Math.floor(randomNumber * allDyes[dyeGroup].length)
-            ];
-          randomizedPiece.dyeGroup = dyeGroup;
-          randomizedPiece.dye = dye;
-        }
-        break;
-      case "glove":
-        const gloveIndex = Math.floor(randomNumber * maxOptions);
-        randomizedPiece.name = gloves[gloveIndex].name;
-        randomizedPiece.dyeable = gloves[gloveIndex].dyeable;
-        if (randomizedPiece.dyeable) {
-          const dyeGroup = Math.floor(randomNumber * allDyes.length);
-          const dye =
-            allDyes[dyeGroup][
-              Math.floor(randomNumber * allDyes[dyeGroup].length)
-            ];
-          randomizedPiece.dyeGroup = dyeGroup;
-          randomizedPiece.dye = dye;
-        }
-        break;
-      case "leg":
-        const legIndex = Math.floor(randomNumber * maxOptions);
-        randomizedPiece.name = legs[legIndex].name;
-        randomizedPiece.dyeable = legs[legIndex].dyeable;
-        if (randomizedPiece.dyeable) {
-          const dyeGroup = Math.floor(randomNumber * allDyes.length);
-          const dye =
-            allDyes[dyeGroup][
-              Math.floor(randomNumber * allDyes[dyeGroup].length)
-            ];
-          randomizedPiece.dyeGroup = dyeGroup;
-          randomizedPiece.dye = dye;
-        }
-        break;
-      case "foot":
-        const footIndex = Math.floor(randomNumber * maxOptions);
-        randomizedPiece.name = feet[footIndex].name;
-        randomizedPiece.dyeable = feet[footIndex].dyeable;
-        if (randomizedPiece.dyeable) {
-          const dyeGroup = Math.floor(randomNumber * allDyes.length);
-          const dye =
-            allDyes[dyeGroup][
-              Math.floor(randomNumber * allDyes[dyeGroup].length)
-            ];
-          randomizedPiece.dyeGroup = dyeGroup;
-          randomizedPiece.dye = dye;
-        }
-        break;
+    const itemIndex = Math.floor(randomNumber * maxOptions);
+    const formattedName = piece + "s";
+    randomizedPiece.name =
+      itemsData[formattedName as keyof allItems][itemIndex].name;
+    randomizedPiece.dyeable =
+      itemsData[formattedName as keyof allItems][itemIndex].dyeable;
+    if (randomizedPiece.dyeable) {
+      const dyeGroup = Math.floor(randomNumber * allDyes.length);
+      const dye =
+        allDyes[dyeGroup][Math.floor(randomNumber * allDyes[dyeGroup].length)];
+      randomizedPiece.dyeGroup = dyeGroup;
+      randomizedPiece.dye = dye;
     }
+
     return randomizedPiece;
   };
 
@@ -377,7 +297,7 @@ export function FormProvider({ children }: Props) {
         dyeGroup: 0,
         dye: "",
       },
-      foot: {
+      boot: {
         name: "",
         dyeable: false,
         dyeGroup: 0,
