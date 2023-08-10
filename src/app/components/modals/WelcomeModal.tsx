@@ -11,7 +11,7 @@ export default function WelcomeModal() {
       <div className="w-5/6 p-4 mx-auto mt-6 rounded lg:p-8 bg-background lg:mt-24 lg:w-1/2">
         <p className="p-4 text-2xl font-bold text-center lg:py-6 font-poppins lg:text-4xl">
           Welcome to{" "}
-          <span className="magic-text bg-center bg-gradient bg-[size:200%] animate-[rtl_5s_linear_infinite]">
+          <span className="magic-text bg-center bg-gradient bg-[size:200%] animate-[rtl_5s_linear_infinite] text-transparent bg-clip-text">
             GlamouRNG Picker
           </span>
         </p>

@@ -90,7 +90,7 @@ export default function SuccessModal() {
       <div className="w-5/6 p-6 mx-auto mt-8 rounded bg-background lg:mt-24 lg:w-3/5">
         <p className="p-2 text-xl font-bold text-center lg:p-4 font-poppins lg:text-4xl">
           Enjoy your brand new{" "}
-          <span className="magic-text animate-[rtl_5s_linear_infinite] bg-[size:200%] bg-gradient">
+          <span className="magic-text animate-[rtl_5s_linear_infinite] bg-[size:200%] text-transparent bg-clip-text bg-gradient">
             Glamour
           </span>{" "}
           choice!
@@ -98,7 +98,7 @@ export default function SuccessModal() {
         <div className="flex flex-wrap">{renderGlam(completedGlam)}</div>
         <div className="flex w-full pt-4 justify-evenly">
           <button
-            className="px-2 py-1 text-white rounded lg:text-2xl bg-accent font-poppins active:translate-y-0.5 active:brightness-75"
+            className="px-2 py-1 rounded lg:text-2xl text-white bg-accent font-poppins active:translate-y-0.5 active:brightness-75"
             onClick={() => randomizeGlamour()}
           >
             Reroll!

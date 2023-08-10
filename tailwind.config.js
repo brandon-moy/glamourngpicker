@@ -17,7 +17,7 @@ module.exports = {
       colors: {
         background: "#EBEEF4",
         secondary: "#455B87",
-        accent: "#456AB5",
+        accent: "#94D5E9",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
