@@ -30,10 +30,12 @@ export default function FormInputs() {
         <div key={piece.pieceName} className="w-full">
           <label className="flex flex-wrap py-2 font-bold font-josefinsans basis-full">
             {capitalizeWord(piece.pieceName) + ":"}
-            {displayError(
-              invalid[piece.pieceName as keyof invalid],
-              piece.pieceName
-            )}
+            <p>
+              {displayError(
+                invalid[piece.pieceName as keyof invalid],
+                piece.pieceName
+              )}
+            </p>
             <input
               onChange={(e) =>
                 handleGearChange(
