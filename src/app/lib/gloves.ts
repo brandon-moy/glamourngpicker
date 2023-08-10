@@ -133,4 +133,60 @@ export const gloves: gearPiece[] = [
     name: "Rainbow Tulip Corsage",
     dyeable: false,
   },
+  {
+    name: "Replica Sky Pirate's Gauntlets of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Gauntlets of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Gloves of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Gloves of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Gloves of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Gloves of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Gloves of Casting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hook of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hook of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Fingerless Gloves of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Fingerless Gloves of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hook of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hook of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Fingerless Gloves of Casting",
+    dyeable: true,
+  },
 ];

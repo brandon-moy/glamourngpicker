@@ -118,7 +118,7 @@ export const chests: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Moonfire Vest/Halter",
+    name: "Moonfire Vest/Moonfire Halter",
     dyeable: true,
   },
   {
@@ -242,7 +242,7 @@ export const chests: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Souther Seas Shirt",
+    name: "Southern Seas Shirt",
     dyeable: true,
   },
   {
@@ -322,15 +322,71 @@ export const chests: gearPiece[] = [
     dyeable: true,
   },
   {
+    name: "Coeurl Talisman/Coeurl Beach Halter",
+    dyeable: true,
+  },
+  {
     name: "South Seas Talisman",
     dyeable: false,
   },
   {
-    name: "Courl Talisman",
+    name: "Dream Tunic",
     dyeable: true,
   },
   {
-    name: "Dream Tunic",
+    name: "Replica Sky Pirate's Coat of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Coat of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Jacket of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Vest of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Jacket of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Coat of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Coat of Casting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Harness of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Harness of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Harness of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Harness of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Harness of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Harness of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Harness of Casting",
     dyeable: true,
   },
 ];

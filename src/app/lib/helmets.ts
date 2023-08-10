@@ -21,7 +21,6 @@ export const helmets: gearPiece[] = [
     name: "Spring Straw Hat",
     dyeable: true,
   },
-
   {
     name: "Cloche",
     dyeable: true,
@@ -42,7 +41,6 @@ export const helmets: gearPiece[] = [
     name: "Oval Spectacles",
     dyeable: true,
   },
-
   {
     name: "Shaded Spectacles",
     dyeable: true,
@@ -57,7 +55,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Thick-rimmed GLasses",
+    name: "Thick-rimmed Glasses",
     dyeable: true,
   },
   {
@@ -81,7 +79,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Emperor's New Hat",
+    name: "The Emperor's New Hat",
     dyeable: false,
   },
   {
@@ -154,7 +152,7 @@ export const helmets: gearPiece[] = [
   },
   {
     name: "Cashmere Hood",
-    dyeable: false,
+    dyeable: true,
   },
   {
     name: "Wool Knit Cap",
@@ -209,7 +207,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Skyworker's Helm",
+    name: "Skyworker's Helmet",
     dyeable: true,
   },
   {
@@ -265,7 +263,7 @@ export const helmets: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Shishu BUjin Eboshi",
+    name: "Shishu Bujin Eboshi",
     dyeable: true,
   },
   {
@@ -798,6 +796,62 @@ export const helmets: gearPiece[] = [
   },
   {
     name: "Dream Hat",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Helm of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Helm of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Mask of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Beret of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Mask of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Cap of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Cap of Casting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Mask of Casting",
     dyeable: true,
   },
 ];

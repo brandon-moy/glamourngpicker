@@ -1,6 +1,6 @@
 import { gearPiece } from "./types";
 
-export const boots: gearPiece[] = [
+export const feet: gearPiece[] = [
   {
     name: "Leather Duckbills",
     dyeable: true,
@@ -130,7 +130,7 @@ export const boots: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Whisperfine WOolen Boots",
+    name: "Whisperfine Woolen Boots",
     dyeable: true,
   },
   {
@@ -158,11 +158,11 @@ export const boots: gearPiece[] = [
     dyeable: true,
   },
   {
-    name: "Damalscan Leather Shoes",
+    name: "Dalmascan Leather Shoes",
     dyeable: true,
   },
   {
-    name: "Souther Seas Shoes",
+    name: "Southern Seas Shoes",
     dyeable: true,
   },
   {
@@ -231,6 +231,62 @@ export const boots: gearPiece[] = [
   },
   {
     name: "Dream Boots",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Boots of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Boots of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Boots of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Boots of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Boots of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Shoes of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Pirate's Shoes of Casting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hookboots of Fending",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hookboots of Maiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Ironclad Boots of Striking",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Ironclad Boots of Aiming",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hookboots of Scouting",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Hookboots of Healing",
+    dyeable: true,
+  },
+  {
+    name: "Replica Sky Rat Ironclad Boots of Casting",
     dyeable: true,
   },
 ];

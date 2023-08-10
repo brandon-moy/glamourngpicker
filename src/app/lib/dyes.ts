@@ -6,7 +6,7 @@ export const allDyes: dyeSets[] = [
   [
     "Snow White Dye",
     "Ash Grey Dye",
-    "Gobbue Grey Dye",
+    "Goobbue Grey Dye",
     "Slate Grey Dye",
     "Charcoal Grey Dye",
     "Soot Black Dye",

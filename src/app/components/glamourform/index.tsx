@@ -17,22 +17,21 @@ export default function GlamourForm() {
     completedGlam.chest.name !== "" &&
     completedGlam.glove.name !== "" &&
     completedGlam.leg.name !== "" &&
-    completedGlam.boot.name !== "";
+    completedGlam.foot.name !== "";
   return (
     <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">
-      <div className="relative w-full h-12 text-center ">
+      <div className="w-full h-12 text-center ">
         <p className="w-full text-2xl font-bold font-poppins">
           GlamouRNG Picker
-        </p>
-        <p className="absolute bottom-[-1.25rem] font-durusans lg:bottom-[-1.5rem] w-full text-sm font-bold text-red-500 ">
-          {invalid}
         </p>
       </div>
       <FormInputs />
       <div className="flex w-full mt-4 justify-evenly">
         <button
           disabled={!emptyInputs}
-          className="px-2 py-1 text-white rounded bg-secondary font-poppins"
+          className={`px-2 py-1 text-white rounded bg-secondary font-poppins ${
+            !emptyInputs ? "brightness-50" : "cursor-pointer"
+          }`}
         >
           Submit!
         </button>

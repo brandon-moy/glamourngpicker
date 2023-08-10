@@ -3,22 +3,22 @@ import { formInputData } from "./types";
 export const inputData: formInputData[] = [
   {
     pieceName: "helmet",
-    maxOptions: 199,
+    maxOptions: 213,
   },
   {
     pieceName: "chest",
-    maxOptions: 83,
+    maxOptions: 97,
   },
   {
     pieceName: "glove",
-    maxOptions: 33,
+    maxOptions: 47,
   },
   {
     pieceName: "leg",
-    maxOptions: 61,
+    maxOptions: 75,
   },
   {
-    pieceName: "boot",
-    maxOptions: 58,
+    pieceName: "foot",
+    maxOptions: 72,
   },
 ];
