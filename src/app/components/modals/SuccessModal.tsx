@@ -6,8 +6,13 @@ import capitalizeWord from "@/app/lib/capitalizeWord";
 import Image from "next/image";
 
 export default function SuccessModal() {
-  const { completedGlam, displaySuccess, closeSuccessWindow, resetGlam } =
-    useAppContext();
+  const {
+    completedGlam,
+    displaySuccess,
+    closeSuccessWindow,
+    resetGlam,
+    randomizeGlamour,
+  } = useAppContext();
 
   function renderItemIcon(itemType: string, name: string) {
     const formattedName = name.replace(/\s+/g, "_");
@@ -40,6 +45,7 @@ export default function SuccessModal() {
             src={`/${itemType}/60px-${formattedName}_Icon.png`}
             className="min-w-[60px] aspect-square"
           />
+          <div className="w-0 lg:min-w-[60px] aspect-square"></div>
         </div>
       );
     }
@@ -81,14 +87,20 @@ export default function SuccessModal() {
   if (!displaySuccess) return <></>;
   return (
     <div className="absolute inset-0 z-50 bg-gray-900 bg-opacity-25">
-      <div className="w-5/6 p-8 mx-auto mt-8 rounded bg-background lg:mt-24 lg:w-1/2">
+      <div className="w-5/6 p-6 mx-auto mt-8 rounded bg-background lg:mt-24 lg:w-3/5">
         <p className="p-2 text-xl font-bold text-center lg:p-4 font-poppins lg:text-4xl">
           Enjoy your brand new Glamour choice!
         </p>
         <div className="flex flex-wrap">{renderGlam(completedGlam)}</div>
-        <div className="flex justify-center w-full pt-4">
+        <div className="flex w-full pt-4 justify-evenly">
           <button
-            className="underline lg:text-2xl font-poppins"
+            className="px-2 py-1 text-white rounded lg:text-2xl bg-secondary font-poppins active:translate-y-0.5 active:brightness-75"
+            onClick={() => randomizeGlamour()}
+          >
+            Reroll!
+          </button>
+          <button
+            className="px-2 py-1 text-white rounded lg:text-2xl bg-secondary font-poppins active:translate-y-0.5 active:brightness-75"
             onClick={restartGlamouRNG}
           >
             Restart?

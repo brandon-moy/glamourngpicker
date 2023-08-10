@@ -21,12 +21,13 @@ export default function WelcomeModal() {
         </p>
         <p className="pb-4 text-md lg:text-lg font-josefinsans">
           The items currently implemented are available on the Marketboard for
-          any job at level 1. Go through the inputs and enter a number within
-          the range. To make it extra spicy, your number will then be used to
-          generate another random number to ensure different results each time.
-          If the gear piece is able to be dyed, then there will be the option to
-          randomize the dye group and color but it is not required. This way,
-          you can ensure an{" "}
+          any job at level 1. You can either click the{" "}
+          <span className="font-bold">Randomize</span> button to generate the
+          glam or go through the inputs and enter a number within the range. To
+          make it extra spicy, your number will then be used to generate another
+          random number to ensure different results each time. If the gear piece
+          is able to be dyed, then there will be the option to randomize the dye
+          group and color but it is not required. This way, you can ensure an{" "}
           <span className="line-through">
             abomination to everyone&apos;s eyes
           </span>{" "}
