@@ -8,7 +8,23 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "GlamouRNG Picker",
   description:
-    "A web application to pick level 1 glamours available for all races, genders, and jobs on the Marketboard",
+    "FFXIV Glamour randomizer for level 1 glamour available on Marketboard for all races, genders, and jobs",
+  openGraph: {
+    title: "GlamouRNG Picker",
+    description:
+      "FFXIV Glamour randomizer for level 1 glamour available on Marketboard for all races, genders, and jobs",
+    url: "https://glamourngpicker.vercel.app",
+    siteName: "GlamouRNG Picker",
+    images: [
+      {
+        url: "https://glamourngpicker.vercel.app/ogimage.jpg",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

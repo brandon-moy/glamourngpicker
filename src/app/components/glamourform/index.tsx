@@ -6,8 +6,8 @@ import { useModalContext } from "../context/ModalContext";
 
 export default function GlamourForm() {
   const { completedGlam, randomizeGlamour } = useAppContext();
-
   const { openSuccessWindow } = useModalContext();
+
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     (e.target as HTMLFormElement).reset();
