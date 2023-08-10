@@ -31,19 +31,19 @@ export default function GlamourForm() {
         <FormInputs />
         <div className="flex w-full mt-4 justify-evenly">
           <button
+            type="button"
+            className="px-2 py-1 text-white rounded cursor-pointer bg-extra font-poppins active:translate-y-0.5 active:brightness-75"
+            onClick={() => randomizeGlamour()}
+          >
+            Randomize
+          </button>
+          <button
             disabled={!emptyInputs}
             className={`px-2 py-1 text-white rounded bg-secondary font-poppins active:translate-y-0.5 active:brightness-75 ${
               !emptyInputs ? "brightness-50" : "cursor-pointer"
             }`}
           >
             Submit!
-          </button>
-          <button
-            type="button"
-            className="px-2 py-1 text-white rounded cursor-pointer bg-accent font-poppins active:translate-y-0.5 active:brightness-75"
-            onClick={() => randomizeGlamour()}
-          >
-            Randomize
           </button>
         </div>
       </form>

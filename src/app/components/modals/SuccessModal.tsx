@@ -98,7 +98,7 @@ export default function SuccessModal() {
         <div className="flex flex-wrap">{renderGlam(completedGlam)}</div>
         <div className="flex w-full pt-4 justify-evenly">
           <button
-            className="px-2 py-1 rounded lg:text-2xl text-white bg-accent font-poppins active:translate-y-0.5 active:brightness-75"
+            className={`px-2 py-1 rounded lg:text-2xl text-white bg-extra font-poppins active:translate-y-0.5 active:brightness-75`}
             onClick={() => randomizeGlamour()}
           >
             Reroll!
