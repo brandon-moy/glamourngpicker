@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { useAppContext } from "../context/AppContext";
+import { useModalContext } from "../context/ModalContext";
 
 export default function WelcomeModal() {
-  const { displayWelcome, handleDisplayWelcome } = useAppContext();
+  const { displayWelcome, handleDisplayWelcome } = useModalContext();
 
   if (!displayWelcome) return <></>;
   return (
