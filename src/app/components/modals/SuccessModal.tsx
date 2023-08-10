@@ -7,13 +7,7 @@ import capitalizeWord from "@/app/lib/capitalizeWord";
 import Image from "next/image";
 
 export default function SuccessModal() {
-  const {
-    completedGlam,
-    // displaySuccess,
-    // closeSuccessWindow,
-    resetGlam,
-    randomizeGlamour,
-  } = useAppContext();
+  const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
 
   const { displaySuccess, closeSuccessWindow } = useModalContext();
 
