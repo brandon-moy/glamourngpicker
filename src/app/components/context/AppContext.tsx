@@ -6,7 +6,13 @@ import { gloves } from "@/app/lib/gloves";
 import { legs } from "@/app/lib/legs";
 import { feet } from "@/app/lib/feet";
 import { allDyes } from "@/app/lib/dyes";
-import { fullGlamSet, AppContextType, invalid } from "@/app/lib/types";
+import {
+  fullGlamSet,
+  AppContextType,
+  invalid,
+  fullPiece,
+} from "@/app/lib/types";
+import { inputData } from "@/app/lib/formInputs";
 
 const AppContextDefaultValues: AppContextType = {
   invalid: {
@@ -57,6 +63,7 @@ const AppContextDefaultValues: AppContextType = {
   handleGearChange: () => {},
   handleGearDyeGroup: () => {},
   handleGearDyeColor: () => {},
+  randomizeGlamour: () => {},
 };
 
 const AppContext = createContext<AppContextType>(AppContextDefaultValues);
@@ -258,6 +265,138 @@ export function FormProvider({ children }: Props) {
     }
   };
 
+  const randomizePiece = (
+    piece: string,
+    maxOptions: number,
+    randomNumber: number
+  ): fullPiece => {
+    const randomizedPiece: fullPiece = {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    };
+    switch (piece) {
+      case "helmet":
+        const helmetIndex = Math.floor(randomNumber * maxOptions);
+        randomizedPiece.name = helmets[helmetIndex].name;
+        randomizedPiece.dyeable = helmets[helmetIndex].dyeable;
+        if (randomizedPiece.dyeable) {
+          const dyeGroup = Math.floor(randomNumber * allDyes.length);
+          const dye =
+            allDyes[dyeGroup][
+              Math.floor(randomNumber * allDyes[dyeGroup].length)
+            ];
+          randomizedPiece.dyeGroup = dyeGroup;
+          randomizedPiece.dye = dye;
+        }
+        break;
+      case "chest":
+        const chestIndex = Math.floor(randomNumber * maxOptions);
+        randomizedPiece.name = chests[chestIndex].name;
+        randomizedPiece.dyeable = chests[chestIndex].dyeable;
+        if (randomizedPiece.dyeable) {
+          const dyeGroup = Math.floor(randomNumber * allDyes.length);
+          const dye =
+            allDyes[dyeGroup][
+              Math.floor(randomNumber * allDyes[dyeGroup].length)
+            ];
+          randomizedPiece.dyeGroup = dyeGroup;
+          randomizedPiece.dye = dye;
+        }
+        break;
+      case "glove":
+        const gloveIndex = Math.floor(randomNumber * maxOptions);
+        randomizedPiece.name = gloves[gloveIndex].name;
+        randomizedPiece.dyeable = gloves[gloveIndex].dyeable;
+        if (randomizedPiece.dyeable) {
+          const dyeGroup = Math.floor(randomNumber * allDyes.length);
+          const dye =
+            allDyes[dyeGroup][
+              Math.floor(randomNumber * allDyes[dyeGroup].length)
+            ];
+          randomizedPiece.dyeGroup = dyeGroup;
+          randomizedPiece.dye = dye;
+        }
+        break;
+      case "leg":
+        const legIndex = Math.floor(randomNumber * maxOptions);
+        randomizedPiece.name = legs[legIndex].name;
+        randomizedPiece.dyeable = legs[legIndex].dyeable;
+        if (randomizedPiece.dyeable) {
+          const dyeGroup = Math.floor(randomNumber * allDyes.length);
+          const dye =
+            allDyes[dyeGroup][
+              Math.floor(randomNumber * allDyes[dyeGroup].length)
+            ];
+          randomizedPiece.dyeGroup = dyeGroup;
+          randomizedPiece.dye = dye;
+        }
+        break;
+      case "foot":
+        const footIndex = Math.floor(randomNumber * maxOptions);
+        randomizedPiece.name = feet[footIndex].name;
+        randomizedPiece.dyeable = feet[footIndex].dyeable;
+        if (randomizedPiece.dyeable) {
+          const dyeGroup = Math.floor(randomNumber * allDyes.length);
+          const dye =
+            allDyes[dyeGroup][
+              Math.floor(randomNumber * allDyes[dyeGroup].length)
+            ];
+          randomizedPiece.dyeGroup = dyeGroup;
+          randomizedPiece.dye = dye;
+        }
+        break;
+    }
+    return randomizedPiece;
+  };
+
+  const randomizeGlamour = () => {
+    const randomGlamSet: fullGlamSet = {
+      helmet: {
+        name: "",
+        dyeable: false,
+        dyeGroup: 0,
+        dye: "",
+      },
+      chest: {
+        name: "",
+        dyeable: false,
+        dyeGroup: 0,
+        dye: "",
+      },
+      glove: {
+        name: "",
+        dyeable: false,
+        dyeGroup: 0,
+        dye: "",
+      },
+      leg: {
+        name: "",
+        dyeable: false,
+        dyeGroup: 0,
+        dye: "",
+      },
+      foot: {
+        name: "",
+        dyeable: false,
+        dyeGroup: 0,
+        dye: "",
+      },
+    };
+    inputData.map((piece) => {
+      const randomNumber = Math.random();
+      const randoPiece = randomizePiece(
+        piece.pieceName,
+        piece.maxOptions,
+        randomNumber
+      );
+      randomGlamSet[piece.pieceName as keyof fullGlamSet] = randoPiece;
+    });
+    setCompletedGlam(randomGlamSet);
+    openSuccessWindow();
+  };
+
   const value = {
     invalid,
     displayWelcome,
@@ -270,6 +409,7 @@ export function FormProvider({ children }: Props) {
     handleGearChange,
     handleGearDyeGroup,
     handleGearDyeColor,
+    randomizeGlamour,
   };
 
   return (

@@ -35,6 +35,7 @@ export type AppContextType = {
   handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
   handleGearDyeGroup: (arg0: string, arg1: string) => void;
   handleGearDyeColor: (arg0: string, arg1: string) => void;
+  randomizeGlamour: () => void;
 };
 
 export type invalidPiece = {
