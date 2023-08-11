@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAppContext } from "../context/AppContext";
 import { useModalContext } from "../context/ModalContext";
 import { fullGlamSet } from "@/app/lib/types";
@@ -11,6 +11,11 @@ export default function SuccessModal() {
   const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
   const { displaySuccess, closeSuccessWindow } = useModalContext();
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 500);
+  }, [displaySuccess]);
 
   function renderItemIcon(itemType: string, name: string) {
     const formattedName = name.replace(/\s+/g, "_");
