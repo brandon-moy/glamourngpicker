@@ -28,8 +28,8 @@ export default function GlamourForm() {
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">
-        <div className="w-full h-12 text-center ">
-          <p className="w-full text-2xl font-bold font-poppins">
+        <div className="w-full pt-2 text-center bg-darker">
+          <p className="w-full pb-2 text-2xl font-bold text-white font-poppins">
             GlamouRNG Picker
           </p>
           <div className="h-[5px] bg-gradient"></div>
