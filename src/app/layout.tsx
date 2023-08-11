@@ -36,7 +36,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AppProvider>
-          <ModalProvider>{children}</ModalProvider>
+          <ModalProvider>
+            <div
+              className="fixed top-0 z-[-100] w-screen h-full lg:h-screen bg-center bg-cover brightness-50 sepia-[25%]"
+              style={{ backgroundImage: "url(/background.webp)" }}
+            ></div>
+            {children}
+          </ModalProvider>
         </AppProvider>
       </body>
     </html>
