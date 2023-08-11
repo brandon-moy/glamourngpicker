@@ -14,7 +14,7 @@ export default function SuccessModal() {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => setLoading(false), 1000);
   }, [displaySuccess]);
 
   function renderItemIcon(itemType: string, name: string) {
@@ -90,7 +90,7 @@ export default function SuccessModal() {
   const rerollGlamour = () => {
     setLoading(true);
     randomizeGlamour();
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => setLoading(false), 1000);
   };
 
   if (!displaySuccess) return <></>;
