@@ -5,7 +5,7 @@ export default function HelmetInputs() {
   const {
     helmet,
     invalidHelmet,
-    allDyesData,
+    allDyeGroups,
     invalidHelmetDyeGroup,
     invalidHelmetDye,
     handleHelmetChange,
@@ -67,9 +67,9 @@ export default function HelmetInputs() {
           }`}
           name="dye-color"
           min="1"
-          max={allDyesData[helmet.dyeGroup].length}
+          max={allDyeGroups[helmet.dyeGroup].length}
           disabled={!helmet.dyeable}
-          placeholder={`1-${allDyesData[helmet.dyeGroup].length}`}
+          placeholder={`1-${allDyeGroups[helmet.dyeGroup].length}`}
           onChange={(e) => handleHelmetDyeColor(e.target.value)}
         ></input>
       </label>
