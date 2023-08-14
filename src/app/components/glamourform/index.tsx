@@ -35,7 +35,7 @@ export default function GlamourForm() {
           </p>
           <div className="h-[5px] bg-gradient"></div>
         </div>
-        <FormInputs />
+        {/* <FormInputs /> */}
         <HelmetInputs />
         <div className="flex w-full mt-4 justify-evenly">
           <button

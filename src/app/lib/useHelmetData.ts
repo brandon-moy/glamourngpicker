@@ -52,13 +52,11 @@ export function useHelmetData() {
       return;
     }
     setInvalidHelmetDye(false);
-    const randomizedDyeGroup = randomizeItemSets(allDyes);
-    const dyeGroup = randomizedDyeGroup[+value];
     const { name, dyeable, dye } = helmet;
     const updatedHelmet = {
       name,
       dyeable,
-      dyeGroup,
+      dyeGroup: +value,
       dye,
     };
     setHelmet(updatedHelmet);
@@ -72,7 +70,7 @@ export function useHelmetData() {
     }
     setInvalidHelmetDye(false);
     const randomizedDyes = randomizeItemSets(allDyes[dyeIndex]);
-    console.log(randomizedDyes);
+
     const dye = randomizedDyes[+value];
     const { name, dyeable, dyeGroup } = helmet;
     const updatedHelmet = {

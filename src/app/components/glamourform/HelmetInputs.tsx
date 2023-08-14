@@ -2,6 +2,7 @@
 import { useHelmetData } from "@/app/lib/useHelmetData";
 import { allDyes } from "@/app/lib/dyes";
 import { useEffect } from "react";
+import randomizeItemSets from "@/app/lib/randomizeItemSets";
 
 export default function HelmetInputs() {
   const {
