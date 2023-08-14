@@ -1,7 +1,6 @@
 "use client";
 import { createContext, useContext, ReactNode } from "react";
-import { allDyes } from "@/app/lib/dyes";
-import { itemsData } from "@/app/lib/items";
+import { allDyes, itemsData } from "@/app/lib";
 import { AppContextType } from "@/app/lib/types";
 import { usePieceData } from "@/app/lib/usePieceData";
 

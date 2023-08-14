@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { fullPiece, gearPiece } from "./types";
-import { allDyes } from "./dyes";
-import randomizeItemSets from "./randomizeItemSets";
-
+import {
+  allDyes,
+  randomizeDyeSets,
+  randomizeDyeColor,
+  randomizeItemSets,
+} from ".";
 const defaultPiece: fullPiece = {
   name: "",
   dyeable: false,
@@ -53,7 +56,7 @@ export function usePieceData(itemSet: gearPiece[], maxValue: number) {
       return;
     }
     setInvalidPieceDyeGroup(false);
-    const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+    const randomizedDyeGroups = randomizeDyeSets([...allDyeGroups]);
     setAllDyeGroups(randomizedDyeGroups);
     const { name, dyeable, dye } = piece;
     const dyeGroup = +value - 1;
@@ -74,7 +77,7 @@ export function usePieceData(itemSet: gearPiece[], maxValue: number) {
       return;
     }
     setInvalidPieceDye(false);
-    const randomizedDyes = randomizeItemSets([...allDyeGroups[dyeIndex]]);
+    const randomizedDyes = randomizeDyeColor([...allDyeGroups[dyeIndex]]);
     const dye = randomizedDyes[+value - 1];
     const { name, dyeable, dyeGroup } = piece;
     const updatedPiece = {
@@ -94,12 +97,12 @@ export function usePieceData(itemSet: gearPiece[], maxValue: number) {
     let dye = "";
     if (dyeable) {
       const randomDyeGroupIndex = Math.floor(Math.random() * 9);
-      const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+      const randomizedDyeGroups = randomizeDyeSets([...allDyeGroups]);
       dyeGroup = randomDyeGroupIndex;
       const randomDyeGroup = randomizedDyeGroups[randomDyeGroupIndex];
 
       const randomDyeIndex = Math.floor(Math.random() * randomDyeGroup.length);
-      const randomizedDyes = randomizeItemSets([...randomDyeGroup]);
+      const randomizedDyes = randomizeDyeColor([...randomDyeGroup]);
       dye = randomizedDyes[randomDyeIndex];
     }
 

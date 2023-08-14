@@ -132,3 +132,5 @@ export const allDyes: dyeSets[] = [
     "General-purpose Metallic Orange Dye",
   ],
 ];
+
+export default allDyes;

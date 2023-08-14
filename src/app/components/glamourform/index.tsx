@@ -2,11 +2,7 @@
 import { FormEvent } from "react";
 import { useModalContext } from "../context/ModalContext";
 import { useAppContext } from "../context/AppContext";
-import HelmetInputs from "./inputs/HelmetInputs";
-import ChestInputs from "./inputs/ChestInputs";
-import GloveInputs from "./inputs/GloveInputs";
-import LegInputs from "./inputs/LegInputs";
-import BootInputs from "./inputs/BootInputs";
+import FormInputs from "./inputs/FormInputs";
 
 export default function GlamourForm() {
   const { openSuccessWindow } = useModalContext();
@@ -42,11 +38,7 @@ export default function GlamourForm() {
           </p>
           <div className="h-[5px] bg-gradient"></div>
         </div>
-        <HelmetInputs />
-        <ChestInputs />
-        <GloveInputs />
-        <LegInputs />
-        <BootInputs />
+        <FormInputs />
         <div className="flex w-full mt-4 justify-evenly">
           <button
             type="button"
