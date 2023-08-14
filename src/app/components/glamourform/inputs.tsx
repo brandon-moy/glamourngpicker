@@ -72,9 +72,9 @@ export default function FormInputs() {
               placeholder="1-9"
               min="1"
               max="9"
-              onChange={(e) =>
-                handleGearDyeGroup(piece.pieceName, e.target.value)
-              }
+              onChange={(e) => {
+                handleGearDyeGroup(piece.pieceName, e.target.value);
+              }}
             ></input>
             <input
               type="number"

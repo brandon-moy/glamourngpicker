@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
 import FormInputs from "./inputs";
 import { useModalContext } from "../context/ModalContext";
+import HelmetInputs from "./HelmetInputs";
 
 export default function GlamourForm() {
   const { completedGlam, randomizeGlamour } = useAppContext();
@@ -35,6 +36,7 @@ export default function GlamourForm() {
           <div className="h-[5px] bg-gradient"></div>
         </div>
         <FormInputs />
+        <HelmetInputs />
         <div className="flex w-full mt-4 justify-evenly">
           <button
             type="button"

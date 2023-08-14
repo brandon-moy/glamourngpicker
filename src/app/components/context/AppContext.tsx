@@ -142,8 +142,8 @@ export function AppProvider({ children }: Props) {
     const piece = invalid[slotName as keyof invalid];
     piece.piece = false;
     setInvalid({ ...invalid, [slotName]: piece });
-    const index = Math.floor(Math.random() * +value);
     const formattedName = slotName + "s";
+    const index = Math.floor(Math.random() * +value);
     const name: string = itemsData[formattedName as keyof allItems][index].name;
     const dyeable: boolean =
       itemsData[formattedName as keyof allItems][index].dyeable;
