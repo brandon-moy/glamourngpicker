@@ -1,6 +1,4 @@
-type dye = string;
-
-type dyeSets = dye[];
+import { dyeSets } from "./types";
 
 export const allDyes: dyeSets[] = [
   [

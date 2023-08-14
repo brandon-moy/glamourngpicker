@@ -1,19 +1,15 @@
-import { useBootData } from "@/app/lib/useBootData";
+import { useAppContext } from "../../context/AppContext";
 
 export default function BootInputs() {
-  const {
-    boot,
-    invalidBoot,
-    allDyeGroups,
-    invalidBootDyeGroup,
-    invalidBootDye,
-    handleBootChange,
-    handleBootDyeGroup,
-    handleBootDyeColor,
-  } = useBootData();
+  const { boot } = useAppContext();
 
   function displayError() {
-    if (!invalidBoot && !invalidBootDye && !invalidBootDyeGroup) return <></>;
+    if (
+      !boot.invalidPiece &&
+      !boot.invalidPieceDye &&
+      !boot.invalidPieceDyeGroup
+    )
+      return <></>;
     return (
       <span className="pl-2 text-sm text-red-500">
         Invalid values for boot or dye
@@ -27,9 +23,9 @@ export default function BootInputs() {
         Boot:
         <p>{displayError()}</p>
         <input
-          onChange={(e) => handleBootChange(e.target.value)}
+          onChange={(e) => boot.handlePieceChange(e.target.value)}
           className={`w-full pl-2 font-normal border-solid outline-none focus:ring-0 border rounded border-2 ${
-            invalidBoot
+            boot.invalidPiece
               ? "border-red-500 text-red-500"
               : "focus:border-secondary"
           }`}
@@ -44,31 +40,31 @@ export default function BootInputs() {
         Dye:{" "}
         <input
           className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
-            invalidBootDyeGroup
+            boot.invalidPieceDyeGroup
               ? "border-red-500 text-red-500"
               : "focus:border-secondary"
           }`}
           type="number"
           name="dye-category"
-          disabled={!boot.dyeable}
+          disabled={!boot.piece.dyeable}
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleBootDyeGroup(e.target.value)}
+          onChange={(e) => boot.handlePieceDyeGroup(e.target.value)}
         ></input>
         <input
           type="number"
           className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
-            invalidBootDye
+            boot.invalidPieceDye
               ? "border-red-500 text-red-500"
               : "focus:border-secondary"
           }`}
           name="dye-color"
           min="1"
-          max={allDyeGroups[boot.dyeGroup].length}
-          disabled={!boot.dyeable}
-          placeholder={`1-${allDyeGroups[boot.dyeGroup].length}`}
-          onChange={(e) => handleBootDyeColor(e.target.value)}
+          max={boot.allDyeGroups[boot.piece.dyeGroup].length}
+          disabled={!boot.piece.dyeable}
+          placeholder={`1-${boot.allDyeGroups[boot.piece.dyeGroup].length}`}
+          onChange={(e) => boot.handlePieceDyeColor(e.target.value)}
         ></input>
       </label>
     </div>

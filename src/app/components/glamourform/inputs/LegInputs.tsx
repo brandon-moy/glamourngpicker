@@ -1,19 +1,11 @@
-import { useLegData } from "@/app/lib/useLegData";
+import { useAppContext } from "../../context/AppContext";
 
 export default function LegInputs() {
-  const {
-    leg,
-    invalidLeg,
-    allDyeGroups,
-    invalidLegDyeGroup,
-    invalidLegDye,
-    handleLegChange,
-    handleLegDyeGroup,
-    handleLegDyeColor,
-  } = useLegData();
+  const { leg } = useAppContext();
 
   function displayError() {
-    if (!invalidLeg && !invalidLegDye && !invalidLegDyeGroup) return <></>;
+    if (!leg.invalidPiece && !leg.invalidPieceDye && !leg.invalidPieceDyeGroup)
+      return <></>;
     return (
       <span className="pl-2 text-sm text-red-500">
         Invalid values for leg or dye
@@ -27,9 +19,9 @@ export default function LegInputs() {
         Leg:
         <p>{displayError()}</p>
         <input
-          onChange={(e) => handleLegChange(e.target.value)}
+          onChange={(e) => leg.handlePieceChange(e.target.value)}
           className={`w-full pl-2 font-normal border-solid outline-none focus:ring-0 border rounded border-2 ${
-            invalidLeg
+            leg.invalidPiece
               ? "border-red-500 text-red-500"
               : "focus:border-secondary"
           }`}
@@ -44,31 +36,31 @@ export default function LegInputs() {
         Dye:{" "}
         <input
           className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
-            invalidLegDyeGroup
+            leg.invalidPieceDyeGroup
               ? "border-red-500 text-red-500"
               : "focus:border-secondary"
           }`}
           type="number"
           name="dye-category"
-          disabled={!leg.dyeable}
+          disabled={!leg.piece.dyeable}
           placeholder="1-9"
           min="1"
           max="9"
-          onChange={(e) => handleLegDyeGroup(e.target.value)}
+          onChange={(e) => leg.handlePieceDyeGroup(e.target.value)}
         ></input>
         <input
           type="number"
           className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
-            invalidLegDye
+            leg.invalidPieceDye
               ? "border-red-500 text-red-500"
               : "focus:border-secondary"
           }`}
           name="dye-color"
           min="1"
-          max={allDyeGroups[leg.dyeGroup].length}
-          disabled={!leg.dyeable}
-          placeholder={`1-${allDyeGroups[leg.dyeGroup].length}`}
-          onChange={(e) => handleLegDyeColor(e.target.value)}
+          max={leg.allDyeGroups[leg.piece.dyeGroup].length}
+          disabled={!leg.piece.dyeable}
+          placeholder={`1-${leg.allDyeGroups[leg.piece.dyeGroup].length}`}
+          onChange={(e) => leg.handlePieceDyeColor(e.target.value)}
         ></input>
       </label>
     </div>
