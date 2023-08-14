@@ -6,12 +6,30 @@ import { fullGlamSet } from "@/app/lib/types";
 import capitalizeWord from "@/app/lib/capitalizeWord";
 import Image from "next/image";
 import LoadingSpinner from "./Loading";
+import { useHelmetData } from "@/app/lib/useHelmetData";
+import { useChestData } from "@/app/lib/useChestData";
+import { useGloveData } from "@/app/lib/useGloveData";
+import { useLegData } from "@/app/lib/useLegData";
+import { useBootData } from "@/app/lib/useBootData";
 
 export default function SuccessModal() {
-  const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
+  // const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
+  const { helmet, randomizeHelmet, resetHelmet } = useHelmetData();
+  const { chest, randomizeChest, resetChest } = useChestData();
+  const { glove, randomizeGlove, resetGlove } = useGloveData();
+  const { leg, randomizeLeg, resetLeg } = useLegData();
+  const { boot, randomizeBoot, resetBoot } = useBootData();
+
   const { displaySuccess, closeSuccessWindow } = useModalContext();
   const [loading, setLoading] = useState<boolean>(false);
 
+  const completedGlam = {
+    helmet,
+    chest,
+    glove,
+    leg,
+    boot,
+  };
   useEffect(() => {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
@@ -83,13 +101,21 @@ export default function SuccessModal() {
   }
 
   const restartGlamouRNG = () => {
-    resetGlam();
+    resetHelmet();
+    resetChest();
+    resetGlove();
+    resetLeg();
+    resetBoot();
     closeSuccessWindow();
   };
 
   const rerollGlamour = () => {
     setLoading(true);
-    randomizeGlamour();
+    randomizeHelmet();
+    randomizeChest();
+    randomizeGlove();
+    randomizeLeg();
+    randomizeBoot();
     setTimeout(() => setLoading(false), 1000);
   };
 

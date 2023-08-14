@@ -19,6 +19,10 @@ export function useGloveData() {
   const [invalidGloveDye, setInvalidGloveDye] = useState<boolean>(false);
   const [allDyeGroups, setAllDyeGroups] = useState(allDyes);
 
+  const resetGlove = () => {
+    setGlove(defaultGlove);
+  };
+
   const handleGloveChange = (value: string) => {
     if (!value.length) return;
     if (+value < 1 || +value > 213) {
@@ -84,8 +88,9 @@ export function useGloveData() {
   };
 
   const randomizeGlove = () => {
-    const randomGloveIndex = Math.floor(Math.random() * 213);
+    const randomGloveIndex = Math.floor(Math.random() * 47);
     const randomizedGloves = randomizeItemSets([...gloves]);
+
     const { name, dyeable } = randomizedGloves[randomGloveIndex];
     let dyeGroup = 0;
     let dye = "";
@@ -120,6 +125,7 @@ export function useGloveData() {
     handleGloveDyeGroup,
     handleGloveDyeColor,
     randomizeGlove,
+    resetGlove,
   };
 
   return gloveProps;

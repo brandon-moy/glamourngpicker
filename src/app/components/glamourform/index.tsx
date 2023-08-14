@@ -10,13 +10,12 @@ import { useLegData } from "@/app/lib/useLegData";
 import { useBootData } from "@/app/lib/useBootData";
 
 export default function GlamourForm() {
-  const { helmet } = useHelmetData();
-  const { chest } = useChestData();
-  const { glove } = useGloveData();
-  const { leg } = useLegData();
-  const { boot } = useBootData();
+  const { helmet, randomizeHelmet } = useHelmetData();
+  const { chest, randomizeChest } = useChestData();
+  const { glove, randomizeGlove } = useGloveData();
+  const { leg, randomizeLeg } = useLegData();
+  const { boot, randomizeBoot } = useBootData();
 
-  const { completedGlam, randomizeGlamour } = useAppContext();
   const { openSuccessWindow } = useModalContext();
 
   function handleSubmit(e: FormEvent) {
@@ -26,7 +25,11 @@ export default function GlamourForm() {
   }
 
   const randomize = () => {
-    randomizeGlamour();
+    randomizeHelmet();
+    randomizeChest();
+    randomizeGlove();
+    randomizeLeg();
+    randomizeBoot();
     openSuccessWindow();
   };
 

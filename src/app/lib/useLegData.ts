@@ -18,6 +18,10 @@ export function useLegData() {
   const [invalidLegDye, setInvalidLegDye] = useState<boolean>(false);
   const [allDyeGroups, setAllDyeGroups] = useState(allDyes);
 
+  const resetLeg = () => {
+    setLeg(defaultLeg);
+  };
+
   const handleLegChange = (value: string) => {
     if (!value.length) return;
     if (+value < 1 || +value > 213) {
@@ -83,7 +87,7 @@ export function useLegData() {
   };
 
   const randomizeLeg = () => {
-    const randomLegIndex = Math.floor(Math.random() * 213);
+    const randomLegIndex = Math.floor(Math.random() * 97);
     const randomizedLegs = randomizeItemSets([...legs]);
     const { name, dyeable } = randomizedLegs[randomLegIndex];
     let dyeGroup = 0;
@@ -119,6 +123,7 @@ export function useLegData() {
     handleLegDyeGroup,
     handleLegDyeColor,
     randomizeLeg,
+    resetLeg,
   };
 
   return legProps;

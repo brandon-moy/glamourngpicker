@@ -19,6 +19,10 @@ export function useBootData() {
   const [invalidBootDye, setInvalidBootDye] = useState<boolean>(false);
   const [allDyeGroups, setAllDyeGroups] = useState(allDyes);
 
+  const resetBoot = () => {
+    setBoot(defaultBoot);
+  };
+
   const handleBootChange = (value: string) => {
     if (!value.length) return;
     if (+value < 1 || +value > 213) {
@@ -84,7 +88,7 @@ export function useBootData() {
   };
 
   const randomizeBoot = () => {
-    const randomBootIndex = Math.floor(Math.random() * 213);
+    const randomBootIndex = Math.floor(Math.random() * 97);
     const randomizedBoots = randomizeItemSets([...boots]);
     const { name, dyeable } = randomizedBoots[randomBootIndex];
     let dyeGroup = 0;
@@ -120,6 +124,7 @@ export function useBootData() {
     handleBootDyeGroup,
     handleBootDyeColor,
     randomizeBoot,
+    resetBoot,
   };
 
   return bootProps;

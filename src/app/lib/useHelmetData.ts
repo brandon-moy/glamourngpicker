@@ -19,6 +19,10 @@ export function useHelmetData() {
   const [invalidHelmetDye, setInvalidHelmetDye] = useState<boolean>(false);
   const [allDyeGroups, setAllDyeGroups] = useState(allDyes);
 
+  const resetHelmet = () => {
+    setHelmet(defaultHelmet);
+  };
+
   const handleHelmetChange = (value: string) => {
     if (!value.length) return;
     if (+value < 1 || +value > 213) {
@@ -120,6 +124,7 @@ export function useHelmetData() {
     handleHelmetDyeGroup,
     handleHelmetDyeColor,
     randomizeHelmet,
+    resetHelmet,
   };
 
   return helmetProps;
