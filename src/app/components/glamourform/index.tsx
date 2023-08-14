@@ -1,11 +1,7 @@
 "use client";
 import { FormEvent } from "react";
 import { useModalContext } from "../context/ModalContext";
-// import { useHelmetData } from "@/app/lib/useGearData";
-import { useChestData } from "@/app/lib/useChestData";
-import { useGloveData } from "@/app/lib/useGloveData";
-import { useLegData } from "@/app/lib/useLegData";
-import { useBootData } from "@/app/lib/useBootData";
+import { useAppContext } from "../context/AppContext";
 import HelmetInputs from "./inputs/HelmetInputs";
 import ChestInputs from "./inputs/ChestInputs";
 import GloveInputs from "./inputs/GloveInputs";
@@ -13,12 +9,8 @@ import LegInputs from "./inputs/LegInputs";
 import BootInputs from "./inputs/BootInputs";
 
 export default function GlamourForm() {
-  // const { helmet, randomizeHelmet } = useHelmetData();
-  const { chest, randomizeChest } = useChestData();
-  const { glove, randomizeGlove } = useGloveData();
-  const { leg, randomizeLeg } = useLegData();
-  const { boot, randomizeBoot } = useBootData();
   const { openSuccessWindow } = useModalContext();
+  const { helmet, chest, glove, leg, boot } = useAppContext();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -27,20 +19,20 @@ export default function GlamourForm() {
   }
 
   const randomize = () => {
-    // randomizeHelmet();
-    randomizeChest();
-    randomizeGlove();
-    randomizeLeg();
-    randomizeBoot();
+    helmet.randomizePiece();
+    chest.randomizePiece();
+    glove.randomizePiece();
+    leg.randomizePiece();
+    boot.randomizePiece();
     openSuccessWindow();
   };
 
   const emptyInputs =
-    // helmet.name !== "" &&
-    chest.name !== "" &&
-    glove.name !== "" &&
-    leg.name !== "" &&
-    boot.name !== "";
+    helmet.piece.name !== "" &&
+    chest.piece.name !== "" &&
+    glove.piece.name !== "" &&
+    leg.piece.name !== "" &&
+    boot.piece.name !== "";
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">

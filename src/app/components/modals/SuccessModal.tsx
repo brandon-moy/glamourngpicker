@@ -2,32 +2,20 @@
 import Image from "next/image";
 import LoadingSpinner from "./Loading";
 import React, { useState, useEffect } from "react";
-import { fullGlamSet } from "@/app/lib/types";
+import { fullPiece } from "@/app/lib/types";
 import capitalizeWord from "@/app/lib/capitalizeWord";
-// import { useHelmetData } from "@/app/lib/useGearData";
-import { useChestData } from "@/app/lib/useChestData";
-import { useGloveData } from "@/app/lib/useGloveData";
-import { useLegData } from "@/app/lib/useLegData";
-import { useBootData } from "@/app/lib/useBootData";
 import { useModalContext } from "../context/ModalContext";
 import { useAppContext } from "../context/AppContext";
 
 export default function SuccessModal() {
-  // const { helmet, randomizeHelmet, resetHelmet } = useHelmetData();
-  const { chest, randomizeChest, resetChest } = useChestData();
-  const { glove, randomizeGlove, resetGlove } = useGloveData();
-  const { leg, randomizeLeg, resetLeg } = useLegData();
-  const { boot, randomizeBoot, resetBoot } = useBootData();
-  const { helmet } = useAppContext();
-
+  const { helmet, chest, glove, leg, boot } = useAppContext();
   const { displaySuccess, closeSuccessWindow } = useModalContext();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
-    console.log(helmet.piece);
     setTimeout(() => setLoading(false), 1000);
-  }, [displaySuccess, helmet, chest, glove, leg, boot]);
+  }, [displaySuccess]);
 
   function renderItemIcon(itemType: string, name: string) {
     const formattedName = name.replace(/\s+/g, "_");
@@ -66,7 +54,20 @@ export default function SuccessModal() {
     }
   }
 
-  function renderGlam(glamSet: fullGlamSet) {
+  function renderGlam(
+    helmet: fullPiece,
+    chest: fullPiece,
+    glove: fullPiece,
+    leg: fullPiece,
+    boot: fullPiece
+  ) {
+    const glamSet = {
+      helmet,
+      chest,
+      glove,
+      leg,
+      boot,
+    };
     return Object.entries(glamSet).map(([item, value]) => {
       const { name, dyeable, dye } = value;
       const itemName = capitalizeWord(item);
@@ -95,19 +96,21 @@ export default function SuccessModal() {
   }
 
   const restartGlamouRNG = () => {
-    resetChest();
-    resetGlove();
-    resetLeg();
-    resetBoot();
+    helmet.resetPiece();
+    chest.resetPiece();
+    glove.resetPiece();
+    leg.resetPiece();
+    boot.resetPiece();
     closeSuccessWindow();
   };
 
   const rerollGlamour = () => {
     setLoading(true);
-    randomizeChest();
-    randomizeGlove();
-    randomizeLeg();
-    randomizeBoot();
+    helmet.randomizePiece();
+    chest.randomizePiece();
+    glove.randomizePiece();
+    leg.randomizePiece();
+    boot.randomizePiece();
     setTimeout(() => setLoading(false), 1000);
   };
 
@@ -124,7 +127,13 @@ export default function SuccessModal() {
           choice!
         </p>
         <div className="flex flex-wrap">
-          {/* {renderGlam(completedGlam)} */}
+          {renderGlam(
+            helmet.piece,
+            chest.piece,
+            glove.piece,
+            leg.piece,
+            boot.piece
+          )}
         </div>
         <div className="flex w-full pt-4 justify-evenly">
           <button
