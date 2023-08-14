@@ -1,6 +1,7 @@
 import { gearPiece } from "./types";
 
-export default function randomizeItemSets(itemSet: gearPiece[]) {
+// need to update from any type after fixing other errors from converting code
+export default function randomizeItemSets(itemSet: any) {
   const shuffledItemSet = [];
 
   while (itemSet.length) {
