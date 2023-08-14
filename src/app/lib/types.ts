@@ -18,19 +18,6 @@ export type allItems = {
   boots: gearPiece[];
 };
 
-export type formInputData = {
-  pieceName: string;
-  maxOptions: number;
-};
-
-export type fullGlamSet = {
-  helmet: fullPiece;
-  chest: fullPiece;
-  glove: fullPiece;
-  leg: fullPiece;
-  boot: fullPiece;
-};
-
 export type dyeSets = string[];
 
 type itemContextType = {
