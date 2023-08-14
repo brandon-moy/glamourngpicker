@@ -83,6 +83,33 @@ export function useGloveData() {
     setGlove(updatedGlove);
   };
 
+  const randomizeGlove = () => {
+    const randomGloveIndex = Math.floor(Math.random() * 213);
+    const randomizedGloves = randomizeItemSets([...gloves]);
+    const { name, dyeable } = randomizedGloves[randomGloveIndex];
+    let dyeGroup = 0;
+    let dye = "";
+    if (dyeable) {
+      const randomDyeGroupIndex = Math.floor(Math.random() * 9);
+      const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+      dyeGroup = randomDyeGroupIndex;
+      const randomDyeGroup = randomizedDyeGroups[randomDyeGroupIndex];
+
+      const randomDyeIndex = Math.floor(Math.random() * randomDyeGroup.length);
+      const randomizedDyes = randomizeItemSets([...randomDyeGroup]);
+      dye = randomizedDyes[randomDyeIndex];
+    }
+
+    const updatedGlove = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+
+    setGlove(updatedGlove);
+  };
+
   const gloveProps = {
     glove,
     invalidGlove,
@@ -92,6 +119,7 @@ export function useGloveData() {
     handleGloveChange,
     handleGloveDyeGroup,
     handleGloveDyeColor,
+    randomizeGlove,
   };
 
   return gloveProps;

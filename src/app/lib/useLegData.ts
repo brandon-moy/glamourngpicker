@@ -82,6 +82,33 @@ export function useLegData() {
     setLeg(updatedLeg);
   };
 
+  const randomizeLeg = () => {
+    const randomLegIndex = Math.floor(Math.random() * 213);
+    const randomizedLegs = randomizeItemSets([...legs]);
+    const { name, dyeable } = randomizedLegs[randomLegIndex];
+    let dyeGroup = 0;
+    let dye = "";
+    if (dyeable) {
+      const randomDyeGroupIndex = Math.floor(Math.random() * 9);
+      const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+      dyeGroup = randomDyeGroupIndex;
+      const randomDyeGroup = randomizedDyeGroups[randomDyeGroupIndex];
+
+      const randomDyeIndex = Math.floor(Math.random() * randomDyeGroup.length);
+      const randomizedDyes = randomizeItemSets([...randomDyeGroup]);
+      dye = randomizedDyes[randomDyeIndex];
+    }
+
+    const updatedLeg = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+
+    setLeg(updatedLeg);
+  };
+
   const legProps = {
     leg,
     invalidLeg,
@@ -91,6 +118,7 @@ export function useLegData() {
     handleLegChange,
     handleLegDyeGroup,
     handleLegDyeColor,
+    randomizeLeg,
   };
 
   return legProps;

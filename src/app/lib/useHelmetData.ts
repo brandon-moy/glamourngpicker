@@ -106,7 +106,7 @@ export function useHelmetData() {
       dyeGroup,
       dye,
     };
-    console.log(updatedHelmet);
+
     setHelmet(updatedHelmet);
   };
 

@@ -84,6 +84,33 @@ export function useChestData() {
     setChest(updatedChest);
   };
 
+  const randomizeChest = () => {
+    const randomChestIndex = Math.floor(Math.random() * 213);
+    const randomizedChests = randomizeItemSets([...chests]);
+    const { name, dyeable } = randomizedChests[randomChestIndex];
+    let dyeGroup = 0;
+    let dye = "";
+    if (dyeable) {
+      const randomDyeGroupIndex = Math.floor(Math.random() * 9);
+      const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+      dyeGroup = randomDyeGroupIndex;
+      const randomDyeGroup = randomizedDyeGroups[randomDyeGroupIndex];
+
+      const randomDyeIndex = Math.floor(Math.random() * randomDyeGroup.length);
+      const randomizedDyes = randomizeItemSets([...randomDyeGroup]);
+      dye = randomizedDyes[randomDyeIndex];
+    }
+
+    const updatedChest = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+
+    setChest(updatedChest);
+  };
+
   const chestProps = {
     chest,
     invalidChest,
@@ -93,6 +120,7 @@ export function useChestData() {
     handleChestChange,
     handleChestDyeGroup,
     handleChestDyeColor,
+    randomizeChest,
   };
 
   return chestProps;

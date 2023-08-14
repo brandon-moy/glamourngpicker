@@ -83,6 +83,33 @@ export function useBootData() {
     setBoot(updatedBoot);
   };
 
+  const randomizeBoot = () => {
+    const randomBootIndex = Math.floor(Math.random() * 213);
+    const randomizedBoots = randomizeItemSets([...boots]);
+    const { name, dyeable } = randomizedBoots[randomBootIndex];
+    let dyeGroup = 0;
+    let dye = "";
+    if (dyeable) {
+      const randomDyeGroupIndex = Math.floor(Math.random() * 9);
+      const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+      dyeGroup = randomDyeGroupIndex;
+      const randomDyeGroup = randomizedDyeGroups[randomDyeGroupIndex];
+
+      const randomDyeIndex = Math.floor(Math.random() * randomDyeGroup.length);
+      const randomizedDyes = randomizeItemSets([...randomDyeGroup]);
+      dye = randomizedDyes[randomDyeIndex];
+    }
+
+    const updatedBoot = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+
+    setBoot(updatedBoot);
+  };
+
   const bootProps = {
     boot,
     invalidBoot,
@@ -92,6 +119,7 @@ export function useBootData() {
     handleBootChange,
     handleBootDyeGroup,
     handleBootDyeColor,
+    randomizeBoot,
   };
 
   return bootProps;
