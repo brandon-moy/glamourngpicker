@@ -1,4 +1,3 @@
-"use client";
 import { useGloveData } from "@/app/lib/useGloveData";
 
 export default function GloveInputs() {

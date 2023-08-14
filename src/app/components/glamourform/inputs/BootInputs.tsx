@@ -1,4 +1,3 @@
-"use client";
 import { useBootData } from "@/app/lib/useBootData";
 
 export default function BootInputs() {

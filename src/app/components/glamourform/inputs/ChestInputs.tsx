@@ -1,4 +1,3 @@
-"use client";
 import { useChestData } from "@/app/lib/useChestData";
 
 export default function ChestInputs() {

@@ -1,4 +1,3 @@
-"use client";
 import { useHelmetData } from "@/app/lib/useHelmetData";
 
 export default function HelmetInputs() {

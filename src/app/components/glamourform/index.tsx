@@ -3,8 +3,19 @@ import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
 import FormInputs from "./inputs/FormInputs";
 import { useModalContext } from "../context/ModalContext";
+import { useHelmetData } from "@/app/lib/useHelmetData";
+import { useChestData } from "@/app/lib/useChestData";
+import { useGloveData } from "@/app/lib/useGloveData";
+import { useLegData } from "@/app/lib/useLegData";
+import { useBootData } from "@/app/lib/useBootData";
 
 export default function GlamourForm() {
+  const { helmet } = useHelmetData();
+  const { chest } = useChestData();
+  const { glove } = useGloveData();
+  const { leg } = useLegData();
+  const { boot } = useBootData();
+
   const { completedGlam, randomizeGlamour } = useAppContext();
   const { openSuccessWindow } = useModalContext();
 
@@ -20,11 +31,11 @@ export default function GlamourForm() {
   };
 
   const emptyInputs =
-    completedGlam.helmet.name !== "" &&
-    completedGlam.chest.name !== "" &&
-    completedGlam.glove.name !== "" &&
-    completedGlam.leg.name !== "" &&
-    completedGlam.boot.name !== "";
+    helmet.name !== "" &&
+    chest.name !== "" &&
+    glove.name !== "" &&
+    leg.name !== "" &&
+    boot.name !== "";
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">

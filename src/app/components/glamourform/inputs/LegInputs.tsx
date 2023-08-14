@@ -1,4 +1,3 @@
-"use client";
 import { useLegData } from "@/app/lib/useLegData";
 
 export default function LegInputs() {

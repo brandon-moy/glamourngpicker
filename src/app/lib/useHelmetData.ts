@@ -83,6 +83,33 @@ export function useHelmetData() {
     setHelmet(updatedHelmet);
   };
 
+  const randomizeHelmet = () => {
+    const randomHelmetIndex = Math.floor(Math.random() * 213);
+    const randomizedHelmets = randomizeItemSets([...helmets]);
+    const { name, dyeable } = randomizedHelmets[randomHelmetIndex];
+    let dyeGroup = 0;
+    let dye = "";
+    if (dyeable) {
+      const randomDyeGroupIndex = Math.floor(Math.random() * 9);
+      const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+      dyeGroup = randomDyeGroupIndex;
+      const randomDyeGroup = randomizedDyeGroups[randomDyeGroupIndex];
+
+      const randomDyeIndex = Math.floor(Math.random() * randomDyeGroup.length);
+      const randomizedDyes = randomizeItemSets([...randomDyeGroup]);
+      dye = randomizedDyes[randomDyeIndex];
+    }
+
+    const updatedHelmet = {
+      name,
+      dyeable,
+      dyeGroup,
+      dye,
+    };
+    console.log(updatedHelmet);
+    setHelmet(updatedHelmet);
+  };
+
   const helmetProps = {
     helmet,
     invalidHelmet,
@@ -92,6 +119,7 @@ export function useHelmetData() {
     handleHelmetChange,
     handleHelmetDyeGroup,
     handleHelmetDyeColor,
+    randomizeHelmet,
   };
 
   return helmetProps;
