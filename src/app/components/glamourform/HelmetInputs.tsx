@@ -8,16 +8,12 @@ export default function HelmetInputs() {
   const {
     helmet,
     invalidHelmet,
+    allDyesData,
     invalidHelmetDye,
     handleHelmetChange,
     handleHelmetDyeGroup,
     handleHelmetDyeColor,
   } = useHelmetData();
-
-  useEffect(() => {
-    console.log("helmet", helmet);
-    console.log("invalidHelmet", invalidHelmet);
-  }, [helmet, invalidHelmet]);
 
   function displayError() {
     if (!invalidHelmet) return <></>;
@@ -72,9 +68,9 @@ export default function HelmetInputs() {
           }`}
           name="dye-color"
           min="1"
-          max={allDyes[helmet.dyeGroup].length}
+          max={allDyesData[helmet.dyeGroup].length}
           disabled={!helmet.dyeable}
-          placeholder={`1-${allDyes[helmet.dyeGroup].length}`}
+          placeholder={`1-${allDyesData[helmet.dyeGroup].length}`}
           onChange={(e) => handleHelmetDyeColor(e.target.value)}
         ></input>
       </label>

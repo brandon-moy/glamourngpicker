@@ -17,15 +17,18 @@ export function useHelmetData() {
   const [invalidHelmet, setInvalidHelmet] = useState<boolean>(false);
   const [invalidHelmetDye, setInvalidHelmetDye] = useState<boolean>(false);
   const [helmetData, setHelmetData] = useState(helmets);
+  const [allDyesData, setAllDyesData] = useState(allDyes);
 
   useEffect(() => {
     const randomizedHelmets = randomizeItemSets(helmets);
+    const randomizedDyes = randomizeItemSets([...allDyes]);
     setHelmetData(randomizedHelmets);
+    setAllDyesData(randomizedDyes);
   }, []);
 
   const handleHelmetChange = (value: string) => {
-    console.log(helmets);
-    if (value.length && (+value < 1 || +value > 213)) {
+    if (!value.length) return;
+    if (+value < 1 || +value > 213) {
       setInvalidHelmet(true);
       return;
     }
@@ -47,31 +50,34 @@ export function useHelmetData() {
   };
 
   const handleHelmetDyeGroup = (value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes.length)) {
+    if (!value.length) return;
+    if (+value < 1 || +value > allDyesData.length) {
       setInvalidHelmetDye(true);
       return;
     }
     setInvalidHelmetDye(false);
     const { name, dyeable, dye } = helmet;
+    const dyeGroup = +value - 1;
     const updatedHelmet = {
       name,
       dyeable,
-      dyeGroup: +value,
+      dyeGroup,
       dye,
     };
     setHelmet(updatedHelmet);
   };
 
   const handleHelmetDyeColor = (value: string) => {
+    if (!value.length) return;
     const dyeIndex = helmet.dyeGroup;
-    if (value.length && (+value < 1 || +value > allDyes[dyeIndex].length)) {
+    if (+value < 1 || +value > allDyesData[dyeIndex].length) {
       setInvalidHelmetDye(true);
       return;
     }
     setInvalidHelmetDye(false);
-    const randomizedDyes = randomizeItemSets(allDyes[dyeIndex]);
+    const randomizedDyes = randomizeItemSets([...allDyesData[dyeIndex]]);
 
-    const dye = randomizedDyes[+value];
+    const dye = randomizedDyes[+value - 1];
     const { name, dyeable, dyeGroup } = helmet;
     const updatedHelmet = {
       name,
@@ -86,6 +92,7 @@ export function useHelmetData() {
     helmet,
     invalidHelmet,
     invalidHelmetDye,
+    allDyesData,
     handleHelmetChange,
     handleHelmetDyeGroup,
     handleHelmetDyeColor,
