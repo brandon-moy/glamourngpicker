@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fullPiece, gearPiece } from "./types";
+import { fullPiece } from "./types";
 import { helmets } from "./helmets";
 import { itemsData } from "./items";
 import { allDyes } from "./dyes";
@@ -15,6 +15,8 @@ const defaultHelmet = {
 export function useHelmetData() {
   const [helmet, setHelmet] = useState<fullPiece>(defaultHelmet);
   const [invalidHelmet, setInvalidHelmet] = useState<boolean>(false);
+  const [invalidHelmetDyeGroup, setInvalidHelmetDyeGroup] =
+    useState<boolean>(false);
   const [invalidHelmetDye, setInvalidHelmetDye] = useState<boolean>(false);
   const [helmetData, setHelmetData] = useState(helmets);
   const [allDyesData, setAllDyesData] = useState(allDyes);
@@ -52,10 +54,10 @@ export function useHelmetData() {
   const handleHelmetDyeGroup = (value: string) => {
     if (!value.length) return;
     if (+value < 1 || +value > allDyesData.length) {
-      setInvalidHelmetDye(true);
+      setInvalidHelmetDyeGroup(true);
       return;
     }
-    setInvalidHelmetDye(false);
+    setInvalidHelmetDyeGroup(false);
     const { name, dyeable, dye } = helmet;
     const dyeGroup = +value - 1;
     const updatedHelmet = {
@@ -91,6 +93,7 @@ export function useHelmetData() {
   const helmetProps = {
     helmet,
     invalidHelmet,
+    invalidHelmetDyeGroup,
     invalidHelmetDye,
     allDyesData,
     handleHelmetChange,

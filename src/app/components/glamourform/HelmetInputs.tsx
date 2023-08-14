@@ -9,6 +9,7 @@ export default function HelmetInputs() {
     helmet,
     invalidHelmet,
     allDyesData,
+    invalidHelmetDyeGroup,
     invalidHelmetDye,
     handleHelmetChange,
     handleHelmetDyeGroup,
@@ -16,7 +17,8 @@ export default function HelmetInputs() {
   } = useHelmetData();
 
   function displayError() {
-    if (!invalidHelmet) return <></>;
+    if (!invalidHelmet && !invalidHelmetDye && !invalidHelmetDyeGroup)
+      return <></>;
     return (
       <span className="pl-2 text-sm text-red-500">
         Invalid values for helmet or dye
@@ -47,7 +49,7 @@ export default function HelmetInputs() {
         Dye:{" "}
         <input
           className={`w-1/3 mx-2 font-normal  border-solid outline-none focus:ring-0 border rounded border-2 ${
-            invalidHelmetDye
+            invalidHelmetDyeGroup
               ? "border-red-500 text-red-500"
               : "focus:border-secondary"
           }`}
