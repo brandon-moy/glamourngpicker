@@ -1,10 +1,8 @@
 "use client";
 import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
-import FormInputs from "./inputs";
+import FormInputs from "./inputs/FormInputs";
 import { useModalContext } from "../context/ModalContext";
-import HelmetInputs from "./inputs/HelmetInputs";
-import ChestInputs from "./inputs/ChestInputs";
 
 export default function GlamourForm() {
   const { completedGlam, randomizeGlamour } = useAppContext();
@@ -36,9 +34,7 @@ export default function GlamourForm() {
           </p>
           <div className="h-[5px] bg-gradient"></div>
         </div>
-        {/* <FormInputs /> */}
-        <HelmetInputs />
-        <ChestInputs />
+        <FormInputs />
         <div className="flex w-full mt-4 justify-evenly">
           <button
             type="button"
