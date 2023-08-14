@@ -88,7 +88,7 @@ export function useBootData() {
   };
 
   const randomizeBoot = () => {
-    const randomBootIndex = Math.floor(Math.random() * 97);
+    const randomBootIndex = Math.floor(Math.random() * 72);
     const randomizedBoots = randomizeItemSets([...boots]);
     const { name, dyeable } = randomizedBoots[randomBootIndex];
     let dyeGroup = 0;

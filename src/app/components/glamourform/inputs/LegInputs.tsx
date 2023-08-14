@@ -36,8 +36,8 @@ export default function LegInputs() {
           type="number"
           name="leg"
           min="1"
-          max="97"
-          placeholder="1-97"
+          max="75"
+          placeholder="1-75"
         ></input>
       </label>
       <label className="w-full font-bold font-josefinsans">

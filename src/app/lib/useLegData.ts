@@ -87,7 +87,7 @@ export function useLegData() {
   };
 
   const randomizeLeg = () => {
-    const randomLegIndex = Math.floor(Math.random() * 97);
+    const randomLegIndex = Math.floor(Math.random() * 75);
     const randomizedLegs = randomizeItemSets([...legs]);
     const { name, dyeable } = randomizedLegs[randomLegIndex];
     let dyeGroup = 0;

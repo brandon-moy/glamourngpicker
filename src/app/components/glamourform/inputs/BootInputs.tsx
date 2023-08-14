@@ -36,8 +36,8 @@ export default function BootInputs() {
           type="number"
           name="boot"
           min="1"
-          max="97"
-          placeholder="1-97"
+          max="72"
+          placeholder="1-72"
         ></input>
       </label>
       <label className="w-full font-bold font-josefinsans">

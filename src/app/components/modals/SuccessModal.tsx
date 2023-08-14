@@ -14,6 +14,38 @@ import { useBootData } from "@/app/lib/useBootData";
 
 export default function SuccessModal() {
   // const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
+  const [completedGlam, setCompletedGlam] = useState<fullGlamSet>({
+    helmet: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    chest: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    glove: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    leg: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    boot: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+  });
   const { helmet, randomizeHelmet, resetHelmet } = useHelmetData();
   const { chest, randomizeChest, resetChest } = useChestData();
   const { glove, randomizeGlove, resetGlove } = useGloveData();
@@ -23,17 +55,11 @@ export default function SuccessModal() {
   const { displaySuccess, closeSuccessWindow } = useModalContext();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const completedGlam = {
-    helmet,
-    chest,
-    glove,
-    leg,
-    boot,
-  };
   useEffect(() => {
     setLoading(true);
+    setCompletedGlam({ helmet, chest, glove, leg, boot });
     setTimeout(() => setLoading(false), 1000);
-  }, [displaySuccess]);
+  }, [displaySuccess, helmet, chest, glove, leg, boot]);
 
   function renderItemIcon(itemType: string, name: string) {
     const formattedName = name.replace(/\s+/g, "_");
