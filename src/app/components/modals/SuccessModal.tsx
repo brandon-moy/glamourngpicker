@@ -1,63 +1,31 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useAppContext } from "../context/AppContext";
-import { useModalContext } from "../context/ModalContext";
-import { fullGlamSet } from "@/app/lib/types";
-import capitalizeWord from "@/app/lib/capitalizeWord";
 import Image from "next/image";
 import LoadingSpinner from "./Loading";
-import { useHelmetData } from "@/app/lib/useHelmetData";
+import React, { useState, useEffect } from "react";
+import { fullGlamSet } from "@/app/lib/types";
+import capitalizeWord from "@/app/lib/capitalizeWord";
+// import { useHelmetData } from "@/app/lib/useGearData";
 import { useChestData } from "@/app/lib/useChestData";
 import { useGloveData } from "@/app/lib/useGloveData";
 import { useLegData } from "@/app/lib/useLegData";
 import { useBootData } from "@/app/lib/useBootData";
+import { useModalContext } from "../context/ModalContext";
+import { useAppContext } from "../context/AppContext";
 
 export default function SuccessModal() {
-  // const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
-  const [completedGlam, setCompletedGlam] = useState<fullGlamSet>({
-    helmet: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    chest: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    glove: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    leg: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    boot: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-  });
-  const { helmet, randomizeHelmet, resetHelmet } = useHelmetData();
+  // const { helmet, randomizeHelmet, resetHelmet } = useHelmetData();
   const { chest, randomizeChest, resetChest } = useChestData();
   const { glove, randomizeGlove, resetGlove } = useGloveData();
   const { leg, randomizeLeg, resetLeg } = useLegData();
   const { boot, randomizeBoot, resetBoot } = useBootData();
+  const { helmet } = useAppContext();
 
   const { displaySuccess, closeSuccessWindow } = useModalContext();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
-    setCompletedGlam({ helmet, chest, glove, leg, boot });
+    console.log(helmet.piece);
     setTimeout(() => setLoading(false), 1000);
   }, [displaySuccess, helmet, chest, glove, leg, boot]);
 
@@ -127,7 +95,6 @@ export default function SuccessModal() {
   }
 
   const restartGlamouRNG = () => {
-    resetHelmet();
     resetChest();
     resetGlove();
     resetLeg();
@@ -137,7 +104,6 @@ export default function SuccessModal() {
 
   const rerollGlamour = () => {
     setLoading(true);
-    randomizeHelmet();
     randomizeChest();
     randomizeGlove();
     randomizeLeg();
@@ -157,7 +123,9 @@ export default function SuccessModal() {
           </span>{" "}
           choice!
         </p>
-        <div className="flex flex-wrap">{renderGlam(completedGlam)}</div>
+        <div className="flex flex-wrap">
+          {/* {renderGlam(completedGlam)} */}
+        </div>
         <div className="flex w-full pt-4 justify-evenly">
           <button
             className={`px-2 py-1 rounded lg:text-2xl text-white bg-extra font-poppins active:translate-y-0.5 active:brightness-75`}

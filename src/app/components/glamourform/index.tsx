@@ -1,21 +1,23 @@
 "use client";
-import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
-import FormInputs from "./inputs/FormInputs";
 import { useModalContext } from "../context/ModalContext";
-import { useHelmetData } from "@/app/lib/useHelmetData";
+// import { useHelmetData } from "@/app/lib/useGearData";
 import { useChestData } from "@/app/lib/useChestData";
 import { useGloveData } from "@/app/lib/useGloveData";
 import { useLegData } from "@/app/lib/useLegData";
 import { useBootData } from "@/app/lib/useBootData";
+import HelmetInputs from "./inputs/HelmetInputs";
+import ChestInputs from "./inputs/ChestInputs";
+import GloveInputs from "./inputs/GloveInputs";
+import LegInputs from "./inputs/LegInputs";
+import BootInputs from "./inputs/BootInputs";
 
 export default function GlamourForm() {
-  const { helmet, randomizeHelmet } = useHelmetData();
+  // const { helmet, randomizeHelmet } = useHelmetData();
   const { chest, randomizeChest } = useChestData();
   const { glove, randomizeGlove } = useGloveData();
   const { leg, randomizeLeg } = useLegData();
   const { boot, randomizeBoot } = useBootData();
-
   const { openSuccessWindow } = useModalContext();
 
   function handleSubmit(e: FormEvent) {
@@ -25,7 +27,7 @@ export default function GlamourForm() {
   }
 
   const randomize = () => {
-    randomizeHelmet();
+    // randomizeHelmet();
     randomizeChest();
     randomizeGlove();
     randomizeLeg();
@@ -34,7 +36,7 @@ export default function GlamourForm() {
   };
 
   const emptyInputs =
-    helmet.name !== "" &&
+    // helmet.name !== "" &&
     chest.name !== "" &&
     glove.name !== "" &&
     leg.name !== "" &&
@@ -48,7 +50,11 @@ export default function GlamourForm() {
           </p>
           <div className="h-[5px] bg-gradient"></div>
         </div>
-        <FormInputs />
+        <HelmetInputs />
+        <ChestInputs />
+        <GloveInputs />
+        <LegInputs />
+        <BootInputs />
         <div className="flex w-full mt-4 justify-evenly">
           <button
             type="button"

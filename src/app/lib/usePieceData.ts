@@ -4,93 +4,93 @@ import { helmets } from "./helmets";
 import { allDyes } from "./dyes";
 import randomizeItemSets from "./randomizeItemSets";
 
-const defaultHelmet: fullPiece = {
+const defaultPiece: fullPiece = {
   name: "",
   dyeable: false,
   dyeGroup: 0,
   dye: "",
 };
 
-export function useHelmetData() {
-  const [helmet, setHelmet] = useState<fullPiece>(defaultHelmet);
-  const [invalidHelmet, setInvalidHelmet] = useState<boolean>(false);
-  const [invalidHelmetDyeGroup, setInvalidHelmetDyeGroup] =
+export function usePieceData() {
+  const [piece, setPiece] = useState<fullPiece>(defaultPiece);
+  const [invalidPiece, setInvalidPiece] = useState<boolean>(false);
+  const [invalidPieceDyeGroup, setInvalidPieceDyeGroup] =
     useState<boolean>(false);
-  const [invalidHelmetDye, setInvalidHelmetDye] = useState<boolean>(false);
+  const [invalidPieceDye, setInvalidPieceDye] = useState<boolean>(false);
   const [allDyeGroups, setAllDyeGroups] = useState(allDyes);
 
-  const resetHelmet = () => {
-    setHelmet(defaultHelmet);
+  const resetPiece = () => {
+    setPiece(defaultPiece);
   };
 
-  const handleHelmetChange = (value: string) => {
+  const handlePieceChange = (value: string) => {
     if (!value.length) return;
     if (+value < 1 || +value > 213) {
-      setInvalidHelmet(true);
+      setInvalidPiece(true);
       return;
     }
-    setInvalidHelmet(false);
-    const randomizedHelmets = randomizeItemSets([...helmets]);
+    setInvalidPiece(false);
+    const randomizedPieces = randomizeItemSets([...helmets]);
     const index = +value - 1;
-    const { name, dyeable } = randomizedHelmets[index];
-    const { dyeGroup, dye } = helmet;
-    const updatedHelmet = {
+    const { name, dyeable } = randomizedPieces[index];
+    const { dyeGroup, dye } = piece;
+    const updatedPiece = {
       name,
       dyeable,
       dyeGroup,
       dye,
     };
     if (!dyeable) {
-      updatedHelmet.dyeGroup = 0;
-      updatedHelmet.dye = "";
+      updatedPiece.dyeGroup = 0;
+      updatedPiece.dye = "";
     }
-    setHelmet(updatedHelmet);
+    setPiece(updatedPiece);
   };
 
-  const handleHelmetDyeGroup = (value: string) => {
+  const handlePieceDyeGroup = (value: string) => {
     if (!value.length) return;
     if (+value < 1 || +value > allDyes.length) {
-      setInvalidHelmetDyeGroup(true);
+      setInvalidPieceDyeGroup(true);
       return;
     }
-    setInvalidHelmetDyeGroup(false);
+    setInvalidPieceDyeGroup(false);
     const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
     setAllDyeGroups(randomizedDyeGroups);
-    const { name, dyeable, dye } = helmet;
+    const { name, dyeable, dye } = piece;
     const dyeGroup = +value - 1;
-    const updatedHelmet = {
+    const updatedPiece = {
       name,
       dyeable,
       dyeGroup,
       dye,
     };
-    setHelmet(updatedHelmet);
+    setPiece(updatedPiece);
   };
 
-  const handleHelmetDyeColor = (value: string) => {
+  const handlePieceDyeColor = (value: string) => {
     if (!value.length) return;
-    const dyeIndex = helmet.dyeGroup;
+    const dyeIndex = piece.dyeGroup;
     if (+value < 1 || +value > allDyeGroups[dyeIndex].length) {
-      setInvalidHelmetDye(true);
+      setInvalidPieceDye(true);
       return;
     }
-    setInvalidHelmetDye(false);
+    setInvalidPieceDye(false);
     const randomizedDyes = randomizeItemSets([...allDyeGroups[dyeIndex]]);
     const dye = randomizedDyes[+value - 1];
-    const { name, dyeable, dyeGroup } = helmet;
-    const updatedHelmet = {
+    const { name, dyeable, dyeGroup } = piece;
+    const updatedPiece = {
       name,
       dyeable,
       dyeGroup,
       dye,
     };
-    setHelmet(updatedHelmet);
+    setPiece(updatedPiece);
   };
 
-  const randomizeHelmet = () => {
-    const randomHelmetIndex = Math.floor(Math.random() * 213);
-    const randomizedHelmets = randomizeItemSets([...helmets]);
-    const { name, dyeable } = randomizedHelmets[randomHelmetIndex];
+  const randomizePiece = () => {
+    const randomPieceIndex = Math.floor(Math.random() * 213);
+    const randomizedPieces = randomizeItemSets([...helmets]);
+    const { name, dyeable } = randomizedPieces[randomPieceIndex];
     let dyeGroup = 0;
     let dye = "";
     if (dyeable) {
@@ -104,28 +104,28 @@ export function useHelmetData() {
       dye = randomizedDyes[randomDyeIndex];
     }
 
-    const updatedHelmet = {
+    const updatedPiece = {
       name,
       dyeable,
       dyeGroup,
       dye,
     };
 
-    setHelmet(updatedHelmet);
+    setPiece(updatedPiece);
   };
 
-  const helmetProps = {
-    helmet,
-    invalidHelmet,
-    invalidHelmetDyeGroup,
-    invalidHelmetDye,
+  const pieceProps = {
+    piece,
+    invalidPiece,
+    invalidPieceDyeGroup,
+    invalidPieceDye,
     allDyeGroups,
-    handleHelmetChange,
-    handleHelmetDyeGroup,
-    handleHelmetDyeColor,
-    randomizeHelmet,
-    resetHelmet,
+    handlePieceChange,
+    handlePieceDyeGroup,
+    handlePieceDyeColor,
+    randomizePiece,
+    resetPiece,
   };
 
-  return helmetProps;
+  return pieceProps;
 }
