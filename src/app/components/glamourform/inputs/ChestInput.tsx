@@ -5,7 +5,7 @@ export default function ChestInputs() {
   const {
     chest,
     invalidChest,
-    allDyesData,
+    allDyeGroups,
     invalidChestDyeGroup,
     invalidChestDye,
     handleChestChange,
@@ -67,9 +67,9 @@ export default function ChestInputs() {
           }`}
           name="dye-color"
           min="1"
-          max={allDyesData[chest.dyeGroup].length}
+          max={allDyeGroups[chest.dyeGroup].length}
           disabled={!chest.dyeable}
-          placeholder={`1-${allDyesData[chest.dyeGroup].length}`}
+          placeholder={`1-${allDyeGroups[chest.dyeGroup].length}`}
           onChange={(e) => handleChestDyeColor(e.target.value)}
         ></input>
       </label>

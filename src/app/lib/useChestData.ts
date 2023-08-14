@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { fullPiece } from "./types";
 import { chests } from "./chests";
-import { itemsData } from "./items";
 import { allDyes } from "./dyes";
 import randomizeItemSets from "./randomizeItemSets";
 
-const defaultChest = {
+const defaultChest: fullPiece = {
   name: "",
   dyeable: false,
   dyeGroup: 0,
@@ -18,15 +17,7 @@ export function useChestData() {
   const [invalidChestDyeGroup, setInvalidChestDyeGroup] =
     useState<boolean>(false);
   const [invalidChestDye, setInvalidChestDye] = useState<boolean>(false);
-  const [chestData, setChestData] = useState(chests);
-  const [allDyesData, setAllDyesData] = useState(allDyes);
-
-  useEffect(() => {
-    const randomizedChests = randomizeItemSets(chests);
-    const randomizedDyes = randomizeItemSets([...allDyes]);
-    setChestData(randomizedChests);
-    setAllDyesData(randomizedDyes);
-  }, []);
+  const [allDyeGroups, setAllDyeGroups] = useState(allDyes);
 
   const handleChestChange = (value: string) => {
     if (!value.length) return;
@@ -35,8 +26,9 @@ export function useChestData() {
       return;
     }
     setInvalidChest(false);
-    const index = +value;
-    const { name, dyeable } = chestData[index];
+    const randomizedChests = randomizeItemSets([...chests]);
+    const index = +value - 1;
+    const { name, dyeable } = randomizedChests[index];
     const { dyeGroup, dye } = chest;
     const updatedChest = {
       name,
@@ -53,11 +45,13 @@ export function useChestData() {
 
   const handleChestDyeGroup = (value: string) => {
     if (!value.length) return;
-    if (+value < 1 || +value > allDyesData.length) {
+    if (+value < 1 || +value > allDyes.length) {
       setInvalidChestDyeGroup(true);
       return;
     }
     setInvalidChestDyeGroup(false);
+    const randomizedDyeGroups = randomizeItemSets([...allDyeGroups]);
+    setAllDyeGroups(randomizedDyeGroups);
     const { name, dyeable, dye } = chest;
     const dyeGroup = +value - 1;
     const updatedChest = {
@@ -72,12 +66,12 @@ export function useChestData() {
   const handleChestDyeColor = (value: string) => {
     if (!value.length) return;
     const dyeIndex = chest.dyeGroup;
-    if (+value < 1 || +value > allDyesData[dyeIndex].length) {
+    if (+value < 1 || +value > allDyeGroups[dyeIndex].length) {
       setInvalidChestDye(true);
       return;
     }
     setInvalidChestDye(false);
-    const randomizedDyes = randomizeItemSets([...allDyesData[dyeIndex]]);
+    const randomizedDyes = randomizeItemSets([...allDyeGroups[dyeIndex]]);
 
     const dye = randomizedDyes[+value - 1];
     const { name, dyeable, dyeGroup } = chest;
@@ -95,7 +89,7 @@ export function useChestData() {
     invalidChest,
     invalidChestDyeGroup,
     invalidChestDye,
-    allDyesData,
+    allDyeGroups,
     handleChestChange,
     handleChestDyeGroup,
     handleChestDyeColor,

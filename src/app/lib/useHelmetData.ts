@@ -4,7 +4,7 @@ import { helmets } from "./helmets";
 import { allDyes } from "./dyes";
 import randomizeItemSets from "./randomizeItemSets";
 
-const defaultHelmet = {
+const defaultHelmet: fullPiece = {
   name: "",
   dyeable: false,
   dyeGroup: 0,
@@ -27,7 +27,7 @@ export function useHelmetData() {
     }
     setInvalidHelmet(false);
     const randomizedHelmets = randomizeItemSets([...helmets]);
-    const index = +value;
+    const index = +value - 1;
     const { name, dyeable } = randomizedHelmets[index];
     const { dyeGroup, dye } = helmet;
     const updatedHelmet = {
@@ -72,7 +72,6 @@ export function useHelmetData() {
     }
     setInvalidHelmetDye(false);
     const randomizedDyes = randomizeItemSets([...allDyeGroups[dyeIndex]]);
-
     const dye = randomizedDyes[+value - 1];
     const { name, dyeable, dyeGroup } = helmet;
     const updatedHelmet = {
