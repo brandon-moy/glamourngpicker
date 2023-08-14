@@ -4,7 +4,7 @@ import { FormEvent } from "react";
 import FormInputs from "./inputs";
 import { useModalContext } from "../context/ModalContext";
 import HelmetInputs from "./inputs/HelmetInputs";
-import ChestInputs from "./inputs/ChestInput";
+import ChestInputs from "./inputs/ChestInputs";
 
 export default function GlamourForm() {
   const { completedGlam, randomizeGlamour } = useAppContext();
