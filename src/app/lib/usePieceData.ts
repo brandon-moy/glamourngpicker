@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { fullPiece } from "./types";
-import { helmets } from "./helmets";
+import { fullPiece, gearPiece } from "./types";
 import { allDyes } from "./dyes";
 import randomizeItemSets from "./randomizeItemSets";
 
@@ -11,7 +10,7 @@ const defaultPiece: fullPiece = {
   dye: "",
 };
 
-export function usePieceData() {
+export function usePieceData(itemSet: gearPiece[], maxValue: number) {
   const [piece, setPiece] = useState<fullPiece>(defaultPiece);
   const [invalidPiece, setInvalidPiece] = useState<boolean>(false);
   const [invalidPieceDyeGroup, setInvalidPieceDyeGroup] =
@@ -25,12 +24,12 @@ export function usePieceData() {
 
   const handlePieceChange = (value: string) => {
     if (!value.length) return;
-    if (+value < 1 || +value > 213) {
+    if (+value < 1 || +value > maxValue) {
       setInvalidPiece(true);
       return;
     }
     setInvalidPiece(false);
-    const randomizedPieces = randomizeItemSets([...helmets]);
+    const randomizedPieces = randomizeItemSets([...itemSet]);
     const index = +value - 1;
     const { name, dyeable } = randomizedPieces[index];
     const { dyeGroup, dye } = piece;
@@ -88,8 +87,8 @@ export function usePieceData() {
   };
 
   const randomizePiece = () => {
-    const randomPieceIndex = Math.floor(Math.random() * 213);
-    const randomizedPieces = randomizeItemSets([...helmets]);
+    const randomPieceIndex = Math.floor(Math.random() * maxValue);
+    const randomizedPieces = randomizeItemSets([...itemSet]);
     const { name, dyeable } = randomizedPieces[randomPieceIndex];
     let dyeGroup = 0;
     let dye = "";

@@ -1,6 +1,11 @@
 "use client";
 import { createContext, useContext, ReactNode, useState } from "react";
 import { allDyes } from "@/app/lib/dyes";
+import { helmets } from "@/app/lib/helmets";
+import { chests } from "@/app/lib/chests";
+import { gloves } from "@/app/lib/gloves";
+import { legs } from "@/app/lib/legs";
+import { boots } from "@/app/lib/boots";
 import { itemsData } from "@/app/lib/items";
 import {
   fullGlamSet,
@@ -157,11 +162,11 @@ type Props = {
 };
 
 export function AppProvider({ children }: Props) {
-  const helmet = usePieceData();
-  const chest = usePieceData();
-  const leg = usePieceData();
-  const glove = usePieceData();
-  const boot = usePieceData();
+  const helmet = usePieceData(itemsData.helmets, 213);
+  const chest = usePieceData(itemsData.chests, 97);
+  const glove = usePieceData(itemsData.gloves, 47);
+  const leg = usePieceData(itemsData.legs, 75);
+  const boot = usePieceData(itemsData.boots, 72);
   // const [completedGlam, setCompletedGlam] = useState<fullGlamSet>({
   //   helmet: {
   //     name: "",
