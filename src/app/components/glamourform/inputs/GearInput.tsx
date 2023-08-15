@@ -27,7 +27,7 @@ export default function GearInputs({
     if (!invalidPiece && !invalidPieceDye && !invalidPieceDyeGroup) return;
     return (
       <span className="pl-2 text-sm text-red-500">
-        Invalid values for ${itemName} or dye
+        Invalid values for {itemName} or dye
       </span>
     );
   }
