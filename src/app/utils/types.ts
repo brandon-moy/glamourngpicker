@@ -20,7 +20,7 @@ export type allItems = {
 
 export type dyeSets = string[];
 
-type itemContextType = {
+export type itemContextType = {
   piece: {
     name: string;
     dyeable: boolean;
