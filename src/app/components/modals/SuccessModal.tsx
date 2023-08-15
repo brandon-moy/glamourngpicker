@@ -2,8 +2,8 @@
 import Image from "next/image";
 import LoadingSpinner from "./Loading";
 import React, { useState, useEffect } from "react";
-import { fullPiece } from "@/app/lib/types";
-import { capitalizeWord } from "@/app/lib";
+import { fullPiece } from "@/app/utils/types";
+import { capitalizeWord } from "@/app/utils";
 import { useModalContext } from "../context/ModalContext";
 import { useAppContext } from "../context/AppContext";
 

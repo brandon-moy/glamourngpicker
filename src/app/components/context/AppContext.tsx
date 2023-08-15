@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useContext, ReactNode } from "react";
-import { allDyes, itemsData } from "@/app/lib";
-import { AppContextType } from "@/app/lib/types";
-import { usePieceData } from "@/app/lib/usePieceData";
+import { allDyes, itemsData } from "@/app/utils";
+import { AppContextType } from "@/app/utils/types";
+import { usePieceData } from "@/app/utils/usePieceData";
 
 const AppContextDefaultValues: AppContextType = {
   helmet: {
