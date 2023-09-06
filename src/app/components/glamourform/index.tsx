@@ -1,12 +1,12 @@
 "use client";
-import { useAppContext } from "../context/AppContext";
 import { FormEvent } from "react";
-import FormInputs from "./inputs";
 import { useModalContext } from "../context/ModalContext";
+import { useAppContext } from "../context/AppContext";
+import FormInputs from "./inputs/FormInputs";
 
 export default function GlamourForm() {
-  const { completedGlam, randomizeGlamour } = useAppContext();
   const { openSuccessWindow } = useModalContext();
+  const { helmet, chest, glove, leg, boot } = useAppContext();
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -15,16 +15,20 @@ export default function GlamourForm() {
   }
 
   const randomize = () => {
-    randomizeGlamour();
+    helmet.randomizePiece();
+    chest.randomizePiece();
+    glove.randomizePiece();
+    leg.randomizePiece();
+    boot.randomizePiece();
     openSuccessWindow();
   };
 
   const emptyInputs =
-    completedGlam.helmet.name !== "" &&
-    completedGlam.chest.name !== "" &&
-    completedGlam.glove.name !== "" &&
-    completedGlam.leg.name !== "" &&
-    completedGlam.boot.name !== "";
+    helmet.piece.name !== "" &&
+    chest.piece.name !== "" &&
+    glove.piece.name !== "" &&
+    leg.piece.name !== "" &&
+    boot.piece.name !== "";
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-wrap mx-auto">

@@ -12,3 +12,5 @@ export const itemsData: allItems = {
   legs,
   boots,
 };
+
+export default itemsData;

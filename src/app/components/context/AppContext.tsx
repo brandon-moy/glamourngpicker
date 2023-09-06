@@ -1,64 +1,98 @@
 "use client";
-import { createContext, useContext, ReactNode, useState } from "react";
-import { allDyes } from "@/app/lib/dyes";
-import { itemsData } from "@/app/lib/items";
-import {
-  fullGlamSet,
-  AppContextType,
-  invalid,
-  fullPiece,
-  allItems,
-} from "@/app/lib/types";
-import { inputData } from "@/app/lib/formInputs";
+import { createContext, useContext, ReactNode } from "react";
+import { allDyes, itemsData } from "@/app/utils";
+import { AppContextType } from "@/app/utils/types";
+import { usePieceData } from "@/app/utils/usePieceData";
 
 const AppContextDefaultValues: AppContextType = {
-  invalid: {
-    helmet: { piece: false, dye: false },
-    chest: { piece: false, dye: false },
-    glove: { piece: false, dye: false },
-    leg: { piece: false, dye: false },
-    boot: { piece: false, dye: false },
+  helmet: {
+    piece: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    invalidPiece: false,
+    invalidPieceDyeGroup: false,
+    invalidPieceDye: false,
+    allDyeGroups: allDyes,
+    handlePieceChange: (arg0: string) => {},
+    handlePieceDyeGroup: (arg0: string) => {},
+    handlePieceDyeColor: (arg0: string) => {},
+    randomizePiece: () => {},
+    resetPiece: () => {},
   },
-  completedGlam: {
-    helmet: {
+  chest: {
+    piece: {
       name: "",
       dyeable: false,
       dyeGroup: 0,
       dye: "",
     },
-    chest: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    glove: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    leg: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    boot: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
+    invalidPiece: false,
+    invalidPieceDyeGroup: false,
+    invalidPieceDye: false,
+    allDyeGroups: allDyes,
+    handlePieceChange: (arg0: string) => {},
+    handlePieceDyeGroup: (arg0: string) => {},
+    handlePieceDyeColor: (arg0: string) => {},
+    randomizePiece: () => {},
+    resetPiece: () => {},
   },
-  resetGlam: () => {},
-  handleGearChange: () => {},
-  handleGearDyeGroup: () => {},
-  handleGearDyeColor: () => {},
-  randomizeGlamour: () => {},
+  glove: {
+    piece: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    invalidPiece: false,
+    invalidPieceDyeGroup: false,
+    invalidPieceDye: false,
+    allDyeGroups: allDyes,
+    handlePieceChange: (arg0: string) => {},
+    handlePieceDyeGroup: (arg0: string) => {},
+    handlePieceDyeColor: (arg0: string) => {},
+    randomizePiece: () => {},
+    resetPiece: () => {},
+  },
+  leg: {
+    piece: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    invalidPiece: false,
+    invalidPieceDyeGroup: false,
+    invalidPieceDye: false,
+    allDyeGroups: allDyes,
+    handlePieceChange: (arg0: string) => {},
+    handlePieceDyeGroup: (arg0: string) => {},
+    handlePieceDyeColor: (arg0: string) => {},
+    randomizePiece: () => {},
+    resetPiece: () => {},
+  },
+  boot: {
+    piece: {
+      name: "",
+      dyeable: false,
+      dyeGroup: 0,
+      dye: "",
+    },
+    invalidPiece: false,
+    invalidPieceDyeGroup: false,
+    invalidPieceDye: false,
+    allDyeGroups: allDyes,
+    handlePieceChange: (arg0: string) => {},
+    handlePieceDyeGroup: (arg0: string) => {},
+    handlePieceDyeColor: (arg0: string) => {},
+    randomizePiece: () => {},
+    resetPiece: () => {},
+  },
 };
 
-const AppContext = createContext<AppContextType>(AppContextDefaultValues);
+const AppContext = createContext(AppContextDefaultValues);
 
 export function useAppContext() {
   return useContext(AppContext);
@@ -69,236 +103,18 @@ type Props = {
 };
 
 export function AppProvider({ children }: Props) {
-  const [completedGlam, setCompletedGlam] = useState<fullGlamSet>({
-    helmet: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    chest: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    glove: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    leg: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-    boot: {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    },
-  });
-  const [invalid, setInvalid] = useState<invalid>({
-    helmet: {
-      piece: false,
-      dye: false,
-    },
-    chest: {
-      piece: false,
-      dye: false,
-    },
-    glove: {
-      piece: false,
-      dye: false,
-    },
-    leg: {
-      piece: false,
-      dye: false,
-    },
-    boot: {
-      piece: false,
-      dye: false,
-    },
-  });
-
-  const resetGlam = () => {
-    setCompletedGlam(AppContextDefaultValues.completedGlam);
-  };
-
-  const handleGearChange = (
-    slotName: string,
-    maxPieces: number,
-    value: string
-  ) => {
-    if (value.length && (+value < 1 || +value > maxPieces)) {
-      const piece = invalid[slotName as keyof invalid];
-      piece.piece = true;
-      setInvalid({ ...invalid, [slotName]: piece });
-      return;
-    }
-    const piece = invalid[slotName as keyof invalid];
-    piece.piece = false;
-    setInvalid({ ...invalid, [slotName]: piece });
-    const index = Math.floor(Math.random() * +value);
-    const formattedName = slotName + "s";
-    const name: string = itemsData[formattedName as keyof allItems][index].name;
-    const dyeable: boolean =
-      itemsData[formattedName as keyof allItems][index].dyeable;
-    const { dyeGroup, dye } = completedGlam[slotName as keyof fullGlamSet];
-    const pieceObj = {
-      name,
-      dyeable,
-      dyeGroup,
-      dye,
-    };
-    if (!dyeable) {
-      pieceObj.dyeGroup = 0;
-      pieceObj.dye = "";
-    }
-    setCompletedGlam({
-      ...completedGlam,
-      [slotName]: pieceObj,
-    });
-  };
-
-  const handleGearDyeGroup = (slotName: string, value: string) => {
-    if (value.length && (+value < 1 || +value > allDyes.length)) {
-      const piece = invalid[slotName as keyof invalid];
-      piece.dye = true;
-      setInvalid({ ...invalid, [slotName]: piece });
-      return;
-    }
-    const piece = invalid[slotName as keyof invalid];
-    piece.dye = false;
-    const dyeGroup = Math.floor(Math.random() * +value);
-    const { name, dyeable, dye } = completedGlam[slotName as keyof fullGlamSet];
-    const pieceObj = {
-      name,
-      dyeable,
-      dyeGroup,
-      dye,
-    };
-    setCompletedGlam({
-      ...completedGlam,
-      [slotName]: pieceObj,
-    });
-  };
-
-  const handleGearDyeColor = (slotName: string, value: string) => {
-    if (
-      value.length &&
-      (+value < 1 ||
-        +value >
-          allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup].length)
-    ) {
-      const piece = invalid[slotName as keyof invalid];
-      piece.dye = true;
-      setInvalid({ ...invalid, [slotName]: piece });
-      return;
-    }
-    const piece = invalid[slotName as keyof invalid];
-    piece.dye = false;
-    const dye =
-      allDyes[completedGlam[slotName as keyof fullGlamSet].dyeGroup][
-        Math.floor(Math.random() * +value)
-      ];
-    const { name, dyeable, dyeGroup } =
-      completedGlam[slotName as keyof fullGlamSet];
-    const pieceObj = {
-      name,
-      dyeable,
-      dyeGroup,
-      dye,
-    };
-    setCompletedGlam({
-      ...completedGlam,
-      [slotName]: pieceObj,
-    });
-  };
-
-  const randomizePiece = (
-    piece: string,
-    maxOptions: number,
-    randomNumber: number
-  ): fullPiece => {
-    const randomizedPiece: fullPiece = {
-      name: "",
-      dyeable: false,
-      dyeGroup: 0,
-      dye: "",
-    };
-    const itemIndex = Math.floor(randomNumber * maxOptions);
-    const formattedName = piece + "s";
-    randomizedPiece.name =
-      itemsData[formattedName as keyof allItems][itemIndex].name;
-    randomizedPiece.dyeable =
-      itemsData[formattedName as keyof allItems][itemIndex].dyeable;
-    if (randomizedPiece.dyeable) {
-      const dyeGroup = Math.floor(randomNumber * allDyes.length);
-      const dye =
-        allDyes[dyeGroup][Math.floor(randomNumber * allDyes[dyeGroup].length)];
-      randomizedPiece.dyeGroup = dyeGroup;
-      randomizedPiece.dye = dye;
-    }
-    return randomizedPiece;
-  };
-
-  const randomizeGlamour = () => {
-    const randomGlamSet: fullGlamSet = {
-      helmet: {
-        name: "",
-        dyeable: false,
-        dyeGroup: 0,
-        dye: "",
-      },
-      chest: {
-        name: "",
-        dyeable: false,
-        dyeGroup: 0,
-        dye: "",
-      },
-      glove: {
-        name: "",
-        dyeable: false,
-        dyeGroup: 0,
-        dye: "",
-      },
-      leg: {
-        name: "",
-        dyeable: false,
-        dyeGroup: 0,
-        dye: "",
-      },
-      boot: {
-        name: "",
-        dyeable: false,
-        dyeGroup: 0,
-        dye: "",
-      },
-    };
-    inputData.map((piece) => {
-      const randomNumber = Math.random();
-      const randomPiece = randomizePiece(
-        piece.pieceName,
-        piece.maxOptions,
-        randomNumber
-      );
-      randomGlamSet[piece.pieceName as keyof fullGlamSet] = randomPiece;
-    });
-    setCompletedGlam(randomGlamSet);
-  };
+  const helmet = usePieceData(itemsData.helmets, 213);
+  const chest = usePieceData(itemsData.chests, 97);
+  const glove = usePieceData(itemsData.gloves, 47);
+  const leg = usePieceData(itemsData.legs, 75);
+  const boot = usePieceData(itemsData.boots, 72);
 
   const value = {
-    invalid,
-    resetGlam,
-    completedGlam,
-    handleGearChange,
-    handleGearDyeGroup,
-    handleGearDyeColor,
-    randomizeGlamour,
+    helmet,
+    chest,
+    glove,
+    leg,
+    boot,
   };
 
   return (

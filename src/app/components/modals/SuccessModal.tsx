@@ -1,14 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useAppContext } from "../context/AppContext";
-import { useModalContext } from "../context/ModalContext";
-import { fullGlamSet } from "@/app/lib/types";
-import capitalizeWord from "@/app/lib/capitalizeWord";
 import Image from "next/image";
 import LoadingSpinner from "./Loading";
+import React, { useState, useEffect } from "react";
+import { fullPiece } from "@/app/utils/types";
+import { capitalizeWord } from "@/app/utils";
+import { useModalContext } from "../context/ModalContext";
+import { useAppContext } from "../context/AppContext";
 
 export default function SuccessModal() {
-  const { completedGlam, resetGlam, randomizeGlamour } = useAppContext();
+  const { helmet, chest, glove, leg, boot } = useAppContext();
   const { displaySuccess, closeSuccessWindow } = useModalContext();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -54,7 +54,20 @@ export default function SuccessModal() {
     }
   }
 
-  function renderGlam(glamSet: fullGlamSet) {
+  function renderGlam(
+    helmet: fullPiece,
+    chest: fullPiece,
+    glove: fullPiece,
+    leg: fullPiece,
+    boot: fullPiece
+  ) {
+    const glamSet = {
+      helmet,
+      chest,
+      glove,
+      leg,
+      boot,
+    };
     return Object.entries(glamSet).map(([item, value]) => {
       const { name, dyeable, dye } = value;
       const itemName = capitalizeWord(item);
@@ -83,13 +96,21 @@ export default function SuccessModal() {
   }
 
   const restartGlamouRNG = () => {
-    resetGlam();
+    helmet.resetPiece();
+    chest.resetPiece();
+    glove.resetPiece();
+    leg.resetPiece();
+    boot.resetPiece();
     closeSuccessWindow();
   };
 
   const rerollGlamour = () => {
     setLoading(true);
-    randomizeGlamour();
+    helmet.randomizePiece();
+    chest.randomizePiece();
+    glove.randomizePiece();
+    leg.randomizePiece();
+    boot.randomizePiece();
     setTimeout(() => setLoading(false), 1000);
   };
 
@@ -105,7 +126,15 @@ export default function SuccessModal() {
           </span>{" "}
           choice!
         </p>
-        <div className="flex flex-wrap">{renderGlam(completedGlam)}</div>
+        <div className="flex flex-wrap">
+          {renderGlam(
+            helmet.piece,
+            chest.piece,
+            glove.piece,
+            leg.piece,
+            boot.piece
+          )}
+        </div>
         <div className="flex w-full pt-4 justify-evenly">
           <button
             className={`px-2 py-1 rounded lg:text-2xl text-white bg-extra font-poppins active:translate-y-0.5 active:brightness-75`}

@@ -18,27 +18,32 @@ export type allItems = {
   boots: gearPiece[];
 };
 
-export type formInputData = {
-  pieceName: string;
-  maxOptions: number;
-};
+export type dyeSets = string[];
 
-export type fullGlamSet = {
-  helmet: fullPiece;
-  chest: fullPiece;
-  glove: fullPiece;
-  leg: fullPiece;
-  boot: fullPiece;
+export type itemContextType = {
+  piece: {
+    name: string;
+    dyeable: boolean;
+    dyeGroup: number;
+    dye: string;
+  };
+  invalidPiece: boolean;
+  invalidPieceDyeGroup: boolean;
+  invalidPieceDye: boolean;
+  allDyeGroups: dyeSets[];
+  handlePieceChange: (arg0: string) => void;
+  handlePieceDyeGroup: (arg0: string) => void;
+  handlePieceDyeColor: (arg0: string) => void;
+  randomizePiece: () => void;
+  resetPiece: () => void;
 };
 
 export type AppContextType = {
-  completedGlam: fullGlamSet;
-  invalid: invalid;
-  resetGlam: () => void;
-  handleGearChange: (arg0: string, arg1: number, arg2: string) => void;
-  handleGearDyeGroup: (arg0: string, arg1: string) => void;
-  handleGearDyeColor: (arg0: string, arg1: string) => void;
-  randomizeGlamour: () => void;
+  helmet: itemContextType;
+  chest: itemContextType;
+  glove: itemContextType;
+  leg: itemContextType;
+  boot: itemContextType;
 };
 
 export type ModalContextType = {

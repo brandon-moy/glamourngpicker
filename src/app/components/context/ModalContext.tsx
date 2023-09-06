@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, ReactNode, useState } from "react";
-import { ModalContextType } from "@/app/lib/types";
+import { ModalContextType } from "@/app/utils/types";
 
 const ModalContextInitalValues: ModalContextType = {
   displayWelcome: true,
